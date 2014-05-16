@@ -73,6 +73,7 @@ public class LNDungeonMng : MonoBehaviour {
 	GameObject make_room( GameObject parent, int x, int y, int use ) {
 		GameObject child = is_empty_room( x, y );
 		if(child) {
+			parent.GetComponent<LNDungeonCtrl>()._node[use] = child;
 			return null;
 		}
 
@@ -131,7 +132,7 @@ public class LNDungeonMng : MonoBehaviour {
 
 		LNDungeonCtrl ctrl = obj.GetComponent<LNDungeonCtrl>();
 		GameObject child = null;
-		for(int i = 0; i < 8; i++) {
+		for(int i = 0; i < 16; i++) {
 			int n = Random.Range (0, 15);
 			int count = 0;
 			if (ctrl._node [0] == null && _mask[n]._flag[0]) {
