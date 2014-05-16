@@ -7,19 +7,39 @@ ModelImporter:
     100002: road
     100004: sign_00
     100006: //RootNode
+    100008: road_down
+    100010: road_left
+    100012: road_right
+    100014: road_up
     400000: building_00
     400002: road
     400004: sign_00
     400006: //RootNode
+    400008: road_down
+    400010: road_left
+    400012: road_right
+    400014: road_up
     2300000: building_00
     2300002: road
     2300004: sign_00
+    2300006: road_down
+    2300008: road_left
+    2300010: road_right
+    2300012: road_up
     3300000: building_00
     3300002: road
     3300004: sign_00
+    3300006: road_down
+    3300008: road_left
+    3300010: road_right
+    3300012: road_up
     4300000: sign_00
     4300002: building_00
     4300004: road
+    4300006: road_right
+    4300008: road_down
+    4300010: road_left
+    4300012: road_up
     7400000: Default Take
     9500000: //RootNode
   materials:

@@ -59,19 +59,20 @@ public class LNDungeonMng : MonoBehaviour {
 	
 	}
 
-	bool is_empty_room( int x, int y ) {
+	GameObject is_empty_room( int x, int y ) {
 		for(int i = 0; i < _rooms.Count; i++) {
 			GameObject obj = (GameObject)_rooms[i];
 			LNDungeonCtrl ctrl = obj.GetComponent<LNDungeonCtrl>();
 			if(ctrl._x == x && ctrl._y == y) {
-				return false;
+				return obj;
 			}
 		}
-		return true;
+		return null;
 	}
 
 	GameObject make_room( GameObject parent, int x, int y, int use ) {
-		if(!is_empty_room( x, y )) {
+		GameObject child = is_empty_room( x, y );
+		if(child) {
 			return null;
 		}
 
@@ -83,7 +84,11 @@ public class LNDungeonMng : MonoBehaviour {
 		LNDungeonCtrl ctrl = obj.GetComponent<LNDungeonCtrl>();
 		ctrl._x = x;
 		ctrl._y = y;
-		ctrl._node [use] = parent;
+
+		if(use == 0) { ctrl._node[1] = parent;}
+		else if(use == 1) { ctrl._node[0] = parent;}
+		else if(use == 2) { ctrl._node[3] = parent;}
+		else if(use == 3) { ctrl._node[2] = parent;}
 
 		// set transform
 		Vector3 pos = new Vector3 (x * 8.0f, 0.0f, y * 8.0f);
@@ -92,10 +97,18 @@ public class LNDungeonMng : MonoBehaviour {
 		return obj;
 	}
 
-	bool rec_make_dungeon( GameObject parent, int x, int y, int use ) {
+	GameObject rec_make_dungeon( GameObject parent, int x, int y, int use ) {
 		// end condition
 		if (_rooms.Count > _max_room) {
-			return false;
+			return null;
+		}
+
+		if(x < 0 || x >= _max_x) {
+			return null;
+		}
+
+		if(y < 0 || y >= _max_y) {
+			return null;
 		}
 
 		// root node
@@ -106,7 +119,7 @@ public class LNDungeonMng : MonoBehaviour {
 
 		GameObject obj = make_room( parent, x, y, use );
 		if(obj == null) {
-			return false;
+			return null;
 		}
 
 		// player init postion
@@ -117,27 +130,27 @@ public class LNDungeonMng : MonoBehaviour {
 
 
 		LNDungeonCtrl ctrl = obj.GetComponent<LNDungeonCtrl>();
-
-		for(int i = 0; i < 16; i++) {
+		GameObject child = null;
+		for(int i = 0; i < 8; i++) {
 			int n = Random.Range (0, 15);
 			int count = 0;
 			if (ctrl._node [0] == null && _mask[n]._flag[0]) {
 				if( (y-1) >= 0 ) {
-					if(rec_make_dungeon (obj, x, y-1, 0)) {
+					if(child = rec_make_dungeon (obj, x, y-1, 0)) {
 						count++;
 					}
 				}
 			}
 			if (ctrl._node [1] == null && _mask[n]._flag[1]) {
 				if( (y+1) < _max_y ) {
-					if(rec_make_dungeon (obj, x, y+1, 1)) {
+					if(child = rec_make_dungeon (obj, x, y+1, 1)) {
 						count++;
 					}
 				}
 			}
 			if (ctrl._node [2] == null && _mask[n]._flag[2]) {
 				if( (x-1) >= 0 ) {
-					if(rec_make_dungeon (obj, x-1, y, 2)) {
+					if(child = rec_make_dungeon (obj, x+1, y, 2)) {
 						count++;
 					}
 				}
@@ -145,19 +158,23 @@ public class LNDungeonMng : MonoBehaviour {
 			if (ctrl._node [3] == null && _mask
 			    [n]._flag[3]) {
 				if( (x+1) < _max_x ) {
-					if(rec_make_dungeon (obj, x+1, y, 3)) {
+					if(child = rec_make_dungeon (obj, x-1, y, 3)) {
 						count++;
 					}
 				}
 			}
 
 			if(count > 0)
+			{
 				break;
+			}
 
-			Debug.Log("No Way");
+			Debug.Log("no way");
 		}
 
-		return true;
+		ctrl.update_room();
+
+		return obj;
 	}
 
 	void make_dungeon(  ) {
