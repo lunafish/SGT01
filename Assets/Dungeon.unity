@@ -1495,6 +1495,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e124ce6e79ace44bc803f40cedfd8b95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _player: {fileID: 1149890654}
+  _camera: {fileID: 224114224}
+  _max_room: 20
+  _max_x: 16
+  _max_y: 16
 --- !u!4 &1303756037
 Transform:
   m_ObjectHideFlags: 0

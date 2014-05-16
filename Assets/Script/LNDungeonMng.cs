@@ -2,25 +2,55 @@
 using System.Collections;
 
 public class LNDungeonMng : MonoBehaviour {
-	private ArrayList _rooms = new ArrayList(); // dungeon rooms
-	private int _max_room = 20;
-	private int _max_x = 8;
-	private int _max_y = 8;
+	public GameObject _player;
+	public GameObject _camera;
+	public int _max_room = 20;
+	public int _max_x = 16;
+	public int _max_y = 16;
 
-	struct mask {
+	private ArrayList _rooms = new ArrayList(); // dungeon rooms
+
+	struct MASK {
 		public bool[] _flag;
 
-		public void set( bool u, bool d, bool l, bool r ) {
+		public void set( bool up, bool down, bool left, bool right ) {
 			_flag = new bool[4];
-			_flag[0] = u;
-			_flag[1] = d;
-			_flag[2] = l;
-			_flag[3] = r;
+			_flag[0] = up;
+			_flag[1] = down;
+			_flag[2] = left;
+			_flag[3] = right;
 		}
 	};
+	private MASK[] _mask = new MASK[16];
 
 	// Use this for initialization
 	void Start () {
+		// mask data
+		// 4way
+		_mask [0].set (true, true, true, true);
+
+		// 3way
+		_mask [1].set (false, true, true, true);
+		_mask [2].set (true, false, true, true);
+		_mask [3].set (true, true, false, true);
+		_mask [4].set (true, true, true, false);
+
+		// 2way
+		_mask [5].set (false, false, true, true);
+		_mask [6].set (true, false, false, true);
+		_mask [7].set (true, true, false, false);
+		_mask [8].set (false, true, false, false);
+		_mask [9].set (true, false, true, false);
+		_mask [10].set (false, true, true, false);
+		_mask [11].set (true, false, false, true);
+
+		// 1way
+		_mask [12].set (true, false, false, false);
+		_mask [13].set (false, true, false, false);
+		_mask [14].set (false, false, true, false);
+		_mask [15].set (false, false, false, true);
+		//
+
 		make_dungeon ( );
 	}
 	
@@ -40,80 +70,80 @@ public class LNDungeonMng : MonoBehaviour {
 		return true;
 	}
 
+	GameObject make_room( GameObject parent, int x, int y, int use ) {
+		if(!is_empty_room( x, y )) {
+			return null;
+		}
+
+		// make object
+		GameObject obj = Instantiate(Resources.Load("prefabs/dungeon_map")) as GameObject;	
+		_rooms.Add (obj);
+
+		// get ctrl
+		LNDungeonCtrl ctrl = obj.GetComponent<LNDungeonCtrl>();
+		ctrl._x = x;
+		ctrl._y = y;
+		ctrl._node [use] = parent;
+
+		// set transform
+		Vector3 pos = new Vector3 (x * 8.0f, 0.0f, y * 8.0f);
+		obj.transform.position = pos;
+
+		return obj;
+	}
+
 	bool rec_make_dungeon( GameObject parent, int x, int y, int use ) {
 		// end condition
-		if(!is_empty_room( x, y )) {
-			return false;
-		}
 		if (_rooms.Count > _max_room) {
 			return false;
 		}
 
-		GameObject obj = Instantiate(Resources.Load("prefabs/dungeon_map")) as GameObject;	
-		_rooms.Add (obj);
-
-		LNDungeonCtrl ctrl = obj.GetComponent<LNDungeonCtrl>();
+		// root node
 		if (parent == null) {
-			// root node
-			x = Random.Range(0, _max_x);
-			y = Random.Range(0, _max_y);
-			x = ctrl._x;
-			y = ctrl._y;
-		} else {
-			ctrl._x = x;
-			ctrl._y = y;
-			ctrl._node [use] = parent;
+			x = Random.Range(_max_x / 4, _max_x / 2);
+			y = Random.Range(_max_y / 4, _max_y / 2);
 		}
 
-		Vector3 pos = new Vector3 (x * 8.0f, 0.0f, y * 8.0f);
-		obj.transform.position = pos;
+		GameObject obj = make_room( parent, x, y, use );
+		if(obj == null) {
+			return false;
+		}
 
-		mask[] maskes = new mask[16];
-		maskes [0].set (true, true, true, true);
+		// player init postion
+		if (parent == null) {
+			_player.transform.position = obj.transform.position;
+			_camera.transform.position = obj.transform.position;
+		}
 
-		maskes [1].set (false, true, true, true);
-		maskes [2].set (true, false, true, true);
-		maskes [3].set (true, true, false, true);
-		maskes [4].set (true, true, true, false);
 
-		maskes [5].set (false, false, true, true);
-		maskes [6].set (true, false, false, true);
-		maskes [7].set (true, true, false, false);
-		maskes [8].set (false, true, false, false);
-		maskes [9].set (true, false, true, false);
-		maskes [10].set (false, true, true, false);
-		maskes [11].set (true, false, false, true);
-
-		maskes [12].set (true, false, false, false);
-		maskes [13].set (false, true, false, false);
-		maskes [14].set (false, false, true, false);
-		maskes [15].set (false, false, false, true);
+		LNDungeonCtrl ctrl = obj.GetComponent<LNDungeonCtrl>();
 
 		for(int i = 0; i < 16; i++) {
 			int n = Random.Range (0, 15);
 			int count = 0;
-			if (ctrl._node [0] == null && maskes[n]._flag[0]) {
+			if (ctrl._node [0] == null && _mask[n]._flag[0]) {
 				if( (y-1) >= 0 ) {
 					if(rec_make_dungeon (obj, x, y-1, 0)) {
 						count++;
 					}
 				}
 			}
-			if (ctrl._node [1] == null && maskes[n]._flag[1]) {
+			if (ctrl._node [1] == null && _mask[n]._flag[1]) {
 				if( (y+1) < _max_y ) {
 					if(rec_make_dungeon (obj, x, y+1, 1)) {
 						count++;
 					}
 				}
 			}
-			if (ctrl._node [2] == null && maskes[n]._flag[2]) {
+			if (ctrl._node [2] == null && _mask[n]._flag[2]) {
 				if( (x-1) >= 0 ) {
 					if(rec_make_dungeon (obj, x-1, y, 2)) {
 						count++;
 					}
 				}
 			}
-			if (ctrl._node [3] == null && maskes[n]._flag[3]) {
+			if (ctrl._node [3] == null && _mask
+			    [n]._flag[3]) {
 				if( (x+1) < _max_x ) {
 					if(rec_make_dungeon (obj, x+1, y, 3)) {
 						count++;
@@ -123,6 +153,8 @@ public class LNDungeonMng : MonoBehaviour {
 
 			if(count > 0)
 				break;
+
+			Debug.Log("No Way");
 		}
 
 		return true;
