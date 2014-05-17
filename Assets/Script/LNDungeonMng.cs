@@ -4,9 +4,9 @@ using System.Collections;
 public class LNDungeonMng : MonoBehaviour {
 	public GameObject _player;
 	public GameObject _camera;
-	public int _max_room = 20;
-	public int _max_x = 16;
-	public int _max_y = 16;
+	public int _max_room = 32;
+	public int _max_x = 8;
+	public int _max_y = 8;
 
 	private ArrayList _rooms = new ArrayList(); // dungeon rooms
 
@@ -73,7 +73,8 @@ public class LNDungeonMng : MonoBehaviour {
 	GameObject make_room( GameObject parent, int x, int y, int use ) {
 		GameObject child = is_empty_room( x, y );
 		if(child) {
-			parent.GetComponent<LNDungeonCtrl>()._node[use] = child;
+//			parent.GetComponent<LNDungeonCtrl>()._node[use] = child;
+//			parent.GetComponent<LNDungeonCtrl>().update_room();
 			return null;
 		}
 
@@ -92,7 +93,7 @@ public class LNDungeonMng : MonoBehaviour {
 		else if(use == 3) { ctrl._node[2] = parent;}
 
 		// set transform
-		Vector3 pos = new Vector3 (x * 8.0f, 0.0f, y * 8.0f);
+		Vector3 pos = new Vector3 (x * 12.0f, 0.0f, y * 12.0f);
 		obj.transform.position = pos;
 
 		return obj;
@@ -138,6 +139,7 @@ public class LNDungeonMng : MonoBehaviour {
 			if (ctrl._node [0] == null && _mask[n]._flag[0]) {
 				if( (y-1) >= 0 ) {
 					if(child = rec_make_dungeon (obj, x, y-1, 0)) {
+						ctrl._node[0] = child;
 						count++;
 					}
 				}
@@ -145,6 +147,7 @@ public class LNDungeonMng : MonoBehaviour {
 			if (ctrl._node [1] == null && _mask[n]._flag[1]) {
 				if( (y+1) < _max_y ) {
 					if(child = rec_make_dungeon (obj, x, y+1, 1)) {
+						ctrl._node[1] = child;
 						count++;
 					}
 				}
@@ -152,6 +155,7 @@ public class LNDungeonMng : MonoBehaviour {
 			if (ctrl._node [2] == null && _mask[n]._flag[2]) {
 				if( (x-1) >= 0 ) {
 					if(child = rec_make_dungeon (obj, x+1, y, 2)) {
+						ctrl._node[2] = child;
 						count++;
 					}
 				}
@@ -160,6 +164,7 @@ public class LNDungeonMng : MonoBehaviour {
 			    [n]._flag[3]) {
 				if( (x+1) < _max_x ) {
 					if(child = rec_make_dungeon (obj, x-1, y, 3)) {
+						ctrl._node[3] = child;
 						count++;
 					}
 				}
@@ -169,8 +174,6 @@ public class LNDungeonMng : MonoBehaviour {
 			{
 				break;
 			}
-
-			Debug.Log("no way");
 		}
 
 		ctrl.update_room();

@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 72a91a49d36cb43e0818cb03cffdac6e
 ModelImporter:
-  serializedVersion: 16
+  serializedVersion: 15
   fileIDToRecycleName:
     100000: building_00
     100002: road
@@ -11,6 +11,20 @@ ModelImporter:
     100010: road_left
     100012: road_right
     100014: road_up
+    100016: build_down
+    100018: build_left
+    100020: build_right
+    100022: build_up
+    100024: sign_down
+    100026: sign_left
+    100028: sign_right
+    100030: sign_up
+    100032: build
+    100034: build_down_001
+    100036: build_left_001
+    100038: build_right_001
+    100040: build_up_001
+    100042: Plane_001
     400000: building_00
     400002: road
     400004: sign_00
@@ -19,6 +33,20 @@ ModelImporter:
     400010: road_left
     400012: road_right
     400014: road_up
+    400016: build_down
+    400018: build_left
+    400020: build_right
+    400022: build_up
+    400024: sign_down
+    400026: sign_left
+    400028: sign_right
+    400030: sign_up
+    400032: build
+    400034: build_down_001
+    400036: build_left_001
+    400038: build_right_001
+    400040: build_up_001
+    400042: Plane_001
     2300000: building_00
     2300002: road
     2300004: sign_00
@@ -26,6 +54,20 @@ ModelImporter:
     2300008: road_left
     2300010: road_right
     2300012: road_up
+    2300014: build_down
+    2300016: build_left
+    2300018: build_right
+    2300020: build_up
+    2300022: sign_down
+    2300024: sign_left
+    2300026: sign_right
+    2300028: sign_up
+    2300030: build
+    2300032: build_down_001
+    2300034: build_left_001
+    2300036: build_right_001
+    2300038: build_up_001
+    2300040: Plane_001
     3300000: building_00
     3300002: road
     3300004: sign_00
@@ -33,6 +75,20 @@ ModelImporter:
     3300008: road_left
     3300010: road_right
     3300012: road_up
+    3300014: build_down
+    3300016: build_left
+    3300018: build_right
+    3300020: build_up
+    3300022: sign_down
+    3300024: sign_left
+    3300026: sign_right
+    3300028: sign_up
+    3300030: build
+    3300032: build_down_001
+    3300034: build_left_001
+    3300036: build_right_001
+    3300038: build_up_001
+    3300040: Plane_001
     4300000: sign_00
     4300002: building_00
     4300004: road
@@ -40,6 +96,20 @@ ModelImporter:
     4300008: road_down
     4300010: road_left
     4300012: road_up
+    4300014: build_left
+    4300016: sign_left
+    4300018: sign_up
+    4300020: build_up
+    4300022: build_right
+    4300024: sign_right
+    4300026: sign_down
+    4300028: build_down
+    4300030: build
+    4300032: Plane_001
+    4300034: build_left_001
+    4300036: build_up_001
+    4300038: build_right_001
+    4300040: build_down_001
     7400000: Default Take
     9500000: //RootNode
   materials:
@@ -93,5 +163,4 @@ ModelImporter:
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
-  additionalBone: 0
   userData: 

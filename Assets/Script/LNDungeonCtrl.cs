@@ -5,10 +5,11 @@ public class LNDungeonCtrl : MonoBehaviour {
 	public int _x, _y;
 	public GameObject[] _node = new GameObject[4];
 	public GameObject[] _way = new GameObject[4];
+	public GameObject[] _object = new GameObject[4];
 
 	// Use this for initialization
 	void Start () {
-	
+
 	}
 	
 	// Update is called once per frame
@@ -20,8 +21,10 @@ public class LNDungeonCtrl : MonoBehaviour {
 		for(int i = 0; i < 4; i++) {
 			if(_node[i] == null) {
 				_way[i].SetActive(false);
+				_object[i].SetActive(true);
 			} else {
 				_way[i].SetActive(true);
+				_object[i].SetActive(false);
 			}
 		}
 	}

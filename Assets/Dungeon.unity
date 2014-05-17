@@ -1497,7 +1497,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 1149890654}
   _camera: {fileID: 224114224}
-  _max_room: 48
+  _max_room: 96
   _max_x: 8
   _max_y: 8
 --- !u!4 &1303756037
