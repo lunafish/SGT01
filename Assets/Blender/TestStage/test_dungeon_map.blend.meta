@@ -5,56 +5,81 @@ ModelImporter:
   fileIDToRecycleName:
     100000: build
     100002: build_down
-    100004: build_left
-    100006: build_right
-    100008: build_up
-    100010: road
-    100012: road_down
-    100014: road_left
-    100016: road_right
-    100018: road_up
-    100020: //RootNode
+    100004: build_down_sign
+    100006: build_left
+    100008: build_left_sign
+    100010: build_right
+    100012: build_right_sign
+    100014: build_sign
+    100016: build_up
+    100018: build_up_sign
+    100020: road
+    100022: road_down
+    100024: road_left
+    100026: road_right
+    100028: road_up
+    100030: //RootNode
     400000: build
     400002: build_down
-    400004: build_left
-    400006: build_right
-    400008: build_up
-    400010: road
-    400012: road_down
-    400014: road_left
-    400016: road_right
-    400018: road_up
-    400020: //RootNode
+    400004: build_down_sign
+    400006: build_left
+    400008: build_left_sign
+    400010: build_right
+    400012: build_right_sign
+    400014: build_sign
+    400016: build_up
+    400018: build_up_sign
+    400020: road
+    400022: road_down
+    400024: road_left
+    400026: road_right
+    400028: road_up
+    400030: //RootNode
     2300000: build
     2300002: build_down
-    2300004: build_left
-    2300006: build_right
-    2300008: build_up
-    2300010: road
-    2300012: road_down
-    2300014: road_left
-    2300016: road_right
-    2300018: road_up
+    2300004: build_down_sign
+    2300006: build_left
+    2300008: build_left_sign
+    2300010: build_right
+    2300012: build_right_sign
+    2300014: build_sign
+    2300016: build_up
+    2300018: build_up_sign
+    2300020: road
+    2300022: road_down
+    2300024: road_left
+    2300026: road_right
+    2300028: road_up
     3300000: build
     3300002: build_down
-    3300004: build_left
-    3300006: build_right
-    3300008: build_up
-    3300010: road
-    3300012: road_down
-    3300014: road_left
-    3300016: road_right
-    3300018: road_up
-    4300000: build_right
-    4300002: build_left
-    4300004: build_down
-    4300006: build_up
-    4300008: build
-    4300010: road_right
-    4300012: road_down
-    4300014: road_left
-    4300016: road
-    4300018: road_up
+    3300004: build_down_sign
+    3300006: build_left
+    3300008: build_left_sign
+    3300010: build_right
+    3300012: build_right_sign
+    3300014: build_sign
+    3300016: build_up
+    3300018: build_up_sign
+    3300020: road
+    3300022: road_down
+    3300024: road_left
+    3300026: road_right
+    3300028: road_up
+    4300000: build_down_sign
+    4300002: build_right_sign
+    4300004: build_up_sign
+    4300006: build_left_sign
+    4300008: build_sign
+    4300010: build_right
+    4300012: build_left
+    4300014: build_down
+    4300016: build_up
+    4300018: build
+    4300020: road_right
+    4300022: road_down
+    4300024: road_left
+    4300026: road
+    4300028: road_up
     7400000: Default Take
     9500000: //RootNode
   materials:
