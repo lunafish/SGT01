@@ -3,19 +3,23 @@ Shader "Toon/Lighted" {
 		_Color ("Main Color", Color) = (0.5,0.5,0.5,1)
 		_MainTex ("Base (RGB)", 2D) = "white" {}
 		_Ramp ("Toon Ramp (RGB)", 2D) = "gray" {} 
+		_Cutoff ("Alpha cutoff", Range(0,1)) = 0.5 // for alpha test
 	}
 
 	SubShader {
 		Tags { "RenderType"="Opaque" }
 		LOD 200
+		Cull Off // lunafish add : toon + culloff + alphatest
+
 		
 CGPROGRAM
-#pragma surface surf ToonRamp
+#pragma surface surf ToonRamp alphatest:_Cutoff
 
 sampler2D _Ramp;
 
 // custom lighting function that uses a texture ramp based
 // on angle between light direction and normal
+// lunafish add : alpha test
 #pragma lighting ToonRamp exclude_path:prepass
 inline half4 LightingToonRamp (SurfaceOutput s, half3 lightDir, half atten)
 {
