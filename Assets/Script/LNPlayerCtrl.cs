@@ -40,6 +40,9 @@ public class LNPlayerCtrl : MonoBehaviour {
 		Vector3 v = transform.position - _camera.transform.position;
 		_cam_length = v.magnitude;
 		_cam_target_pos = _camera.transform.position;
+
+		_camera.transform.position = transform.position;
+		_camera.transform.rotation = transform.rotation;
 	}
 	
 	// Update is called once per frame

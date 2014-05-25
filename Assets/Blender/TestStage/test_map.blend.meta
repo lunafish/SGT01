@@ -43,6 +43,14 @@ ModelImporter:
     100074: sign_01
     100076: walk_road
     100078: tlight
+    100080: build
+    100082: build_001
+    100084: station
+    100086: tlight_001
+    100088: tlight_002
+    100090: tlight_003
+    100092: build_002
+    100094: road_001
     400000: Cube
     400002: Cube_001
     400004: Cube_002
@@ -83,6 +91,14 @@ ModelImporter:
     400074: sign_01
     400076: walk_road
     400078: tlight
+    400080: build
+    400082: build_001
+    400084: station
+    400086: tlight_001
+    400088: tlight_002
+    400090: tlight_003
+    400092: build_002
+    400094: road_001
     2300000: Cube
     2300002: Cube_001
     2300004: Cube_002
@@ -122,6 +138,14 @@ ModelImporter:
     2300072: sign_01
     2300074: walk_road
     2300076: tlight
+    2300078: build
+    2300080: build_001
+    2300082: station
+    2300084: tlight_001
+    2300086: tlight_002
+    2300088: tlight_003
+    2300090: build_002
+    2300092: road_001
     3300000: Cube
     3300002: Cube_001
     3300004: Cube_002
@@ -161,6 +185,14 @@ ModelImporter:
     3300072: sign_01
     3300074: walk_road
     3300076: tlight
+    3300078: build
+    3300080: build_001
+    3300082: station
+    3300084: tlight_001
+    3300086: tlight_002
+    3300088: tlight_003
+    3300090: build_002
+    3300092: road_001
     4300000: Plane_002
     4300002: Plane_012
     4300004: Cube_032
@@ -200,6 +232,14 @@ ModelImporter:
     4300072: rail_road
     4300074: walk_road
     4300076: tlight
+    4300078: build_001
+    4300080: build
+    4300082: tlight_003
+    4300084: tlight_002
+    4300086: tlight_001
+    4300088: station
+    4300090: road_001
+    4300092: build_002
     7400000: Default Take
     9500000: //RootNode
   materials:
