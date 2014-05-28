@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/testStage.unity
+    path: Assets/Scene/testStage.unity
   - enabled: 1
-    path: Assets/Dungeon.unity
+    path: Assets/Scene/Dungeon.unity
   - enabled: 1
-    path: Assets/avatar.unity
+    path: Assets/Scene/avatar.unity

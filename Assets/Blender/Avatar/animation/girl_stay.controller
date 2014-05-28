@@ -248,6 +248,21 @@ State:
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
+--- !u!1102 &110234750
+State:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: girl_attack_stay
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Motions:
+  - {fileID: 7400000, guid: 235a42d74264a454ebc0e912bbc1a763, type: 2}
+  m_ParentStateMachine: {fileID: 110700000}
+  m_Position: {x: 44, y: 171, z: 0}
+  m_IKOnFeet: 0
+  m_Mirror: 0
+  m_Tag: 
 --- !u!1102 &110261210
 State:
   m_ObjectHideFlags: 3
@@ -291,19 +306,10 @@ StateMachine:
   - {fileID: 110214959}
   - {fileID: 110280827}
   - {fileID: 110261210}
+  - {fileID: 110234750}
   m_ChildStateMachine: []
   m_ChildStateMachinePosition: []
   m_OrderedTransitions:
-    data:
-      first: {fileID: 110261210}
-      second:
-      - {fileID: 110168661}
-      - {fileID: 110123101}
-    data:
-      first: {fileID: 110280827}
-      second:
-      - {fileID: 110195570}
-      - {fileID: 110112450}
     data:
       first: {fileID: 110214959}
       second:
@@ -316,6 +322,16 @@ StateMachine:
       - {fileID: 110163290}
       - {fileID: 110194502}
       - {fileID: 110164788}
+    data:
+      first: {fileID: 110280827}
+      second:
+      - {fileID: 110195570}
+      - {fileID: 110112450}
+    data:
+      first: {fileID: 110261210}
+      second:
+      - {fileID: 110168661}
+      - {fileID: 110123101}
   m_MotionSetCount: 1
-  m_AnyStatePosition: {x: -228, y: 180, z: 0}
+  m_AnyStatePosition: {x: -444, y: 204, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}

@@ -90,7 +90,7 @@ PlayerSettings:
   CreateWallpaper: 0
   APKExpansionFiles: 0
   StripUnusedMeshComponents: 1
-  iPhoneSdkVersion: 988
+  iPhoneSdkVersion: 989
   iPhoneTargetOSVersion: 22
   uIPrerenderedIcon: 0
   uIRequiresPersistentWiFi: 0
