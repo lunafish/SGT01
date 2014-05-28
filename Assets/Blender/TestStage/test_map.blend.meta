@@ -51,6 +51,9 @@ ModelImporter:
     100090: tlight_003
     100092: build_002
     100094: road_001
+    100096: build_003
+    100098: build_004
+    100100: rail_bridge_001
     400000: Cube
     400002: Cube_001
     400004: Cube_002
@@ -99,6 +102,9 @@ ModelImporter:
     400090: tlight_003
     400092: build_002
     400094: road_001
+    400096: build_003
+    400098: build_004
+    400100: rail_bridge_001
     2300000: Cube
     2300002: Cube_001
     2300004: Cube_002
@@ -146,6 +152,9 @@ ModelImporter:
     2300088: tlight_003
     2300090: build_002
     2300092: road_001
+    2300094: build_003
+    2300096: build_004
+    2300098: rail_bridge_001
     3300000: Cube
     3300002: Cube_001
     3300004: Cube_002
@@ -193,6 +202,9 @@ ModelImporter:
     3300088: tlight_003
     3300090: build_002
     3300092: road_001
+    3300094: build_003
+    3300096: build_004
+    3300098: rail_bridge_001
     4300000: Plane_002
     4300002: Plane_012
     4300004: Cube_032
@@ -240,6 +252,9 @@ ModelImporter:
     4300088: station
     4300090: road_001
     4300092: build_002
+    4300094: build_003
+    4300096: build_004
+    4300098: rail_bridge_001
     7400000: Default Take
     9500000: //RootNode
   materials:

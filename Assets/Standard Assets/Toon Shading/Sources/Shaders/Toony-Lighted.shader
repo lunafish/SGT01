@@ -9,7 +9,7 @@ Shader "Toon/Lighted" {
 	SubShader {
 		Tags { "RenderType"="Opaque" }
 		LOD 200
-		Cull Off // lunafish add : toon + culloff + alphatest
+		//Cull Off // lunafish add : toon + culloff + alphatest
 
 		
 CGPROGRAM
