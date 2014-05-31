@@ -54,6 +54,9 @@ ModelImporter:
     100096: build_003
     100098: build_004
     100100: rail_bridge_001
+    100102: build_005
+    100104: build_006
+    100106: build_007
     400000: Cube
     400002: Cube_001
     400004: Cube_002
@@ -105,6 +108,9 @@ ModelImporter:
     400096: build_003
     400098: build_004
     400100: rail_bridge_001
+    400102: build_005
+    400104: build_006
+    400106: build_007
     2300000: Cube
     2300002: Cube_001
     2300004: Cube_002
@@ -155,6 +161,9 @@ ModelImporter:
     2300094: build_003
     2300096: build_004
     2300098: rail_bridge_001
+    2300100: build_005
+    2300102: build_006
+    2300104: build_007
     3300000: Cube
     3300002: Cube_001
     3300004: Cube_002
@@ -205,6 +214,9 @@ ModelImporter:
     3300094: build_003
     3300096: build_004
     3300098: rail_bridge_001
+    3300100: build_005
+    3300102: build_006
+    3300104: build_007
     4300000: Plane_002
     4300002: Plane_012
     4300004: Cube_032
@@ -255,6 +267,9 @@ ModelImporter:
     4300094: build_003
     4300096: build_004
     4300098: rail_bridge_001
+    4300100: build_007
+    4300102: build_006
+    4300104: build_005
     7400000: Default Take
     9500000: //RootNode
   materials:
