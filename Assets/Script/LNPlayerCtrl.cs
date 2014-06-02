@@ -43,9 +43,33 @@ public class LNPlayerCtrl : MonoBehaviour {
 		public int state;
 		public Vector3 org_pos;
 		public Vector3 pos;
+		public float move_delta;
 	};
 	private LNInput[] _inputs = new LNInput[MAX_INPUT];
 
+	// for state
+	enum eSTATE {
+		STAY = 0,
+		ATTACK,
+		DAMAGE,
+		DIE
+	};
+
+	eSTATE _current_state = eSTATE.STAY; // current state
+	eSTATE _backup_state; // state backup
+	float _state_delta = 0.0f;
+
+	// for attack
+	float _attack_delay = 1.0f;
+
+	// for animation
+	enum eANI { 
+		STAY = 0,
+		ATTACK_STAY,
+		RUN,
+		ATTACK_GUN,
+		ATTACK_BLADE,
+	};
 
 	// Use this for initialization
 	void Start () {
@@ -99,6 +123,47 @@ public class LNPlayerCtrl : MonoBehaviour {
 		}
 	}
 
+	// attack enemy
+	void Attack( ) {
+		_attack_delay = 0.5f; // set attack delay
+
+		// process attack
+
+		//
+
+		ChangeAni (eANI.ATTACK_GUN); // change attack ani
+	}
+
+	// change player animation
+	void ChangeAni( eANI ani ) {
+		if(ani == eANI.STAY ) {
+			_anim.SetBool ("isRun", false);
+			_anim.SetBool ("isAttackBlade", false);
+			_anim.SetBool ("isAttackGun", false);
+			_anim.SetBool ("isAttackStay", false);
+		} else if(ani == eANI.RUN ) {
+			_anim.SetBool ("isRun", true);
+			_anim.SetBool ("isAttackBlade", false);
+			_anim.SetBool ("isAttackGun", false);
+			_anim.SetBool ("isAttackStay", false);
+		} else if(ani == eANI.ATTACK_STAY ) {
+			_anim.SetBool ("isRun", false);
+			_anim.SetBool ("isAttackBlade", false);
+			_anim.SetBool ("isAttackGun", false);
+			_anim.SetBool ("isAttackStay", true);
+		} else if(ani == eANI.ATTACK_BLADE ) {
+			_anim.SetBool ("isRun", false);
+			_anim.SetBool ("isAttackBlade", true);
+			_anim.SetBool ("isAttackGun", false);
+			_anim.SetBool ("isAttackStay", true);
+		} else if(ani == eANI.ATTACK_GUN ) {
+			_anim.SetBool ("isRun", false);
+			_anim.SetBool ("isAttackBlade", false);
+			_anim.SetBool ("isAttackGun", true);
+			_anim.SetBool ("isAttackStay", true);
+		}
+	}
+
 	bool isMoveTouch( int n ) {
 		float f = _inputs[n].org_pos.x / Screen.width;
 		if (f < 0.5f) {
@@ -129,6 +194,7 @@ public class LNPlayerCtrl : MonoBehaviour {
 							_inputs[j].use = true;
 							_inputs[j].state = TOUCH_DOWN;
 							_inputs[j].org_pos = Input.GetTouch(i).position;
+							_inputs[j].move_delta = 0.0f;
 
 							/*
 							// camera
@@ -195,6 +261,7 @@ public class LNPlayerCtrl : MonoBehaviour {
 			_inputs[0].use = true;
 			_inputs[0].state = TOUCH_DOWN;
 			_inputs[0].org_pos = Input.mousePosition;
+			_inputs[0].move_delta = 0.0f;
 
 			/*
 			float f = _mouse_start_pos.x / Screen.width;
@@ -231,6 +298,12 @@ public class LNPlayerCtrl : MonoBehaviour {
 		#endif
 	}
 
+	void change_state( eSTATE state ) {
+		_backup_state = _current_state; // state backup
+		_current_state = state; // change state
+		_state_delta = 0.0f; // init state delta;
+	}
+
 	// state machine
 	void state_move( ) {
 		for(int i = 0; i < MAX_INPUT; i++) {
@@ -242,6 +315,8 @@ public class LNPlayerCtrl : MonoBehaviour {
 				}
 				else if(_inputs[i].state == TOUCH_HOLD) {
 					Vector3 v = _inputs[i].pos - _inputs[i].org_pos;
+					_inputs[i].move_delta += v.magnitude;
+
 					if( isMoveTouch( i ) ) {
 						_anim.SetBool ("isRun", true);
 						Move ( v );
@@ -251,15 +326,35 @@ public class LNPlayerCtrl : MonoBehaviour {
 				}
 				else if(_inputs[i].state == TOUCH_UP) {
 					_anim.SetBool ("isRun", false);
+					if( isMoveTouch( i ) == false ) {
+						if(_inputs[i].move_delta < 10.0f) {
+							change_state( eSTATE.ATTACK );
+							Attack();
+						}
+					}
 				}
 			}
+		}
+	}
+
+	void state_attack( ) {
+		Debug.Log ("ATTACK" + _state_delta);
+		_state_delta += Time.deltaTime;
+
+		if (_state_delta > _attack_delay) {
+			ChangeAni (eANI.ATTACK_STAY);
+			change_state( eSTATE.STAY );
 		}
 	}
 
 	// player update
 	void UpdatePlayer( ) {
 		// state machine
-		state_move( );
+		if(_current_state == eSTATE.STAY) {
+			state_move( );
+		} else if(_current_state == eSTATE.ATTACK) {
+			state_attack( );
+		}
 	}
 
 	// camera update

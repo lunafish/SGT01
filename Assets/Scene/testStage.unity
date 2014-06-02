@@ -953,7 +953,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb7a76f626fc245c989a6f712a173cc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 1.5
+  _speed: 2
   _rotate_speed: .5
   _avatar: {fileID: 27630958}
   _camera: {fileID: 400257323}
@@ -1326,6 +1326,10 @@ Prefab:
       propertyPath: _camera
       value: 
       objectReference: {fileID: 400257323}
+    - target: {fileID: 11400000, guid: f3fdec938f1d24329b67b98593ef3abc, type: 2}
+      propertyPath: _speed
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f3fdec938f1d24329b67b98593ef3abc, type: 2}
   m_RootGameObject: {fileID: 513375914}
