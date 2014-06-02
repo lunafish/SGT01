@@ -105,6 +105,19 @@ public class LNPlayerCtrl : MonoBehaviour {
 		Vector3 vec = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0) * mov;
 		RaycastHit hit;
 		Vector3 margin = new Vector3 (0.0f, 0.5f, 0.0f);
+
+		BoxCollider box = GetComponent<BoxCollider> ();
+		bool bMax = Physics.Raycast (box.bounds.max + vec + margin, -Vector3.up, out hit);
+		bool bMin = Physics.Raycast (box.bounds.min + vec + margin, -Vector3.up, out hit);
+
+		if ((bMax == true) && (bMin == true)) {
+			transform.Translate(mov); // move
+			_avatar_lookat = transform.position + vec;
+			_avatar.transform.LookAt( _avatar_lookat );
+			if(!_viewer)
+				Update_camera ();
+		}
+		/*
 		if (Physics.Raycast (transform.position + vec + margin, -Vector3.up, out hit)) {
 			transform.Translate(mov); // move
 			_avatar_lookat = transform.position + vec;
@@ -112,6 +125,7 @@ public class LNPlayerCtrl : MonoBehaviour {
 			if(!_viewer)
 				Update_camera ();
 		}
+		*/
 	}
 	
 	void Rotate(Vector3 v) {
@@ -361,18 +375,35 @@ public class LNPlayerCtrl : MonoBehaviour {
 	void Update_camera() {
 		_camera.transform.position = transform.position;
 		Camera cam = _camera.GetComponentInChildren<Camera> ();
+		BoxCollider box = cam.GetComponent<BoxCollider> (); // get box collider
 		Vector3 dir = -cam.transform.forward;
+
 		dir *= 0.5f;
 		Vector3 pos = _camera.transform.position + dir;
 		pos.y = cam.transform.position.y;
 		RaycastHit hit;
 		for(int i = 0; i < 5; i++) {
-			if(Physics.Raycast (pos, -Vector3.up, out hit)) {
+			bool bMax = Physics.Raycast (box.bounds.max, -Vector3.up, out hit);
+			bool bMin = Physics.Raycast (box.bounds.min, -Vector3.up, out hit);
+			if( (bMax == true) && (bMin == true)) {
 				Debug.DrawRay(pos, -Vector3.up, Color.green);
 			} else {
 				Debug.DrawRay(pos, -Vector3.up, Color.red);
 				break;
 			}
+
+			/*
+			if(Physics.Raycast (pos, -Vector3.up, out hit)) {
+				Debug.DrawRay(pos, -Vector3.up, Color.green);
+				Debug.DrawRay(box.bounds.max, -Vector3.up, Color.blue);
+				Debug.DrawRay(box.bounds.min, -Vector3.up, Color.blue);
+			} else {
+				Debug.DrawRay(pos, -Vector3.up, Color.red);
+				Debug.DrawRay(box.bounds.max, -Vector3.up, Color.blue);
+				Debug.DrawRay(box.bounds.min, -Vector3.up, Color.blue);
+				break;
+			}
+			*/
 			pos += dir;
 		}
 		pos.y = cam.transform.position.y;
@@ -380,7 +411,7 @@ public class LNPlayerCtrl : MonoBehaviour {
 
 		Vector3 mov = pos - cam.transform.position;
 		mov.y = 0.0f;
-		mov *= 0.0625f;
+		mov *= 0.03125f;
 		cam.transform.position = cam.transform.position + mov;
 		
 	}
