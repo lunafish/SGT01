@@ -1,11 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class LNPlayerCtrl : MonoBehaviour {
+public class LNPlayerCtrl : LNPawn {
 	// public
-	public float _speed = 1.0f; // default player move speed
-	public float _rotate_speed = 1.0f; // default camera rotate speed
-	public GameObject _avatar; // avatar object
 	public GameObject _camera; // camera object
 	public bool _viewer = false;
 
