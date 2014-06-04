@@ -114,15 +114,8 @@ public class LNPlayerCtrl : LNPawn {
 			if(!_viewer)
 				Update_camera ();
 		}
-		/*
-		if (Physics.Raycast (transform.position + vec + margin, -Vector3.up, out hit)) {
-			transform.Translate(mov); // move
-			_avatar_lookat = transform.position + vec;
-			_avatar.transform.LookAt( _avatar_lookat );
-			if(!_viewer)
-				Update_camera ();
-		}
-		*/
+
+		Update_target ();
 	}
 	
 	void Rotate(Vector3 v) {
@@ -389,18 +382,6 @@ public class LNPlayerCtrl : LNPawn {
 				break;
 			}
 
-			/*
-			if(Physics.Raycast (pos, -Vector3.up, out hit)) {
-				Debug.DrawRay(pos, -Vector3.up, Color.green);
-				Debug.DrawRay(box.bounds.max, -Vector3.up, Color.blue);
-				Debug.DrawRay(box.bounds.min, -Vector3.up, Color.blue);
-			} else {
-				Debug.DrawRay(pos, -Vector3.up, Color.red);
-				Debug.DrawRay(box.bounds.max, -Vector3.up, Color.blue);
-				Debug.DrawRay(box.bounds.min, -Vector3.up, Color.blue);
-				break;
-			}
-			*/
 			pos += dir;
 		}
 		pos.y = cam.transform.position.y;
@@ -411,5 +392,11 @@ public class LNPlayerCtrl : LNPawn {
 		mov *= 0.03125f;
 		cam.transform.position = cam.transform.position + mov;
 		
+	}
+
+	// target update
+	void Update_target( ) {
+		GameObject rule = GameObject.FindGameObjectWithTag ("Rule");
+		GameObject target = rule.GetComponent<LNRule> ().FindTarget ( transform.gameObject );
 	}
 }

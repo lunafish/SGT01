@@ -10,6 +10,9 @@ public class LNPawn : MonoBehaviour {
 	public float _rotate_speed = 1.0f; // default camera rotate speed
 	public GameObject _avatar; // avatar object
 	public ePawn _type; // pawn type
+	public float _sight_length = 10.0f; // sight length
+
+	protected GameObject _target = null; // target object
 
 	public enum ePawn {
 		PLAYER = 0,
@@ -28,8 +31,8 @@ public class LNPawn : MonoBehaviour {
 		return v.magnitude;
 	}
 
-	public virtual eAction Action(GameObject target) {
-		return eAction.NONE;
+	public virtual void Target(GameObject target) {
+		_target = target;
 	}
 
 	// Use this for initialization
