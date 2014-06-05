@@ -12,27 +12,65 @@ public class LNPawn : MonoBehaviour {
 	public ePawn _type; // pawn type
 	public float _sight_length = 10.0f; // sight length
 
+	// pawn default state
+	public int _hp = 100;
+	public int _mp = 100;
+	public int _attack = 100;
+	public int _defence = 0;
+	public eAttack _attackType = eAttack.SMASH;
+
+	// for battle
 	protected GameObject _target = null; // target object
 
+	// for state machine
+	protected eSTATE _current_state = eSTATE.STAY; // current state
+	protected eSTATE _backup_state; // state backup
+	protected float _state_delta = 0.0f;
+
+	// pawn
 	public enum ePawn {
 		PLAYER = 0,
 		NPC,
 		ENEMY,
 	};
 
-	public enum eAction {
-		NONE = 0,
-		NPC,
-		ENEMY,
+	// state machine
+	public enum eSTATE {
+		STAY = 0,
+		DASH,
+		ATTACK,
+		DAMAGE,
+		DIE
 	};
 
+	// attack
+	public enum eAttack {
+		SMASH = 0,
+		RANGE,
+		SPECIAL,
+	};
+
+	// get target range
 	public float Range(GameObject target) {
 		Vector3 v = transform.position - target.transform.position;
 		return v.magnitude;
 	}
 
+	// set target
 	public virtual void Target(GameObject target) {
 		_target = target;
+	}
+
+	// get damage from enemy
+	public virtual void Damage(GameObject source) {
+
+	}
+
+	// change pawn state
+	protected void change_state( eSTATE state ) {
+		_backup_state = _current_state; // state backup
+		_current_state = state; // change state
+		_state_delta = 0.0f; // init state delta;
 	}
 
 	// Use this for initialization

@@ -38,6 +38,7 @@ public class LNPlayerCtrl : LNPawn {
 	// input
 	struct LNInput {
 		public bool use;
+		public bool rotate;
 		public int state;
 		public Vector3 org_pos;
 		public Vector3 pos;
@@ -45,21 +46,13 @@ public class LNPlayerCtrl : LNPawn {
 	};
 	private LNInput[] _inputs = new LNInput[MAX_INPUT];
 
-	// for state
-	enum eSTATE {
-		STAY = 0,
-		ATTACK,
-		DAMAGE,
-		DIE
-	};
-
-	eSTATE _current_state = eSTATE.STAY; // current state
-	eSTATE _backup_state; // state backup
-	float _state_delta = 0.0f;
-
 	// for attack
 	float _attack_delay = 1.0f;
-	GameObject _target = null; // target object
+
+	// for dash
+	float _dash_delay = 1.0f; // _dash time
+	float _dash_speed = 4.0f; // _speed * _dash_speed
+	Vector3 _dash_dir;
 
 	// for animation
 	enum eANI { 
@@ -68,6 +61,7 @@ public class LNPlayerCtrl : LNPawn {
 		RUN,
 		ATTACK_GUN,
 		ATTACK_BLADE,
+		ATTACK_DASH,
 	};
 
 	// Use this for initialization
@@ -119,14 +113,40 @@ public class LNPlayerCtrl : LNPawn {
 
 		Update_target ();
 	}
+
+	bool Move_dash(Vector3 v) {
+		Vector3 mov = new Vector3 (v.x, 0.0f, v.z);
+		mov *= (_speed * 0.05f);
+		RaycastHit hit;
+		Vector3 margin = new Vector3 (0.0f, 0.5f, 0.0f);
+		
+		BoxCollider box = GetComponent<BoxCollider> ();
+		bool bMax = Physics.Raycast (box.bounds.max + mov + margin, -Vector3.up, out hit);
+		bool bMin = Physics.Raycast (box.bounds.min + mov + margin, -Vector3.up, out hit);
+		
+		if ((bMax == true) && (bMin == true)) {
+			//transform.Translate(mov); // move
+			transform.position += mov;
+			_avatar_lookat = transform.position + mov;
+			_avatar.transform.LookAt( _avatar_lookat );
+			if(!_viewer)
+				Update_camera ();
+		} else {
+			return false;
+		}
+
+		return true;
+	}
 	
-	void Rotate(Vector3 v) {
+	bool Rotate(Vector3 v) {
 		if( Mathf.Abs( v.x ) > 10.0f ) {
 			float f = _rotate_speed * (v.x * 0.1f);
 			_camera.transform.Rotate(0.0f, f, 0.0f);
 			if(!_viewer)
 				Update_camera ();
+			return true;
 		}
+		return false;
 	}
 
 	// attack enemy
@@ -138,13 +158,43 @@ public class LNPlayerCtrl : LNPawn {
 		Vector3 v = _target.transform.position - transform.position;
 		if(v.magnitude < _range_attack) {
 			// range attack
+			_attackType = eAttack.SMASH;
 			ChangeAni (eANI.ATTACK_BLADE); // change attack ani
 		} else {
 			// long range attack
+			_attackType = eAttack.RANGE;
 			ChangeAni (eANI.ATTACK_GUN); // change attack ani
 		}
+
+		// rotate player
+		v.Normalize ();
+		_avatar_lookat = transform.position + v;
+		_avatar_lookat.y = transform.position.y; // lock y axis
+		_avatar.transform.LookAt (_avatar_lookat);
+
+		// get rule book and attack target
+		GameObject rule = GameObject.FindGameObjectWithTag ("Rule");
+		_target = rule.GetComponent<LNRule> ().FindTarget ( transform.gameObject );
+		rule.GetComponent<LNRule> ().Attack( transform.gameObject, _target );
 		//
 
+	}
+
+	// dash
+	void Dash( ) {
+		if(_target == null) {
+			Debug.Log("DASH ERROR : No Target");
+			return;
+		}
+
+		_speed *= _dash_speed; // set dash speed
+
+		// set dash direction
+		_dash_dir = _target.transform.position - transform.position;
+		_dash_dir.Normalize ();
+
+		ChangeAni (eANI.ATTACK_DASH); // dash ani
+		change_state(eSTATE.DASH); // change state
 	}
 
 	// change player animation
@@ -154,26 +204,37 @@ public class LNPlayerCtrl : LNPawn {
 			_anim.SetBool ("isAttackBlade", false);
 			_anim.SetBool ("isAttackGun", false);
 			_anim.SetBool ("isAttackStay", false);
+			_anim.SetBool ("isAttackDash", false);
 		} else if(ani == eANI.RUN ) {
 			_anim.SetBool ("isRun", true);
 			_anim.SetBool ("isAttackBlade", false);
 			_anim.SetBool ("isAttackGun", false);
 			_anim.SetBool ("isAttackStay", false);
+			_anim.SetBool ("isAttackDash", false);
 		} else if(ani == eANI.ATTACK_STAY ) {
 			_anim.SetBool ("isRun", false);
 			_anim.SetBool ("isAttackBlade", false);
 			_anim.SetBool ("isAttackGun", false);
 			_anim.SetBool ("isAttackStay", true);
+			_anim.SetBool ("isAttackDash", false);
 		} else if(ani == eANI.ATTACK_BLADE ) {
 			_anim.SetBool ("isRun", false);
 			_anim.SetBool ("isAttackBlade", true);
 			_anim.SetBool ("isAttackGun", false);
 			_anim.SetBool ("isAttackStay", true);
+			_anim.SetBool ("isAttackDash", false);
 		} else if(ani == eANI.ATTACK_GUN ) {
 			_anim.SetBool ("isRun", false);
 			_anim.SetBool ("isAttackBlade", false);
 			_anim.SetBool ("isAttackGun", true);
 			_anim.SetBool ("isAttackStay", true);
+			_anim.SetBool ("isAttackDash", false);
+		} else if(ani == eANI.ATTACK_DASH ) {
+			_anim.SetBool ("isRun", false);
+			_anim.SetBool ("isAttackBlade", false);
+			_anim.SetBool ("isAttackGun", false);
+			_anim.SetBool ("isAttackStay", true);
+			_anim.SetBool ("isAttackDash", true);
 		}
 	}
 
@@ -205,17 +266,10 @@ public class LNPlayerCtrl : LNPawn {
 							_touches[j].org_pos = Input.GetTouch(i).position;
 
 							_inputs[j].use = true;
+							_inputs[j].rotate = false;
 							_inputs[j].state = TOUCH_DOWN;
 							_inputs[j].org_pos = Input.GetTouch(i).position;
 							_inputs[j].move_delta = 0.0f;
-
-							/*
-							// camera
-							if( isMoveTouch( j ) ) {
-								transform.rotation = _camera.transform.rotation;
-							}
-							*/
-
 							break;
 						}
 					}
@@ -231,17 +285,6 @@ public class LNPlayerCtrl : LNPawn {
 							_inputs[j].use = true;
 							_inputs[j].state = TOUCH_HOLD;
 							_inputs[j].pos = Input.GetTouch(i).position;
-
-							/*
-							v = _touches[j].pos - _touches[j].org_pos;
-
-							if( isMoveTouch( j ) ) {
-								_anim.SetBool ("isRun", true);
-								Move ( v );
-							} else {
-								Rotate ( v );
-							}
-							*/
 							break;
 						}
 					}
@@ -254,12 +297,6 @@ public class LNPlayerCtrl : LNPawn {
 							_inputs[j].use = true;
 							_inputs[j].state = TOUCH_UP;
 							_inputs[j].pos = Input.GetTouch(i).position;
-							/*
-							if( isMoveTouch( j ) ) {
-								_anim.SetBool ("isRun", false);
-							}
-							*/
-
 							_touches[j].use = false;
 						}
 					}
@@ -272,49 +309,22 @@ public class LNPlayerCtrl : LNPawn {
 			_mouse_start_pos = Input.mousePosition;
 
 			_inputs[0].use = true;
+			_inputs[0].rotate = false;
 			_inputs[0].state = TOUCH_DOWN;
 			_inputs[0].org_pos = Input.mousePosition;
 			_inputs[0].move_delta = 0.0f;
-
-			/*
-			float f = _mouse_start_pos.x / Screen.width;
-			if(f < 0.5f) {
-				transform.rotation = _camera.transform.rotation;
-			}
-			*/
 		}
 		else if(Input.GetMouseButton(0) == true) {
 			_inputs[0].use = true;
 			_inputs[0].state = TOUCH_HOLD;
 			_inputs[0].pos = Input.mousePosition;
-
-			/*
-			_mouse_pos = Input.mousePosition;
-			Vector3 v = _mouse_pos - _mouse_start_pos;
-
-			float f = _mouse_start_pos.x / Screen.width;
-			if(f < 0.5f) {
-				_anim.SetBool ("isRun", true);
-				Move ( v );
-			} else {
-				Rotate ( v );
-			}
-			*/
 		}
 		else if (Input.GetMouseButtonUp(0) == true) {
 			_inputs[0].use = true;
 			_inputs[0].state = TOUCH_UP;
 			_inputs[0].pos = Input.mousePosition;
-
-			//_anim.SetBool ("isRun", false);
 		}
 		#endif
-	}
-
-	void change_state( eSTATE state ) {
-		_backup_state = _current_state; // state backup
-		_current_state = state; // change state
-		_state_delta = 0.0f; // init state delta;
 	}
 
 	// state machine
@@ -334,7 +344,7 @@ public class LNPlayerCtrl : LNPawn {
 						_anim.SetBool ("isRun", true);
 						Move ( v );
 					} else {
-						Rotate ( v );
+						_inputs[i].rotate = Rotate ( v ); // rotate check
 					}					
 				}
 				else if(_inputs[i].state == TOUCH_UP) {
@@ -345,6 +355,15 @@ public class LNPlayerCtrl : LNPawn {
 								change_state( eSTATE.ATTACK );
 								Attack();
 							}
+						} else {
+							if(_inputs[i].rotate == false) {
+								// process dash
+								Vector3 v = _inputs[i].pos - _inputs[i].org_pos;
+								if( (Mathf.Abs(v.x) < 40.0f) && v.y > 10.0f ) {
+									Debug.Log("Dash");
+									Dash();
+								}
+							}
 						}
 					}
 				}
@@ -352,8 +371,28 @@ public class LNPlayerCtrl : LNPawn {
 		}
 	}
 
+	// dash state
+	void state_dash( ) {
+		_state_delta += Time.deltaTime;
+
+		// dash move
+		bool state = Move_dash (_dash_dir);
+
+		// Approch check
+		Vector3 v = _target.transform.position - transform.position;
+		if (v.magnitude < 2.0f) {
+			state = false;
+		}
+
+		if ( (_state_delta > _dash_delay) || (state == false)) {
+			_speed /= _dash_speed;
+			ChangeAni (eANI.ATTACK_STAY);
+			change_state( eSTATE.STAY );
+		}
+	}
+
+	// attack state
 	void state_attack( ) {
-		Debug.Log ("ATTACK" + _state_delta);
 		_state_delta += Time.deltaTime;
 
 		if (_state_delta > _attack_delay) {
@@ -367,6 +406,8 @@ public class LNPlayerCtrl : LNPawn {
 		// state machine
 		if(_current_state == eSTATE.STAY) {
 			state_move( );
+		} else if(_current_state == eSTATE.DASH) {
+			state_dash( );
 		} else if(_current_state == eSTATE.ATTACK) {
 			state_attack( );
 		}
@@ -409,5 +450,10 @@ public class LNPlayerCtrl : LNPawn {
 	void Update_target( ) {
 		GameObject rule = GameObject.FindGameObjectWithTag ("Rule");
 		_target = rule.GetComponent<LNRule> ().FindTarget ( transform.gameObject );
+	}
+
+	// state function
+	public override void Damage(GameObject source) {
+		
 	}
 }

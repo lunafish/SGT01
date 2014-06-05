@@ -35,7 +35,7 @@ public class LNRule : MonoBehaviour {
 				if( t < len ) {
 					v.Normalize();
 					float dot = Vector3.Dot( source.GetComponent<LNPawn>()._avatar.transform.forward, v); // dot product (is forward sight?)
-					if(dot > 0.65f) {
+					if(dot > 0.33f) {
 						target = _pawns[i];
 						len = t;
 					}
@@ -49,7 +49,11 @@ public class LNRule : MonoBehaviour {
 		return target;
 	}
 
+	// attack under control
 	public void Attack( GameObject source, GameObject target ) {
+		// attack process
 
+		//
+		target.GetComponent<LNPawn> ().Damage (source);
 	}
 }
