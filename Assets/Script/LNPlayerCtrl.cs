@@ -5,6 +5,7 @@ public class LNPlayerCtrl : LNPawn {
 	// public
 	public GameObject _camera; // camera object
 	public bool _viewer = false;
+	public float _range_attack = 2.0f;
 
 	// for mouse
 	private Vector3 _mouse_start_pos;
@@ -58,6 +59,7 @@ public class LNPlayerCtrl : LNPawn {
 
 	// for attack
 	float _attack_delay = 1.0f;
+	GameObject _target = null; // target object
 
 	// for animation
 	enum eANI { 
@@ -132,10 +134,17 @@ public class LNPlayerCtrl : LNPawn {
 		_attack_delay = 0.5f; // set attack delay
 
 		// process attack
-
+		// get attack type
+		Vector3 v = _target.transform.position - transform.position;
+		if(v.magnitude < _range_attack) {
+			// range attack
+			ChangeAni (eANI.ATTACK_BLADE); // change attack ani
+		} else {
+			// long range attack
+			ChangeAni (eANI.ATTACK_GUN); // change attack ani
+		}
 		//
 
-		ChangeAni (eANI.ATTACK_GUN); // change attack ani
 	}
 
 	// change player animation
@@ -332,8 +341,10 @@ public class LNPlayerCtrl : LNPawn {
 					_anim.SetBool ("isRun", false);
 					if( isMoveTouch( i ) == false ) {
 						if(_inputs[i].move_delta < 10.0f) {
-							change_state( eSTATE.ATTACK );
-							Attack();
+							if(_target) {
+								change_state( eSTATE.ATTACK );
+								Attack();
+							}
 						}
 					}
 				}
@@ -397,6 +408,6 @@ public class LNPlayerCtrl : LNPawn {
 	// target update
 	void Update_target( ) {
 		GameObject rule = GameObject.FindGameObjectWithTag ("Rule");
-		GameObject target = rule.GetComponent<LNRule> ().FindTarget ( transform.gameObject );
+		_target = rule.GetComponent<LNRule> ().FindTarget ( transform.gameObject );
 	}
 }
