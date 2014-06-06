@@ -24,6 +24,19 @@ public class LNAIPawn : LNPawn {
 	// Update is called once per frame
 	void Update () {
 		Update_state ();
+		update_emotion ();
+
+	}
+
+	void update_emotion () {
+		// look at main camera
+		for(int i = 0; i < _emotions.Length; i++) {
+			if(_emotions[i] != null) {
+				Vector3 v = Camera.main.transform.position;
+				v.y = _emotions[i].transform.position.y;
+				_emotions[i].transform.LookAt( v );
+			}
+		}
 	}
 
 	// update state machine
@@ -91,8 +104,34 @@ public class LNAIPawn : LNPawn {
 		if(_current_state == eSTATE.DAMAGE)
 			return;
 
+		// knock back
+		Vector3 v = transform.position - source.transform.position;
+		v.Normalize ();
+		v.y = 0.0f;
+		v *= 0.25f;
+		Move (v);
+		//
+
 		Emotion (eEMOTION.SMASH);
 		change_state (eSTATE.DAMAGE);
+	}
+
+	// move
+	bool Move( Vector3 mov ) {
+		RaycastHit hit;
+		Vector3 margin = new Vector3 (0.0f, 0.5f, 0.0f);
+
+		BoxCollider box = GetComponent<BoxCollider> ();
+		bool bMax = Physics.Raycast (box.bounds.max + mov + margin, -Vector3.up, out hit);
+		bool bMin = Physics.Raycast (box.bounds.min + mov + margin, -Vector3.up, out hit);
+		
+		if ((bMax == true) && (bMin == true)) {
+			transform.position += mov;
+		} else {
+			return false;
+		}
+
+		return true;
 	}
 
 }

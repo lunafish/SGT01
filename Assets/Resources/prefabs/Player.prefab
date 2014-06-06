@@ -207,7 +207,7 @@ GameObject:
   - 65: {fileID: 6500000}
   m_Layer: 8
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Pawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1194,8 +1194,16 @@ MonoBehaviour:
   _speed: 1.75
   _rotate_speed: .330000013
   _avatar: {fileID: 100082}
+  _type: 0
+  _sight_length: 10
+  _hp: 100
+  _mp: 100
+  _attack: 100
+  _defence: 0
+  _attackType: 0
   _camera: {fileID: 0}
   _viewer: 0
+  _range_attack: 2
 --- !u!137 &13700000
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
