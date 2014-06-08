@@ -44,7 +44,9 @@ public class LNRule : MonoBehaviour {
 		}
 
 		if(target)
-			target.GetComponent<LNPawn>().Target( source );
+		{
+			target.GetComponent<LNPawn>().Target( source ); // set source target
+		}
 
 		return target;
 	}

@@ -18,6 +18,8 @@ public class LNPawn : MonoBehaviour {
 	public int _attack = 100;
 	public int _defence = 0;
 	public eAttack _attackType = eAttack.SMASH;
+	public float _short_attack_range = 2.0f;
+	public float _long_attack_range = 10.0f;
 
 	// for battle
 	protected GameObject _target = null; // target object
@@ -40,7 +42,8 @@ public class LNPawn : MonoBehaviour {
 		DASH,
 		ATTACK,
 		DAMAGE,
-		DIE
+		DIE,
+		TALK,
 	};
 
 	// attack

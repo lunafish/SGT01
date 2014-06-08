@@ -45,12 +45,23 @@ public class LNAIPawn : LNPawn {
 			state_stay( );
 		} else if(_current_state == eSTATE.DAMAGE ) {
 			state_damage( );
+		} else if(_current_state == eSTATE.TALK ) {
+			state_talk( );
 		}
 	}
 
 	// state machine
 	void state_stay( ) {
-
+		// npc talk check
+		if(_type == ePawn.NPC) {
+			if(_target) {
+				Vector3 v = _target.transform.position - transform.position;
+				if(v.magnitude < _short_attack_range) {
+					Emotion(eEMOTION.TALK);
+					change_state(eSTATE.TALK);
+				}
+			}
+		}
 	}
 
 	void state_damage( ) {
@@ -62,9 +73,27 @@ public class LNAIPawn : LNPawn {
 			change_state( eSTATE.STAY );
 		}
 	}
+
+	// talk state(NPC)
+	void state_talk( ) {
+		if(_target) {
+			Vector3 v = _target.transform.position - transform.position;
+			if(v.magnitude > _short_attack_range) {
+				//Emotion(eEMOTION.NONE);
+				change_state(eSTATE.STAY);
+			}
+		}
+		else {
+			//Emotion(eEMOTION.NONE);
+			change_state(eSTATE.STAY);
+		}
+	}
 	//
 
 	void Emotion( eEMOTION e ) {
+		if(_current_state == eSTATE.TALK)
+			return; // talk state don't change emotion
+
 		if(_current_emotion == e )
 			return;
 

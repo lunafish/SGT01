@@ -91,6 +91,9 @@ public class LNPlayerCtrl : LNPawn {
 		UpdatePlayer();
 	}
 
+	// Action
+
+	// move
 	void Move(Vector3 v) {
 		Vector3 mov = new Vector3 (v.x, 0.0f, v.y);
 		mov.Normalize ();
@@ -114,6 +117,7 @@ public class LNPlayerCtrl : LNPawn {
 		Update_target ();
 	}
 
+	// dash
 	bool Move_dash(Vector3 v) {
 		Vector3 mov = new Vector3 (v.x, 0.0f, v.z);
 		mov *= (_speed * 0.05f);
@@ -137,7 +141,8 @@ public class LNPlayerCtrl : LNPawn {
 
 		return true;
 	}
-	
+
+	// rotate
 	bool Rotate(Vector3 v) {
 		// check rotate bound
 		if( Mathf.Abs( v.x ) > 16.0f && Mathf.Abs (v.y) < 64.0f) {
@@ -150,6 +155,17 @@ public class LNPlayerCtrl : LNPawn {
 		return false;
 	}
 
+	// Action
+	void Action( ) {
+		if(_target.GetComponent<LNPawn>()._type == ePawn.NPC) {
+			// npc action
+
+		} else if(_target.GetComponent<LNPawn>()._type == ePawn.ENEMY) {
+			change_state( eSTATE.ATTACK );
+			Attack();
+		}
+	}
+	
 	// attack enemy
 	void Attack( ) {
 		_attack_delay = 0.5f; // set attack delay
@@ -353,8 +369,7 @@ public class LNPlayerCtrl : LNPawn {
 					if( isMoveTouch( i ) == false ) {
 						if(_inputs[i].move_delta < 10.0f) {
 							if(_target) {
-								change_state( eSTATE.ATTACK );
-								Attack();
+								Action();
 							}
 						} else {
 							if(_inputs[i].rotate == false) {
