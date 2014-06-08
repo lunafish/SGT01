@@ -52,6 +52,10 @@ public class LNDungeonMng : MonoBehaviour {
 		//
 
 		make_dungeon ( );
+
+		// init rule book
+		GameObject rule = GameObject.FindGameObjectWithTag ("Rule");
+		rule.GetComponent<LNRule> ().Reset ();
 	}
 	
 	// Update is called once per frame
@@ -93,8 +97,15 @@ public class LNDungeonMng : MonoBehaviour {
 		else if(use == 3) { ctrl._node[2] = parent;}
 
 		// set transform
-		Vector3 pos = new Vector3 (x * 12.0f, 0.0f, y * 12.0f);
+		Vector3 pos = new Vector3 ((x - (_max_x/2)) * 12.0f, 0.0f, (y - (_max_y/2)) * 12.0f);
 		obj.transform.position = pos;
+
+		// test code
+		if(parent != null) {
+			GameObject enemy = Instantiate(Resources.Load("prefabs/pawn_00")) as GameObject;	
+			enemy.transform.position = pos;
+		}
+		//
 
 		return obj;
 	}

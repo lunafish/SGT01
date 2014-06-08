@@ -16,6 +16,15 @@ public class LNAIPawn : LNPawn {
 		MAX,
 	};
 
+	// NPC
+	public enum eNPC {
+		INFO = 0,
+		STORE,
+		GATE,
+		EVENT,
+	};
+	public eNPC _npc = eNPC.INFO;
+
 	// Use this for initialization
 	void Start () {
 		Emotion (eEMOTION.NONE);
@@ -114,6 +123,8 @@ public class LNAIPawn : LNPawn {
 		}
 	}
 
+	// callback
+
 	// targeting call back
 	public override void Target(GameObject target) {
 		// only for stay state
@@ -144,6 +155,16 @@ public class LNAIPawn : LNPawn {
 		Emotion (eEMOTION.SMASH);
 		change_state (eSTATE.DAMAGE);
 	}
+
+	// get Talk from source
+	public override void Talk(GameObject source) {
+		// testcode
+		if(_npc == eNPC.GATE) {
+			Debug.Log("GATE");
+			Application.LoadLevel("Dungeon");
+		}
+	}
+
 
 	// move
 	bool Move( Vector3 mov ) {

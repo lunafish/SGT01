@@ -22,6 +22,12 @@ public class LNRule : MonoBehaviour {
 		_pawns = GameObject.FindGameObjectsWithTag ("Pawn");
 	}
 
+	// reset
+	public void Reset() { 
+		// make pawn list
+		_pawns = GameObject.FindGameObjectsWithTag ("Pawn");
+	}
+
 	// Find Target
 	public GameObject FindTarget( GameObject source ) {
 		float len = source.GetComponent<LNPawn> ()._sight_length;
@@ -57,5 +63,13 @@ public class LNRule : MonoBehaviour {
 
 		//
 		target.GetComponent<LNPawn> ().Damage (source);
+	}
+
+	// action (NPC)
+	public void Action( GameObject source, GameObject target ) {
+		// action process
+
+		//
+		target.GetComponent<LNPawn> ().Talk (source);
 	}
 }

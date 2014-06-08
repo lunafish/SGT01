@@ -62,6 +62,7 @@ ModelImporter:
     100112: skybox
     100114: train
     100116: train_001
+    100118: Plane_003
     400000: Cube
     400002: Cube_001
     400004: Cube_002
@@ -121,6 +122,7 @@ ModelImporter:
     400112: skybox
     400114: train
     400116: train_001
+    400118: Plane_003
     2300000: Cube
     2300002: Cube_001
     2300004: Cube_002
@@ -179,6 +181,7 @@ ModelImporter:
     2300110: skybox
     2300112: train
     2300114: train_001
+    2300116: Plane_003
     3300000: Cube
     3300002: Cube_001
     3300004: Cube_002
@@ -237,6 +240,7 @@ ModelImporter:
     3300110: skybox
     3300112: train
     3300114: train_001
+    3300116: Plane_003
     4300000: Plane_002
     4300002: Plane_012
     4300004: Cube_032
@@ -295,6 +299,7 @@ ModelImporter:
     4300110: skybox
     4300112: train_001
     4300114: train
+    4300116: Plane_003
     7400000: Default Take
     9500000: //RootNode
   materials:

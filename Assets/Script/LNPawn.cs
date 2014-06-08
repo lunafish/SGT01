@@ -69,6 +69,11 @@ public class LNPawn : MonoBehaviour {
 
 	}
 
+	// get Talk from source
+	public virtual void Talk(GameObject source) {
+
+	}
+
 	// change pawn state
 	protected void change_state( eSTATE state ) {
 		_backup_state = _current_state; // state backup

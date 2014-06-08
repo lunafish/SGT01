@@ -159,7 +159,11 @@ public class LNPlayerCtrl : LNPawn {
 	void Action( ) {
 		if(_target.GetComponent<LNPawn>()._type == ePawn.NPC) {
 			// npc action
-
+			// get rule book and action target
+			GameObject rule = GameObject.FindGameObjectWithTag ("Rule");
+			_target = rule.GetComponent<LNRule> ().FindTarget ( transform.gameObject );
+			rule.GetComponent<LNRule> ().Action( transform.gameObject, _target );
+			//
 		} else if(_target.GetComponent<LNPawn>()._type == ePawn.ENEMY) {
 			change_state( eSTATE.ATTACK );
 			Attack();
