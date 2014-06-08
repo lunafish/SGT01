@@ -57,6 +57,11 @@ ModelImporter:
     100102: build_005
     100104: build_006
     100106: build_007
+    100108: Gate
+    100110: Cylinder
+    100112: skybox
+    100114: train
+    100116: train_001
     400000: Cube
     400002: Cube_001
     400004: Cube_002
@@ -111,6 +116,11 @@ ModelImporter:
     400102: build_005
     400104: build_006
     400106: build_007
+    400108: Gate
+    400110: Cylinder
+    400112: skybox
+    400114: train
+    400116: train_001
     2300000: Cube
     2300002: Cube_001
     2300004: Cube_002
@@ -164,6 +174,11 @@ ModelImporter:
     2300100: build_005
     2300102: build_006
     2300104: build_007
+    2300106: Gate
+    2300108: Cylinder
+    2300110: skybox
+    2300112: train
+    2300114: train_001
     3300000: Cube
     3300002: Cube_001
     3300004: Cube_002
@@ -217,6 +232,11 @@ ModelImporter:
     3300100: build_005
     3300102: build_006
     3300104: build_007
+    3300106: Gate
+    3300108: Cylinder
+    3300110: skybox
+    3300112: train
+    3300114: train_001
     4300000: Plane_002
     4300002: Plane_012
     4300004: Cube_032
@@ -270,6 +290,11 @@ ModelImporter:
     4300100: build_007
     4300102: build_006
     4300104: build_005
+    4300106: Gate
+    4300108: Cylinder
+    4300110: skybox
+    4300112: train_001
+    4300114: train
     7400000: Default Take
     9500000: //RootNode
   materials:

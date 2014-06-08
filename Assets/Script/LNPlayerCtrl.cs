@@ -139,7 +139,8 @@ public class LNPlayerCtrl : LNPawn {
 	}
 	
 	bool Rotate(Vector3 v) {
-		if( Mathf.Abs( v.x ) > 10.0f ) {
+		// check rotate bound
+		if( Mathf.Abs( v.x ) > 16.0f && Mathf.Abs (v.y) < 64.0f) {
 			float f = _rotate_speed * (v.x * 0.1f);
 			_camera.transform.Rotate(0.0f, f, 0.0f);
 			if(!_viewer)
