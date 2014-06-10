@@ -20,6 +20,19 @@ ModelImporter:
     100028: road_up
     100030: //RootNode
     100032: road_room
+    100034: obj_in_down
+    100036: obj_in_left
+    100038: obj_in_right
+    100040: obj_in_up
+    100042: obj_out_down
+    100044: obj_out_left
+    100046: obj_out_right
+    100048: obj_out_up
+    100050: obj_wall
+    100052: obj_wall_down
+    100054: obj_wall_left
+    100056: obj_wall_right
+    100058: obj_wall_up
     400000: build
     400002: build_down
     400004: build_down_sign
@@ -37,6 +50,19 @@ ModelImporter:
     400028: road_up
     400030: //RootNode
     400032: road_room
+    400034: obj_in_down
+    400036: obj_in_left
+    400038: obj_in_right
+    400040: obj_in_up
+    400042: obj_out_down
+    400044: obj_out_left
+    400046: obj_out_right
+    400048: obj_out_up
+    400050: obj_wall
+    400052: obj_wall_down
+    400054: obj_wall_left
+    400056: obj_wall_right
+    400058: obj_wall_up
     2300000: build
     2300002: build_down
     2300004: build_down_sign
@@ -53,6 +79,19 @@ ModelImporter:
     2300026: road_right
     2300028: road_up
     2300030: road_room
+    2300032: obj_in_down
+    2300034: obj_in_left
+    2300036: obj_in_right
+    2300038: obj_in_up
+    2300040: obj_out_down
+    2300042: obj_out_left
+    2300044: obj_out_right
+    2300046: obj_out_up
+    2300048: obj_wall
+    2300050: obj_wall_down
+    2300052: obj_wall_left
+    2300054: obj_wall_right
+    2300056: obj_wall_up
     3300000: build
     3300002: build_down
     3300004: build_down_sign
@@ -69,6 +108,19 @@ ModelImporter:
     3300026: road_right
     3300028: road_up
     3300030: road_room
+    3300032: obj_in_down
+    3300034: obj_in_left
+    3300036: obj_in_right
+    3300038: obj_in_up
+    3300040: obj_out_down
+    3300042: obj_out_left
+    3300044: obj_out_right
+    3300046: obj_out_up
+    3300048: obj_wall
+    3300050: obj_wall_down
+    3300052: obj_wall_left
+    3300054: obj_wall_right
+    3300056: obj_wall_up
     4300000: build_down_sign
     4300002: build_right_sign
     4300004: build_up_sign
@@ -85,6 +137,19 @@ ModelImporter:
     4300026: road
     4300028: road_up
     4300030: road_room
+    4300032: obj_wall_left
+    4300034: obj_wall_right
+    4300036: obj_wall_up
+    4300038: obj_wall_down
+    4300040: obj_wall
+    4300042: obj_out_right
+    4300044: obj_out_down
+    4300046: obj_out_left
+    4300048: obj_out_up
+    4300050: obj_in_down
+    4300052: obj_in_right
+    4300054: obj_in_up
+    4300056: obj_in_left
     7400000: Default Take
     9500000: //RootNode
   materials:

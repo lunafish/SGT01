@@ -192,7 +192,36 @@ public class LNDungeonMng : MonoBehaviour {
 		ctrl.Road();
 		if (noWay) {
 			Debug.Log("Last node");
-			ctrl.Room ( true );
+			// check near room
+			bool chk = false;
+			GameObject room;
+
+			room = is_empty_room(ctrl._x, ctrl._y-1); //up
+			if(room) {
+				if(room.GetComponent<LNDungeonCtrl>()._isRoom == true)
+					chk = true;
+			}
+			room = is_empty_room(ctrl._x, ctrl._y+1); //down
+			if(room) {
+				if(room.GetComponent<LNDungeonCtrl>()._isRoom == true)
+					chk = true;
+			}
+			room = is_empty_room(ctrl._x-1, ctrl._y); //left
+			if(room) {
+				if(room.GetComponent<LNDungeonCtrl>()._isRoom == true)
+					chk = true;
+			}
+			room = is_empty_room(ctrl._x+1, ctrl._y); //right
+			if(room) {
+				if(room.GetComponent<LNDungeonCtrl>()._isRoom == true)
+					chk = true;
+			}
+
+			if(chk) {
+				Debug.Log("Don't make room!");
+			} else {
+				ctrl.Room ( true );
+			}
 		}
 
 		return obj;
