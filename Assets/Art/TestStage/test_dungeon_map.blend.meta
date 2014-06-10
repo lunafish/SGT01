@@ -19,6 +19,7 @@ ModelImporter:
     100026: road_right
     100028: road_up
     100030: //RootNode
+    100032: road_room
     400000: build
     400002: build_down
     400004: build_down_sign
@@ -35,6 +36,7 @@ ModelImporter:
     400026: road_right
     400028: road_up
     400030: //RootNode
+    400032: road_room
     2300000: build
     2300002: build_down
     2300004: build_down_sign
@@ -50,6 +52,7 @@ ModelImporter:
     2300024: road_left
     2300026: road_right
     2300028: road_up
+    2300030: road_room
     3300000: build
     3300002: build_down
     3300004: build_down_sign
@@ -65,6 +68,7 @@ ModelImporter:
     3300024: road_left
     3300026: road_right
     3300028: road_up
+    3300030: road_room
     4300000: build_down_sign
     4300002: build_right_sign
     4300004: build_up_sign
@@ -80,6 +84,7 @@ ModelImporter:
     4300024: road_left
     4300026: road
     4300028: road_up
+    4300030: road_room
     7400000: Default Take
     9500000: //RootNode
   materials:

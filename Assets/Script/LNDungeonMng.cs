@@ -78,7 +78,7 @@ public class LNDungeonMng : MonoBehaviour {
 		GameObject child = is_empty_room( x, y );
 		if(child) {
 //			parent.GetComponent<LNDungeonCtrl>()._node[use] = child;
-//			parent.GetComponent<LNDungeonCtrl>().update_room();
+//			parent.GetComponent<LNDungeonCtrl>().Road();
 			return null;
 		}
 
@@ -144,6 +144,7 @@ public class LNDungeonMng : MonoBehaviour {
 
 		LNDungeonCtrl ctrl = obj.GetComponent<LNDungeonCtrl>();
 		GameObject child = null;
+		bool noWay = true;
 		for(int i = 0; i < 16; i++) {
 			int n = Random.Range (0, 15);
 			int count = 0;
@@ -183,11 +184,16 @@ public class LNDungeonMng : MonoBehaviour {
 
 			if(count > 0)
 			{
+				noWay = false;
 				break;
 			}
 		}
 
-		ctrl.update_room();
+		ctrl.Road();
+		if (noWay) {
+			Debug.Log("Last node");
+			ctrl.Room ( true );
+		}
 
 		return obj;
 	}
