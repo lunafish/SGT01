@@ -74,6 +74,64 @@ NavMeshSettings:
     widthInaccuracy: 16.666666
     heightInaccuracy: 10
   m_NavMesh: {fileID: 0}
+--- !u!1 &108372215
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100088, guid: 72a91a49d36cb43e0818cb03cffdac6e, type: 3}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 108372218}
+  - 33: {fileID: 108372217}
+  - 23: {fileID: 108372216}
+  m_Layer: 0
+  m_Name: Skybox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!23 &108372216
+Renderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 2300086, guid: 72a91a49d36cb43e0818cb03cffdac6e,
+    type: 3}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 108372215}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: b6987036f44724cdf89d26ac48b6731d, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
+--- !u!33 &108372217
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 3300086, guid: 72a91a49d36cb43e0818cb03cffdac6e,
+    type: 3}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 108372215}
+  m_Mesh: {fileID: 4300086, guid: 72a91a49d36cb43e0818cb03cffdac6e, type: 3}
+--- !u!4 &108372218
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400088, guid: 72a91a49d36cb43e0818cb03cffdac6e, type: 3}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 108372215}
+  m_LocalRotation: {x: -.707106829, y: 0, z: 0, w: .707106829}
+  m_LocalPosition: {x: 0, y: 10, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
 --- !u!1 &145180966
 GameObject:
   m_ObjectHideFlags: 0
@@ -886,7 +944,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
+  m_BackGroundColor: {r: .529411793, g: .329411775, b: .635294139, a: .0196078438}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -1049,6 +1107,18 @@ Prefab:
     - target: {fileID: 6500000, guid: f74bdd37d23b446469f6d10565f8d6a4, type: 2}
       propertyPath: m_Center.z
       value: .25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000000, guid: f74bdd37d23b446469f6d10565f8d6a4, type: 2}
+      propertyPath: m_BackGroundColor.r
+      value: .529411793
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000000, guid: f74bdd37d23b446469f6d10565f8d6a4, type: 2}
+      propertyPath: m_BackGroundColor.g
+      value: .329411775
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000000, guid: f74bdd37d23b446469f6d10565f8d6a4, type: 2}
+      propertyPath: m_BackGroundColor.b
+      value: .635294139
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f74bdd37d23b446469f6d10565f8d6a4, type: 2}

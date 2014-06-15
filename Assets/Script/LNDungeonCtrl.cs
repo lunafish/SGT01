@@ -45,13 +45,31 @@ public class LNDungeonCtrl : MonoBehaviour {
 		_isRoom = true;
 		_room.SetActive (true);
 		_object_wall.SetActive (true);
+		int doorDir = 0;
 		for(int i = 0; i < 4; i++) {
 			_way[i].SetActive(true);
 			_object_in[i].SetActive(false);
 			_object_out[i].SetActive(false);
 			if(_node[i] == null) {
 				_object_side[i].SetActive(true);
+			} else {
+				if(i == 0)
+					doorDir = 2; // up
+				else if(i == 1)
+					doorDir = 0; // down
+				else if(i == 1)
+					doorDir = 1; // left
+				else if(i == 3)
+					doorDir = 2; // right
 			}
 		}
+
+		// make event
+		// current only gate
+		GameObject gate = Instantiate(Resources.Load("prefabs/npc_gate")) as GameObject;	
+		gate.GetComponent<LNAIPawn> ()._npc_target = "testStage";
+		gate.transform.position = transform.position;
+		gate.transform.Rotate(0.0f, 90.0f * doorDir, 0.0f);
+		//
 	}
 }

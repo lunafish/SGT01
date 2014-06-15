@@ -33,6 +33,23 @@ ModelImporter:
     100054: obj_wall_left
     100056: obj_wall_right
     100058: obj_wall_up
+    100060: gear_0_c
+    100062: gear_1_c
+    100064: gear_1_u
+    100066: uear_0_u
+    100068: gear_0_u
+    100070: gear_0_d
+    100072: gear_1_d
+    100074: gear_000
+    100076: gear_001
+    100078: gear_002
+    100080: gear_003
+    100082: gear_004
+    100084: gear_005
+    100086: Cylinder
+    100088: Skybox
+    100090: Skybox_001
+    100092: SkyboxFog
     400000: build
     400002: build_down
     400004: build_down_sign
@@ -63,6 +80,23 @@ ModelImporter:
     400054: obj_wall_left
     400056: obj_wall_right
     400058: obj_wall_up
+    400060: gear_0_c
+    400062: gear_1_c
+    400064: gear_1_u
+    400066: uear_0_u
+    400068: gear_0_u
+    400070: gear_0_d
+    400072: gear_1_d
+    400074: gear_000
+    400076: gear_001
+    400078: gear_002
+    400080: gear_003
+    400082: gear_004
+    400084: gear_005
+    400086: Cylinder
+    400088: Skybox
+    400090: Skybox_001
+    400092: SkyboxFog
     2300000: build
     2300002: build_down
     2300004: build_down_sign
@@ -92,6 +126,23 @@ ModelImporter:
     2300052: obj_wall_left
     2300054: obj_wall_right
     2300056: obj_wall_up
+    2300058: gear_0_c
+    2300060: gear_1_c
+    2300062: gear_1_u
+    2300064: uear_0_u
+    2300066: gear_0_u
+    2300068: gear_0_d
+    2300070: gear_1_d
+    2300072: gear_000
+    2300074: gear_001
+    2300076: gear_002
+    2300078: gear_003
+    2300080: gear_004
+    2300082: gear_005
+    2300084: Cylinder
+    2300086: Skybox
+    2300088: Skybox_001
+    2300090: SkyboxFog
     3300000: build
     3300002: build_down
     3300004: build_down_sign
@@ -121,6 +172,23 @@ ModelImporter:
     3300052: obj_wall_left
     3300054: obj_wall_right
     3300056: obj_wall_up
+    3300058: gear_0_c
+    3300060: gear_1_c
+    3300062: gear_1_u
+    3300064: uear_0_u
+    3300066: gear_0_u
+    3300068: gear_0_d
+    3300070: gear_1_d
+    3300072: gear_000
+    3300074: gear_001
+    3300076: gear_002
+    3300078: gear_003
+    3300080: gear_004
+    3300082: gear_005
+    3300084: Cylinder
+    3300086: Skybox
+    3300088: Skybox_001
+    3300090: SkyboxFog
     4300000: build_down_sign
     4300002: build_right_sign
     4300004: build_up_sign
@@ -150,6 +218,23 @@ ModelImporter:
     4300052: obj_in_right
     4300054: obj_in_up
     4300056: obj_in_left
+    4300058: uear_0_u
+    4300060: gear_1_u
+    4300062: gear_1_c
+    4300064: gear_0_c
+    4300066: gear_0_u
+    4300068: gear_1_d
+    4300070: gear_0_d
+    4300072: gear_004
+    4300074: gear_005
+    4300076: gear_002
+    4300078: gear_003
+    4300080: gear_001
+    4300082: gear_000
+    4300084: Cylinder
+    4300086: Skybox
+    4300088: Skybox_001
+    4300090: SkyboxFog
     7400000: Default Take
     9500000: //RootNode
   materials:

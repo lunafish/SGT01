@@ -24,6 +24,7 @@ public class LNAIPawn : LNPawn {
 		EVENT,
 	};
 	public eNPC _npc = eNPC.INFO;
+	public string _npc_target = "Dungeon";
 
 	// Use this for initialization
 	void Start () {
@@ -158,10 +159,14 @@ public class LNAIPawn : LNPawn {
 
 	// get Talk from source
 	public override void Talk(GameObject source) {
+		// Check Talk State
+		if(_current_state != eSTATE.TALK)
+			return;
+
 		// testcode
 		if(_npc == eNPC.GATE) {
 			Debug.Log("GATE");
-			Application.LoadLevel("Dungeon");
+			Application.LoadLevel(_npc_target);
 		}
 	}
 

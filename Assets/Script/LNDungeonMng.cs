@@ -101,10 +101,12 @@ public class LNDungeonMng : MonoBehaviour {
 		obj.transform.position = pos;
 
 		// test code
+		/*
 		if(parent != null) {
 			GameObject enemy = Instantiate(Resources.Load("prefabs/pawn_00")) as GameObject;	
 			enemy.transform.position = pos;
 		}
+		*/
 		//
 
 		return obj;
