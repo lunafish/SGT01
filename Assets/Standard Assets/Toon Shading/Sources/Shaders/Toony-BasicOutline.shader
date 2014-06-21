@@ -68,7 +68,7 @@ Shader "Toon/Basic Outline" {
 
 			CGPROGRAM
 			#pragma vertex vert
-			#pragma exclude_renderers shaderonly
+			#pragma exclude_renderers shaderonly 
 			ENDCG
 			SetTexture [_MainTex] { combine primary }
 		}

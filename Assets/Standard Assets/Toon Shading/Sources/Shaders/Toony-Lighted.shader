@@ -10,8 +10,9 @@ Shader "Toon/Lighted" {
 		Tags { "RenderType"="Opaque" }
 		LOD 200
 		//Cull Off // lunafish add : toon + culloff + alphatest
-
 		
+	AlphaTest Greater [_Cutoff] // lunafish add for alphatest
+
 CGPROGRAM
 #pragma surface surf ToonRamp alphatest:_Cutoff
 
@@ -20,7 +21,7 @@ sampler2D _Ramp;
 // custom lighting function that uses a texture ramp based
 // on angle between light direction and normal
 // lunafish add : alpha test
-#pragma lighting ToonRamp exclude_path:prepass
+#pragma lighting ToonRamp exclude_path:prepass 
 inline half4 LightingToonRamp (SurfaceOutput s, half3 lightDir, half atten)
 {
 	#ifndef USING_DIRECTIONAL_LIGHT
@@ -50,7 +51,6 @@ void surf (Input IN, inout SurfaceOutput o) {
 	o.Alpha = c.a;
 }
 ENDCG
-
 	} 
 
 	Fallback "Diffuse"
