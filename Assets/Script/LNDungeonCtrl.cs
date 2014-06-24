@@ -5,12 +5,39 @@ public class LNDungeonCtrl : MonoBehaviour {
 	public int _x, _y;
 	public bool _isRoom = false;
 	public GameObject[] _node = new GameObject[4];
-	public GameObject[] _way = new GameObject[4];
-	public GameObject[] _object_in = new GameObject[4]; // wall inside
-	public GameObject[] _object_out = new GameObject[4]; // wall outside
-	public GameObject[] _object_side = new GameObject[4]; // wall outside door
-	public GameObject _object_wall; // wall
-	public GameObject _room;
+
+	// for enemy & item regen
+	public int _regen_count = 0;
+	public int _regen_count_max = 3;
+	public enum REGEN {
+		OneByOne = 0,
+		ItemLast,
+		Item,
+		Boss,
+		Gate,
+		All,
+	}
+	public REGEN _regen = REGEN.OneByOne;
+	public float _regen_delta;
+	public enum TRIGER {
+		FIND = 0,
+		ATTACK,
+		DAMAGE,
+		DIE,
+	};
+	public bool _is_regen = false;
+
+	//
+
+	// mesh object
+	private GameObject[] _way = new GameObject[4];
+	private GameObject[] _object_in = new GameObject[4]; // wall inside
+	private GameObject[] _object_out = new GameObject[4]; // wall outside
+	private GameObject[] _object_side = new GameObject[4]; // wall outside door
+	private GameObject _object_wall; // wall
+	private GameObject _room;
+	//
+	
 
 	// Use this for initialization
 	void Start () {
@@ -18,7 +45,33 @@ public class LNDungeonCtrl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		updateRegen ();
+	}
 
+	public void Init( ) {
+		_way [0] = transform.FindChild ("road_up").gameObject;
+		_way [1] = transform.FindChild ("road_down").gameObject;
+		_way [2] = transform.FindChild ("road_left").gameObject;
+		_way [3] = transform.FindChild ("road_right").gameObject;
+		
+		_object_in [0] = transform.FindChild ("obj_in_up").gameObject;
+		_object_in [1] = transform.FindChild ("obj_in_down").gameObject;
+		_object_in [2] = transform.FindChild ("obj_in_left").gameObject;
+		_object_in [3] = transform.FindChild ("obj_in_right").gameObject;
+		
+		_object_out [0] = transform.FindChild ("obj_out_up").gameObject;
+		_object_out [1] = transform.FindChild ("obj_out_down").gameObject;
+		_object_out [2] = transform.FindChild ("obj_out_left").gameObject;
+		_object_out [3] = transform.FindChild ("obj_out_right").gameObject;
+		
+		_object_side [0] = transform.FindChild ("obj_wall_up").gameObject;
+		_object_side [1] = transform.FindChild ("obj_wall_down").gameObject;
+		_object_side [2] = transform.FindChild ("obj_wall_left").gameObject;
+		_object_side [3] = transform.FindChild ("obj_wall_right").gameObject;
+
+		_object_wall = transform.FindChild ("obj_wall").gameObject;
+
+		_room = transform.FindChild ("road_room").gameObject;
 	}
 
 	// set road
@@ -40,19 +93,10 @@ public class LNDungeonCtrl : MonoBehaviour {
 		}
 	}
 
-	// set room
-	public void Room( bool isRoom ) {
-		_isRoom = true;
-		_room.SetActive (true);
-		_object_wall.SetActive (true);
+	int get_door_dir( ) {
 		int doorDir = 0;
 		for(int i = 0; i < 4; i++) {
-			_way[i].SetActive(true);
-			_object_in[i].SetActive(false);
-			_object_out[i].SetActive(false);
-			if(_node[i] == null) {
-				_object_side[i].SetActive(true);
-			} else {
+			if(_node[i] != null) {
 				if(i == 0)
 					doorDir = 2; // up
 				else if(i == 1)
@@ -64,12 +108,68 @@ public class LNDungeonCtrl : MonoBehaviour {
 			}
 		}
 
-		// make event
-		// current only gate
-		GameObject gate = Instantiate(Resources.Load("prefabs/npc_gate")) as GameObject;	
-		gate.GetComponent<LNAIPawn> ()._npc_target = "testStage";
-		gate.transform.position = transform.position;
-		gate.transform.Rotate(0.0f, 90.0f * doorDir, 0.0f);
-		//
+		return doorDir;
 	}
+
+	// set room
+	public void Room( bool isRoom ) {
+		_isRoom = true;
+		_room.SetActive (true);
+		_object_wall.SetActive (true);
+		for(int i = 0; i < 4; i++) {
+			_way[i].SetActive(true);
+			_object_in[i].SetActive(false);
+			_object_out[i].SetActive(false);
+			if(_node[i] == null) {
+				_object_side[i].SetActive(true);
+			}
+		}
+	}
+
+	public void Regen( REGEN type ) {
+		_regen = type;
+		_is_regen = true;
+	}
+
+	// update monster & item regen
+	void updateRegen( ) {
+		if(_is_regen == false) {
+			return;
+		}
+
+		switch (_regen) {
+		case REGEN.OneByOne : 
+			GameObject mon = Instantiate(Resources.Load("prefabs/pawn_00")) as GameObject;	
+			mon.transform.position = transform.position;
+			mon.transform.Rotate(0.0f, 90.0f * get_door_dir(), 0.0f);
+			mon.GetComponent<LNAIPawn>()._regen = transform.gameObject; // set regen point
+			_is_regen = false;
+			break;
+		case REGEN.ItemLast : 
+			break;
+		case REGEN.Item : 
+			break;
+		case REGEN.Boss : 
+			break;
+		case REGEN.Gate : 
+			GameObject gate = Instantiate(Resources.Load("prefabs/npc_gate")) as GameObject;	
+			gate.GetComponent<LNAIPawn> ()._npc_target = "testStage";
+			gate.transform.position = transform.position;
+			gate.transform.Rotate(0.0f, 90.0f * get_door_dir(), 0.0f);
+			gate.GetComponent<LNAIPawn>()._regen = transform.gameObject; // set regen point
+			_is_regen = false;
+			break;
+		case REGEN.All : 
+			break;
+		default :
+			break;
+		};	
+	}
+
+	// triger call back
+	public void Triger( GameObject obj, TRIGER triger ) {
+		Debug.Log ("(" + _x + ", " + + _y +  ") : " + triger);
+
+	}
+
 }

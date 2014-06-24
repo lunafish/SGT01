@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: road_00
-  m_Shader: {fileID: 4800000, guid: 48dca5b99d113b8d11006bab44295342, type: 3}
+  m_Name: road_lm_01
+  m_Shader: {fileID: 4800000, guid: 9676557e2dc874e3dbb915588a955870, type: 3}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
   m_SavedProperties:
@@ -31,7 +31,7 @@ Material:
         first:
           name: _LightMap
         second:
-          m_Texture: {fileID: 2800000, guid: 0c2b128e03dca4359a3d627e004682ef, type: 3}
+          m_Texture: {fileID: 2800000, guid: c5f76538923a6404084904ba70b573a2, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:

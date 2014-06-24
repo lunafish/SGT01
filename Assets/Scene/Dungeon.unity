@@ -1424,6 +1424,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1815811870}
+  - {fileID: 1639470795}
   m_Father: {fileID: 0}
 --- !u!114 &1149890656
 MonoBehaviour:
@@ -1698,7 +1699,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 1149890654}
   _camera: {fileID: 224114224}
-  _max_room: 32
+  _max_corridor: 32
   _max_x: 4
   _max_y: 4
 --- !u!4 &1303756037
@@ -2076,6 +2077,57 @@ Transform:
   m_LocalScale: {x: .99999994, y: .99999994, z: 1}
   m_Children: []
   m_Father: {fileID: 1338007033}
+--- !u!1 &1639470794
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100084, guid: f3fdec938f1d24329b67b98593ef3abc, type: 2}
+  m_PrefabInternal: {fileID: 644038028}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1639470795}
+  - 212: {fileID: 1639470796}
+  m_Layer: 0
+  m_Name: Shadow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1639470795
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400084, guid: f3fdec938f1d24329b67b98593ef3abc, type: 2}
+  m_PrefabInternal: {fileID: 644038028}
+  m_GameObject: {fileID: 1639470794}
+  m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106709}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalScale: {x: .5, y: .5, z: .5}
+  m_Children: []
+  m_Father: {fileID: 1149890655}
+--- !u!212 &1639470796
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 21200000, guid: f3fdec938f1d24329b67b98593ef3abc,
+    type: 2}
+  m_PrefabInternal: {fileID: 644038028}
+  m_GameObject: {fileID: 1639470794}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: e3c0fbd9ae71a48e7903649c96f092b4, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
+  m_Sprite: {fileID: 21300000, guid: 460697a74f76540aaa97c96e1e7108ff, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1686629201
 GameObject:
   m_ObjectHideFlags: 0

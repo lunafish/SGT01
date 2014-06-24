@@ -26,9 +26,17 @@ public class LNAIPawn : LNPawn {
 	public eNPC _npc = eNPC.INFO;
 	public string _npc_target = "Dungeon";
 
+	public GameObject _regen = null; // regen point (for triger)
+
+	private LNRule _rule; // rule ctrl;
+
 	// Use this for initialization
 	void Start () {
 		Emotion (eEMOTION.NONE);
+		// get rule book and action target
+		_rule = GameObject.FindGameObjectWithTag ("Rule").GetComponent<LNRule>();
+		_rule.UpdatePawnList ();
+
 	}
 	
 	// Update is called once per frame
@@ -144,6 +152,11 @@ public class LNAIPawn : LNPawn {
 	public override void Damage(GameObject source) {
 		if(_current_state == eSTATE.DAMAGE)
 			return;
+
+		// triger call back
+		if(_regen) {
+			_regen.GetComponent<LNDungeonCtrl>().Triger( transform.gameObject, LNDungeonCtrl.TRIGER.DAMAGE );
+		}
 
 		// knock back
 		Vector3 v = transform.position - source.transform.position;

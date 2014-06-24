@@ -1,14 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class LNDungeonMng : MonoBehaviour {
 	public GameObject _player;
 	public GameObject _camera;
-	public int _max_room = 32;
+	public int _max_corridor = 32;
 	public int _max_x = 8;
 	public int _max_y = 8;
 
-	private ArrayList _rooms = new ArrayList(); // dungeon rooms
+	private float _tile_size = 12.0f; // tile size
+
+//	private ArrayList _corridor = new ArrayList(); // dungeon corridor
+	private Dictionary<int, GameObject> _corridor = new Dictionary<int, GameObject>();
 
 	struct MASK {
 		public bool[] _flag;
@@ -52,42 +56,48 @@ public class LNDungeonMng : MonoBehaviour {
 		//
 
 		make_dungeon ( );
-
-		// init rule book
-		GameObject rule = GameObject.FindGameObjectWithTag ("Rule");
-		rule.GetComponent<LNRule> ().Reset ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+
+	}
+
+	// get dungeon ctrl in _corridor
+	LNDungeonCtrl get_dungen_ctrl( int x, int y ) {
+		int idx = x + (y * _max_x);
+		if(_corridor.ContainsKey(idx) == true) {
+			GameObject obj = _corridor[idx];
+			return obj.GetComponent<LNDungeonCtrl>();
+		}
+		return null;
 	}
 
 	GameObject is_empty_room( int x, int y ) {
-		for(int i = 0; i < _rooms.Count; i++) {
-			GameObject obj = (GameObject)_rooms[i];
-			LNDungeonCtrl ctrl = obj.GetComponent<LNDungeonCtrl>();
-			if(ctrl._x == x && ctrl._y == y) {
-				return obj;
-			}
+		int idx = x + (y * _max_x);
+		if(_corridor.ContainsKey(idx) == true) {
+			GameObject obj = _corridor[idx];
+			return obj;
 		}
 		return null;
 	}
 
 	GameObject make_room( GameObject parent, int x, int y, int use ) {
-		GameObject child = is_empty_room( x, y );
+		GameObject child = is_empty_room( x, y);
 		if(child) {
-//			parent.GetComponent<LNDungeonCtrl>()._node[use] = child;
-//			parent.GetComponent<LNDungeonCtrl>().Road();
 			return null;
 		}
 
 		// make object
 		GameObject obj = Instantiate(Resources.Load("prefabs/dungeon_map")) as GameObject;	
-		_rooms.Add (obj);
+		_corridor.Add (x + (y * _max_x), obj);
 
 		// get ctrl
 		LNDungeonCtrl ctrl = obj.GetComponent<LNDungeonCtrl>();
+
+		// init ctrl
+		ctrl.Init ();
+
 		ctrl._x = x;
 		ctrl._y = y;
 
@@ -97,7 +107,7 @@ public class LNDungeonMng : MonoBehaviour {
 		else if(use == 3) { ctrl._node[2] = parent;}
 
 		// set transform
-		Vector3 pos = new Vector3 ((x - (_max_x/2)) * 12.0f, 0.0f, (y - (_max_y/2)) * 12.0f);
+		Vector3 pos = new Vector3 ((x - (_max_x/2)) * _tile_size, 0.0f, (y - (_max_y/2)) * _tile_size);
 		obj.transform.position = pos;
 
 		// test code
@@ -114,7 +124,7 @@ public class LNDungeonMng : MonoBehaviour {
 
 	GameObject rec_make_dungeon( GameObject parent, int x, int y, int use ) {
 		// end condition
-		if (_rooms.Count > _max_room) {
+		if (_corridor.Count > _max_corridor) {
 			return null;
 		}
 
@@ -223,6 +233,14 @@ public class LNDungeonMng : MonoBehaviour {
 				Debug.Log("Don't make room!");
 			} else {
 				ctrl.Room ( true );
+
+				// test code
+				ctrl.Regen( LNDungeonCtrl.REGEN.Gate );
+			}
+		} else {
+			// test code
+			if (parent != null) {
+				ctrl.Regen( LNDungeonCtrl.REGEN.OneByOne );
 			}
 		}
 

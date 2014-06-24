@@ -135,7 +135,7 @@ GameObject:
   - 114: {fileID: 11400000}
   m_Layer: 0
   m_Name: dungeon_map
-  m_TagString: Untagged
+  m_TagString: Dungeon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1654,25 +1654,25 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   _way:
-  - {fileID: 100016}
-  - {fileID: 100004}
-  - {fileID: 100002}
-  - {fileID: 100018}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _object_in:
-  - {fileID: 100020}
-  - {fileID: 100008}
-  - {fileID: 100010}
-  - {fileID: 100012}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _object_out:
-  - {fileID: 100028}
-  - {fileID: 100022}
-  - {fileID: 100024}
-  - {fileID: 100026}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _object_side:
-  - {fileID: 100038}
-  - {fileID: 100032}
-  - {fileID: 100034}
-  - {fileID: 100036}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _object_wall: {fileID: 100030}
   _room: {fileID: 100000}
 --- !u!114 &11400002

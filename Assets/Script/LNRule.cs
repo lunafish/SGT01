@@ -23,7 +23,7 @@ public class LNRule : MonoBehaviour {
 	}
 
 	// reset
-	public void Reset() { 
+	public void UpdatePawnList() { 
 		// make pawn list
 		_pawns = GameObject.FindGameObjectsWithTag ("Pawn");
 	}

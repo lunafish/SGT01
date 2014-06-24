@@ -470,7 +470,6 @@ public class LNPlayerCtrl : LNPawn {
 	void Update_target( ) {
 		GameObject rule = GameObject.FindGameObjectWithTag ("Rule");
 		_target = rule.GetComponent<LNRule> ().FindTarget ( transform.gameObject );
-		Debug.Log (_target);
 	}
 
 	// state function

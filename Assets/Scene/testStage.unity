@@ -121,6 +121,22 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2300068, guid: 19a0b758dddbc42c089c9dd72110b8a8, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3d6c96d44a2f24e8ab396c514cb46d7e, type: 2}
+    - target: {fileID: 2300092, guid: 19a0b758dddbc42c089c9dd72110b8a8, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f14a428889e5141ad9afe942003227c7, type: 2}
+    - target: {fileID: 2300074, guid: 19a0b758dddbc42c089c9dd72110b8a8, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 53e3d5bb46f324bccb3fdabcf5e4317e, type: 2}
+    - target: {fileID: 2300092, guid: 19a0b758dddbc42c089c9dd72110b8a8, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 19a0b758dddbc42c089c9dd72110b8a8, type: 3}
   m_RootGameObject: {fileID: 1593471422}
@@ -429,6 +445,7 @@ MonoBehaviour:
   - {fileID: 358958774}
   _npc: 2
   _npc_target: Dungeon
+  _regen: {fileID: 0}
 --- !u!1 &101456975
 GameObject:
   m_ObjectHideFlags: 0
@@ -506,11 +523,11 @@ Renderer:
   m_GameObject: {fileID: 115714545}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: b752c92904e0e462083bcd0e020cd466, type: 2}
+  - {fileID: 2100000, guid: f14a428889e5141ad9afe942003227c7, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -750,6 +767,7 @@ MonoBehaviour:
   - {fileID: 1166541625}
   _npc: 1
   _npc_target: Dungeon
+  _regen: {fileID: 0}
 --- !u!4 &164619543
 Transform:
   m_ObjectHideFlags: 0
@@ -1092,6 +1110,7 @@ MonoBehaviour:
   - {fileID: 1574623883}
   _npc: 1
   _npc_target: Dungeon
+  _regen: {fileID: 0}
 --- !u!1 &276229295
 GameObject:
   m_ObjectHideFlags: 0
@@ -1875,6 +1894,7 @@ MonoBehaviour:
   - {fileID: 1989373162}
   _npc: 1
   _npc_target: Dungeon
+  _regen: {fileID: 0}
 --- !u!1 &455325903
 GameObject:
   m_ObjectHideFlags: 0
@@ -2771,7 +2791,7 @@ Transform:
   m_GameObject: {fileID: 711097571}
   m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106709}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: .5, y: .5, z: .5}
+  m_LocalScale: {x: .75, y: .75, z: .75}
   m_Children: []
   m_Father: {fileID: 86298069}
 --- !u!212 &711097573
@@ -4095,7 +4115,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 397e2d67b93e64caf8e0a80ea555935c, type: 2}
+  - {fileID: 2100000, guid: 53e3d5bb46f324bccb3fdabcf5e4317e, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -4285,7 +4305,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: b752c92904e0e462083bcd0e020cd466, type: 2}
+  - {fileID: 2100000, guid: 3d6c96d44a2f24e8ab396c514cb46d7e, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -4466,6 +4486,7 @@ MonoBehaviour:
   - {fileID: 1568097282}
   _npc: 0
   _npc_target: Dungeon
+  _regen: {fileID: 0}
 --- !u!1 &1214417683
 GameObject:
   m_ObjectHideFlags: 0
@@ -4545,6 +4566,7 @@ MonoBehaviour:
   - {fileID: 1480392276}
   _npc: 1
   _npc_target: Dungeon
+  _regen: {fileID: 0}
 --- !u!1001 &1221788149
 Prefab:
   m_ObjectHideFlags: 0
@@ -5053,6 +5075,7 @@ MonoBehaviour:
   - {fileID: 965094518}
   _npc: 1
   _npc_target: Dungeon
+  _regen: {fileID: 0}
 --- !u!1001 &1330311685
 Prefab:
   m_ObjectHideFlags: 0
@@ -5286,6 +5309,7 @@ MonoBehaviour:
   - {fileID: 2032564395}
   _npc: 1
   _npc_target: Dungeon
+  _regen: {fileID: 0}
 --- !u!4 &1397465237
 Transform:
   m_ObjectHideFlags: 0
@@ -5380,6 +5404,7 @@ MonoBehaviour:
   - {fileID: 442662541}
   _npc: 1
   _npc_target: Dungeon
+  _regen: {fileID: 0}
 --- !u!1 &1422815944
 GameObject:
   m_ObjectHideFlags: 0
@@ -7570,6 +7595,7 @@ MonoBehaviour:
   - {fileID: 40121314}
   _npc: 1
   _npc_target: Dungeon
+  _regen: {fileID: 0}
 --- !u!1 &1966615937
 GameObject:
   m_ObjectHideFlags: 0
