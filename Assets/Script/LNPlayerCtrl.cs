@@ -110,6 +110,10 @@ public class LNPlayerCtrl : LNPawn {
 			transform.Translate(mov); // move
 			_avatar_lookat = transform.position + vec;
 			_avatar.transform.LookAt( _avatar_lookat );
+
+			// move dungeon
+			move_dungeon( );
+
 			if(!_viewer)
 				Update_camera ();
 		}

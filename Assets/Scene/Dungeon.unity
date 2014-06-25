@@ -1450,6 +1450,8 @@ MonoBehaviour:
   _attackType: 0
   _short_attack_range: 2
   _long_attack_range: 10
+  _x: -1
+  _y: -1
   _camera: {fileID: 224114224}
   _viewer: 0
   _range_attack: 2

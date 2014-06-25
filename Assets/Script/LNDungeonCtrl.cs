@@ -26,8 +26,10 @@ public class LNDungeonCtrl : MonoBehaviour {
 		DIE,
 	};
 	public bool _is_regen = false;
-
 	//
+
+	// dynamic object list
+	private ArrayList _lstPawn = new ArrayList ();
 
 	// mesh object
 	private GameObject[] _way = new GameObject[4];
@@ -46,6 +48,7 @@ public class LNDungeonCtrl : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		updateRegen ();
+		updatePawn();
 	}
 
 	public void Init( ) {
@@ -172,4 +175,30 @@ public class LNDungeonCtrl : MonoBehaviour {
 
 	}
 
+	// update pawn list
+	void updatePawn() {
+		for(int i = 0; i < _lstPawn.Count; i++) {
+			GameObject obj = (GameObject)_lstPawn[i];
+			if(obj.GetComponent<LNPawn>()._x != _x || obj.GetComponent<LNPawn>()._y != _y) {
+				_lstPawn.RemoveAt( i  ); // one by one
+				Debug.Log("Remove Pawn : " + obj + " " + _x + " : " + _y );
+				return;
+			}
+		}
+	}
+
+	// add new pawn on tile
+	public void AddPawn( GameObject pawn ) {
+		for(int i = 0; i < _lstPawn.Count; i++) {
+			if( (GameObject)_lstPawn[i] == pawn ) {
+				return; // same object exist
+			}
+		}
+		pawn.GetComponent<LNPawn> ()._x = _x;
+		pawn.GetComponent<LNPawn> ()._y = _y;
+
+		Debug.Log("Add Pawn : " + pawn + " "+ _x + " : " + _y );
+
+		_lstPawn.Add (pawn);
+	}
 }

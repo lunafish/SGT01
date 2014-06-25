@@ -21,6 +21,9 @@ public class LNPawn : MonoBehaviour {
 	public float _short_attack_range = 2.0f;
 	public float _long_attack_range = 10.0f;
 
+	// for pawn grid
+	public int _x = -1, _y = -1;
+
 	// for battle
 	protected GameObject _target = null; // target object
 
@@ -79,6 +82,26 @@ public class LNPawn : MonoBehaviour {
 		_backup_state = _current_state; // state backup
 		_current_state = state; // change state
 		_state_delta = 0.0f; // init state delta;
+	}
+
+	// move dungeon grid
+	protected void move_dungeon( ) {
+		// update postion
+		RaycastHit hit;
+		if(Physics.Raycast (transform.position, -Vector3.up, out hit) == true) {
+			GameObject obj = null;
+			if(hit.transform.parent) {
+				obj = hit.transform.parent.gameObject;
+			}
+
+			if(obj) {
+				LNDungeonCtrl ctrl = obj.GetComponent<LNDungeonCtrl>();
+				if(ctrl) {
+					ctrl.AddPawn( transform.gameObject );
+				}
+			}
+		}
+		//
 	}
 
 	// Use this for initialization

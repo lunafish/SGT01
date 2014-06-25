@@ -36,7 +36,7 @@ public class LNAIPawn : LNPawn {
 		// get rule book and action target
 		_rule = GameObject.FindGameObjectWithTag ("Rule").GetComponent<LNRule>();
 		_rule.UpdatePawnList ();
-
+		move_dungeon (); // update postion
 	}
 	
 	// Update is called once per frame
