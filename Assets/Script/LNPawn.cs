@@ -94,10 +94,12 @@ public class LNPawn : MonoBehaviour {
 	protected void move_dungeon( ) {
 		// update postion
 		RaycastHit hit;
-		if(Physics.Raycast (transform.position, -Vector3.up, out hit) == true) {
+		if(Physics.Raycast (transform.position + new Vector3(0.0f, 0.5f, 0.0f), -Vector3.up, out hit) == true) {
 			GameObject obj = null;
 			if(hit.transform.parent) {
 				obj = hit.transform.parent.gameObject;
+			} else {
+				Debug.Log("No Parent : " + hit.transform.gameObject);
 			}
 
 			if(obj) {
