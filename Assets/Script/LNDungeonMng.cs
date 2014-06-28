@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class LNDungeonMng : MonoBehaviour {
 	public GameObject _player;
 	public GameObject _camera;
+	public LNHUDDungeon _hudDungeon;
 	public int _max_corridor = 32;
 	public int _max_x = 8;
 	public int _max_y = 8;
@@ -56,6 +57,9 @@ public class LNDungeonMng : MonoBehaviour {
 		//
 
 		make_dungeon ( );
+
+		// make hud dungeon map
+		_hudDungeon.Make ();
 	}
 	
 	// Update is called once per frame
@@ -63,11 +67,20 @@ public class LNDungeonMng : MonoBehaviour {
 
 	}
 
-	// get dungeon ctrl in _corridor
-	LNDungeonCtrl get_dungen_ctrl( int x, int y ) {
+	// get dungeon object in _corridor
+	public GameObject Get_dungeon_object( int x, int y ) {
 		int idx = x + (y * _max_x);
 		if(_corridor.ContainsKey(idx) == true) {
 			GameObject obj = _corridor[idx];
+			return obj;
+		}
+		return null;
+	}
+
+	// get dungeon ctrl in _corridor
+	LNDungeonCtrl get_dungen_ctrl( int x, int y ) {
+		GameObject obj = Get_dungeon_object (x, y);
+		if(obj) {
 			return obj.GetComponent<LNDungeonCtrl>();
 		}
 		return null;
@@ -149,7 +162,7 @@ public class LNDungeonMng : MonoBehaviour {
 
 		// player init postion
 		if (parent == null) {
-			_player.transform.position = obj.transform.position;
+			_player.GetComponent<LNPlayerCtrl>().Move(obj.transform.position);
 			_camera.transform.position = obj.transform.position;
 		}
 

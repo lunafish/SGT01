@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41cb500cf0f58e74f9a52a8af931edde, type: 3}
+  m_Name: -tk2d
+  m_EditorClassIdentifier: 
+  version: 4
+  spriteAnimationIndex:
+  - assetGUID: a2d58d52101df482a83da20b7864a674
+    dataGUID: 
+    managed: 0
+    loadable: 0
+  - assetGUID: e9a9477ff31a6470ebf1317e90a85e11
+    dataGUID: 
+    managed: 0
+    loadable: 0
+  fontIndex: []
+  spriteCollectionIndex:
+  - name: DugeonSpriteCollection
+    spriteCollectionGUID: e63e523909b2a4530844ed5a1c93919b
+    spriteCollectionDataGUID: 086afaefef2524916972ab428d3b2270
+    spriteNames:
+    - icon_me
+    - icon_tile
+    - icon_terminal
+    - icon_mon
+    spriteTextureGUIDs:
+    - 92f1ad18a7ecb43ca83e0b7e9b921693
+    - cac5b47ac9dc743a082cf7db6f7d9e5b
+    - eacbbb62d029845e093c1d0d3ecafa4c
+    - eae9bf5422dfb4cdba8154a5ac4c50ac
+    spriteTextureTimeStamps:
+    - 1403893638
+    - 1403895966
+    - 1403893483
+    - 1403893277
+    managedSpriteCollection: 0
+    loadable: 0
+    assetName: 
+    version: 3

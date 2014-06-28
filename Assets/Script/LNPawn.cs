@@ -62,6 +62,12 @@ public class LNPawn : MonoBehaviour {
 		return v.magnitude;
 	}
 
+	// Move Pawn
+	public void Move( Vector3 pos ) {
+		transform.position = pos;
+		move_dungeon ();
+	}
+
 	// set target
 	public virtual void Target(GameObject target) {
 		_target = target;
