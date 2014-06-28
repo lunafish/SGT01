@@ -32,6 +32,9 @@ public class LNPawn : MonoBehaviour {
 	protected eSTATE _backup_state; // state backup
 	protected float _state_delta = 0.0f;
 
+	// for dungeon
+	public GameObject _corridor = null; // _corridor tile
+
 	// pawn
 	public enum ePawn {
 		PLAYER = 0,
@@ -93,17 +96,15 @@ public class LNPawn : MonoBehaviour {
 	// move dungeon grid
 	protected void move_dungeon( ) {
 		// update postion
+		_corridor = null;
 		RaycastHit hit;
 		if(Physics.Raycast (transform.position + new Vector3(0.0f, 0.5f, 0.0f), -Vector3.up, out hit) == true) {
-			GameObject obj = null;
 			if(hit.transform.parent) {
-				obj = hit.transform.parent.gameObject;
-			} else {
-				Debug.Log("No Parent : " + hit.transform.gameObject);
+				_corridor = hit.transform.parent.gameObject;
 			}
 
-			if(obj) {
-				LNDungeonCtrl ctrl = obj.GetComponent<LNDungeonCtrl>();
+			if(_corridor) {
+				LNDungeonCtrl ctrl = _corridor.GetComponent<LNDungeonCtrl>();
 				if(ctrl) {
 					ctrl.AddPawn( transform.gameObject );
 				}

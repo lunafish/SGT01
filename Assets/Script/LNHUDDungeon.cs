@@ -11,6 +11,7 @@ public class LNHUDDungeon : MonoBehaviour {
 
 	private Dictionary<int, ICON> _icons = new Dictionary<int, ICON>();
 	private int _player_pos = -1; // player index
+	private int _player_index = 0; // player postion tile index
 
 	struct ICON {
 		public int _x, _y;
@@ -32,11 +33,39 @@ public class LNHUDDungeon : MonoBehaviour {
 	// Update Player
 	void UpdatePlayer( ) {
 		int key = _player.GetComponent<LNPlayerCtrl>()._x + (_player.GetComponent<LNPlayerCtrl>()._y * _dungeonmng._max_x);
-		if(key != _player_pos) {
+		int index = _player_index;
+		if(_player.GetComponent<LNPlayerCtrl> ()._corridor != null) { 
+			Vector3 v = _player.transform.position - _player.GetComponent<LNPlayerCtrl> ()._corridor.transform.position;
+			int x = (int)(v.x / 4.0f);
+			int y =  (int)(v.z / 4.0f);
+			Debug.Log(x + " : " + y);
+
+			if(x == 0 && y == 0)
+				index = 0; // center;
+			else if(x == 0 && y == -1)
+				index = 1; // up;
+			else if(x == 0 && y == 1)
+				index = 2; // down;
+			else if(x == 1 && y == 0)
+				index = 3; // left;
+			else if(x == -1 && y == 0)
+				index = 4; // right;
+			else if(x == 1 && y == -1)
+				index = 5; // upleft;
+			else if(x == -1 && y == -1)
+				index = 6; // upright;
+			else if(x == 1 && y == 1)
+				index = 7; // downleft;
+			else if(x == -1 && y == 1)
+				index = 8; // downright;
+		}
+
+		if(key != _player_pos || index != _player_index) {
 			Debug.Log("Update Player : " + key );
-			UpdateIcon(_player_pos, "icon_tile");
-			UpdateIcon(key, "icon_me");
+			UpdateIcon(_player_pos, _player_index, "icon_tile");
+			UpdateIcon(key, index, "icon_me");
 			_player_pos = key;
+			_player_index = index;
 		}
 	}
 
@@ -48,10 +77,10 @@ public class LNHUDDungeon : MonoBehaviour {
 	}
 
 	// update map icon
-	public void UpdateIcon(int key, string name ) {
+	public void UpdateIcon(int key, int index, string name ) {
 		if(_icons.ContainsKey(key) == true) {
 			ICON icon = _icons[key];
-			GameObject tile = (GameObject)icon._icons[0];
+			GameObject tile = (GameObject)icon._icons[index];
 			tile.GetComponent<tk2dSprite>().SetSprite(name);
 		}	
 	}
