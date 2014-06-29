@@ -31,16 +31,19 @@ MonoBehaviour:
     - icon_tile
     - icon_terminal
     - icon_mon
+    - icon_none
     spriteTextureGUIDs:
     - 92f1ad18a7ecb43ca83e0b7e9b921693
     - cac5b47ac9dc743a082cf7db6f7d9e5b
     - eacbbb62d029845e093c1d0d3ecafa4c
     - eae9bf5422dfb4cdba8154a5ac4c50ac
+    - 0d1f5f69c74ef4cef95714dfc0ee6b6d
     spriteTextureTimeStamps:
     - 1403973400
-    - 1403973472
+    - 1403973517
     - 1403973445
     - 1403973432
+    - 1403991916
     managedSpriteCollection: 0
     loadable: 0
     assetName: 

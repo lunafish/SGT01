@@ -163,7 +163,7 @@ public class LNAIPawn : LNPawn {
 		v.Normalize ();
 		v.y = 0.0f;
 		v *= 0.25f;
-		Move (v);
+		move (v);
 		//
 
 		Emotion (eEMOTION.SMASH);
@@ -185,7 +185,7 @@ public class LNAIPawn : LNPawn {
 
 
 	// move
-	bool Move( Vector3 mov ) {
+	bool move( Vector3 mov ) {
 		RaycastHit hit;
 		Vector3 margin = new Vector3 (0.0f, 0.5f, 0.0f);
 

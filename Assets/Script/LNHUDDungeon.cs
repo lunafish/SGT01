@@ -7,11 +7,14 @@ public class LNHUDDungeon : MonoBehaviour {
 	public GameObject _player; // player
 	public LNDungeonMng _dungeonmng; // dungeon manager
 	public GameObject _map;
+	public GameObject _minimap;
 	public GameObject _icon;
 
 	private Dictionary<int, ICON> _icons = new Dictionary<int, ICON>();
 	private int _player_pos = -1; // player index
 	private int _player_index = 0; // player postion tile index
+	private GameObject[] _pawns = null; // pawn list
+	private float _update_delta = 0.0f; // update time
 
 	struct ICON {
 		public int _x, _y;
@@ -28,6 +31,14 @@ public class LNHUDDungeon : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		UpdatePlayer ();
+		UpdateNPC ();
+	}
+
+	// make dungeon map
+	public void Make( ) {
+		_icon.SetActive (true);
+		draw_dungeon_map ();
+		_icon.SetActive (false);
 	}
 
 	// Update Player
@@ -38,7 +49,7 @@ public class LNHUDDungeon : MonoBehaviour {
 			Vector3 v = _player.transform.position - _player.GetComponent<LNPlayerCtrl> ()._corridor.transform.position;
 			int x = (int)(v.x / 4.0f);
 			int y =  (int)(v.z / 4.0f);
-			Debug.Log(x + " : " + y);
+			//Debug.Log(x + " : " + y);
 
 			if(x == 0 && y == 0)
 				index = 0; // center;
@@ -69,12 +80,28 @@ public class LNHUDDungeon : MonoBehaviour {
 		}
 	}
 
-	// make dungeon map
-	public void Make( ) {
-		_icon.SetActive (true);
-		draw_dungeon_map ();
-		_icon.SetActive (false);
+	void UpdateNPC( ) {
+		_update_delta -= Time.deltaTime;
+		if (_update_delta > 0.0f)
+			return;
+		_update_delta = 1.0f; // update time 1sec
+
+		_pawns = GameObject.FindGameObjectsWithTag ("Pawn");
+
+		// test code check gate
+		for(int i = 0; i < _pawns.Length; i++) {
+			LNAIPawn pawn = _pawns[i].GetComponent<LNAIPawn>();
+			if(pawn) {
+				int pos = pawn._x + (pawn._y * _dungeonmng._max_x);
+				if(pawn._npc == LNAIPawn.eNPC.GATE) {
+					UpdateIcon(pos, 0, "icon_terminal");
+				}
+			}
+		}
+		//
+
 	}
+
 
 	// update map icon
 	public void UpdateIcon(int key, int index, string name ) {
@@ -83,6 +110,25 @@ public class LNHUDDungeon : MonoBehaviour {
 			GameObject tile = (GameObject)icon._icons[index];
 			tile.GetComponent<tk2dSprite>().SetSprite(name);
 		}	
+	}
+
+	GameObject make_sprite( float x, float y, ICON icon, LNDungeonCtrl ctrl, int index ) {
+		GameObject obj = (GameObject)Instantiate (_icon);
+		obj.transform.position = new Vector3 (x, y, 0) + _map.transform.position;
+		obj.transform.parent = _map.transform;
+		if (index == 0) {
+			obj.SetActive(true);
+		} else if (index < 5) {
+			if(ctrl._node[index-1] == null && ctrl._isRoom == false) {
+				obj.SetActive(false);
+			}
+		} else {
+			if(ctrl._isRoom == false)
+				obj.SetActive(false);
+		}
+		icon._icons.Add (obj);
+
+		return obj;
 	}
 
 	// make dungeon icon
@@ -95,66 +141,15 @@ public class LNHUDDungeon : MonoBehaviour {
 		float off_x = (float)x * 0.24f;
 		float off_y = (float)y * 0.24f;
 
-		GameObject obj = null;
-		// center
-		obj = (GameObject)Instantiate (_icon);
-		obj.transform.position = new Vector3(off_x, off_y, 0) + _map.transform.position;
-		obj.transform.parent = _map.transform;
-		icon._icons.Add (obj);
-		// up
-		obj = (GameObject)Instantiate (_icon);
-		obj.transform.position = new Vector3 (off_x, -offset + off_y, 0) + _map.transform.position;
-		obj.transform.parent = _map.transform;
-		icon._icons.Add (obj);
-		if(ctrl._node[0] == null && ctrl._isRoom == false) {
-			obj.SetActive(false);
-		}
-		// down
-		obj = (GameObject)Instantiate (_icon);
-		obj.transform.position = new Vector3 (off_x, offset + off_y, 0) + _map.transform.position;
-		obj.transform.parent = _map.transform;
-		icon._icons.Add (obj);
-		if(ctrl._node[1] == null && ctrl._isRoom == false) {
-			obj.SetActive(false);
-		}
-		// left
-		obj = (GameObject)Instantiate (_icon);
-		obj.transform.position = new Vector3 (offset + off_x, off_y, 0) + _map.transform.position;
-		obj.transform.parent = _map.transform;
-		icon._icons.Add (obj);
-		if(ctrl._node[2] == null && ctrl._isRoom == false) {
-			obj.SetActive(false);
-		}
-		// right
-		obj = (GameObject)Instantiate (_icon);
-		obj.transform.position = new Vector3 (-offset + off_x, off_y, 0) + _map.transform.position;
-		obj.transform.parent = _map.transform;
-		icon._icons.Add (obj);
-		if(ctrl._node[3] == null && ctrl._isRoom == false) {
-			obj.SetActive(false);
-		}
-		if(ctrl._isRoom == true) {
-			// upleft
-			obj = (GameObject)Instantiate (_icon);
-			obj.transform.position = new Vector3 (offset + off_x, -offset + off_y, 0) + _map.transform.position;
-			obj.transform.parent = _map.transform;
-			icon._icons.Add (obj);
-			// upright
-			obj = (GameObject)Instantiate (_icon);
-			obj.transform.position = new Vector3 (-offset + off_x, -offset + off_y, 0) + _map.transform.position;
-			obj.transform.parent = _map.transform;
-			icon._icons.Add (obj);
-			// downleft
-			obj = (GameObject)Instantiate (_icon);
-			obj.transform.position = new Vector3 (offset + off_x, offset + off_y, 0) + _map.transform.position;
-			obj.transform.parent = _map.transform;
-			icon._icons.Add (obj);		
-			// downright
-			obj = (GameObject)Instantiate (_icon);
-			obj.transform.position = new Vector3 (-offset + off_x, offset + off_y, 0) + _map.transform.position;
-			obj.transform.parent = _map.transform;
-			icon._icons.Add (obj);
-		}
+		make_sprite (off_x, off_y, icon, ctrl, 0); // center
+		make_sprite (off_x, -offset + off_y, icon, ctrl, 1); // up
+		make_sprite (off_x, offset + off_y, icon, ctrl, 2); // down
+		make_sprite (offset + off_x, off_y, icon, ctrl, 3); // left
+		make_sprite (-offset + off_x, off_y, icon, ctrl, 4); // right
+		make_sprite (offset + off_x, -offset + off_y, icon, ctrl, 5); // upleft
+		make_sprite (-offset + off_x, -offset + off_y, icon, ctrl, 6); // upright
+		make_sprite (offset + off_x, offset + off_y, icon, ctrl, 7); // downleft
+		make_sprite (-offset + off_x, offset + off_y, icon, ctrl, 8); // downright
 
 		return icon;
 	}
