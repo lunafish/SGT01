@@ -48,3 +48,16 @@ MonoBehaviour:
     loadable: 0
     assetName: 
     version: 3
+  - name: UISpriteCollection
+    spriteCollectionGUID: c0f61f8c963564fe9b3374df9101643c
+    spriteCollectionDataGUID: ed65e81a2018648fc887a6297c92674a
+    spriteNames:
+    - UIButton
+    spriteTextureGUIDs:
+    - 6c0b85784ec074840bc325441054db7d
+    spriteTextureTimeStamps:
+    - 1404597065
+    managedSpriteCollection: 0
+    loadable: 0
+    assetName: 
+    version: 3

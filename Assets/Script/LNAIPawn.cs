@@ -50,7 +50,7 @@ public class LNAIPawn : LNPawn {
 		// look at main camera
 		for(int i = 0; i < _emotions.Length; i++) {
 			if(_emotions[i] != null) {
-				Vector3 v = Camera.main.transform.position;
+				Vector3 v = GameObject.FindGameObjectWithTag("3DCamera").transform.position;
 				v.y = _emotions[i].transform.position.y;
 				_emotions[i].transform.LookAt( v );
 			}

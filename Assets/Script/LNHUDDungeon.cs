@@ -7,7 +7,7 @@ public class LNHUDDungeon : MonoBehaviour {
 	public GameObject _player; // player
 	public LNDungeonMng _dungeonmng; // dungeon manager
 	public GameObject _map;
-	public GameObject _minimap;
+	public GameObject _mapButton;
 	public GameObject _icon;
 
 	private Dictionary<int, ICON> _icons = new Dictionary<int, ICON>();
@@ -32,6 +32,13 @@ public class LNHUDDungeon : MonoBehaviour {
 	void Update () {
 		UpdatePlayer ();
 		UpdateNPC ();
+
+		// test
+		float ratio = (float)Screen.width / (float)Screen.height;
+		Vector3 pos = _mapButton.transform.position;
+		pos.x = ratio - 0.16f;
+		_mapButton.transform.position = pos;
+
 	}
 
 	// make dungeon map
@@ -166,5 +173,10 @@ public class LNHUDDungeon : MonoBehaviour {
 				}
 			}
 		}
+	}
+
+	// button event
+	void OnMapButton( ) {
+		_map.SetActive (!_map.activeSelf);
 	}
 }
