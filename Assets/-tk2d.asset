@@ -13,11 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 4
   spriteAnimationIndex:
-  - assetGUID: a2d58d52101df482a83da20b7864a674
-    dataGUID: 
-    managed: 0
-    loadable: 0
-  - assetGUID: e9a9477ff31a6470ebf1317e90a85e11
+  - assetGUID: 27b92d8a012514b16b72f8e12680b49d
     dataGUID: 
     managed: 0
     loadable: 0
@@ -57,6 +53,25 @@ MonoBehaviour:
     - 6c0b85784ec074840bc325441054db7d
     spriteTextureTimeStamps:
     - 1404597065
+    managedSpriteCollection: 0
+    loadable: 0
+    assetName: 
+    version: 3
+  - name: EffectSpriteCollection
+    spriteCollectionGUID: 115a0b95a55c545f9b2bd76ef650c456
+    spriteCollectionDataGUID: 525a01b41dea24790baffd06a3dc2706
+    spriteNames:
+    - hit_01
+    - hit_00
+    - hit_02
+    spriteTextureGUIDs:
+    - 4cbad87c39b86492dbcc32e7131b7191
+    - 8750b5c1ba9f9474fa0b0dff14dcde20
+    - b8a68f5deb5ca4e2590f96efe477471a
+    spriteTextureTimeStamps:
+    - 1404786112
+    - 1404786058
+    - 1404786165
     managedSpriteCollection: 0
     loadable: 0
     assetName: 

@@ -87,6 +87,14 @@ public class LNAIPawn : LNPawn {
 		if(_state_delta > _stun_delta) {
 			Emotion (eEMOTION.NONE);
 			change_state( eSTATE.STAY );
+
+			// disable hit effect
+			// active hit effect
+			Transform hit = transform.FindChild ("EffectHit");
+			if(hit) {
+				hit.gameObject.SetActive(false);
+			}
+
 		}
 	}
 
@@ -156,6 +164,13 @@ public class LNAIPawn : LNPawn {
 			LNDungeonCtrl ctrl = _corridor.GetComponent<LNDungeonCtrl>();
 			if(ctrl)
 				ctrl.Triger( transform.gameObject, LNDungeonCtrl.TRIGER.DAMAGE );
+		}
+
+		// active hit effect
+		Transform hit = transform.FindChild ("EffectHit");
+		if(hit) {
+			hit.gameObject.SetActive(true);
+			hit.gameObject.GetComponent<tk2dSpriteAnimator>().Play();
 		}
 
 		// knock back
