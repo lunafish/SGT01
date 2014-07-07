@@ -263,6 +263,7 @@ public class LNPlayerCtrl : LNPawn {
 		}
 	}
 
+
 	bool isMoveTouch( int n ) {
 		float f = _inputs[n].org_pos.x / Screen.width;
 		if (f < 0.5f) {
@@ -374,9 +375,11 @@ public class LNPlayerCtrl : LNPawn {
 				}
 				else if(_inputs[i].state == TOUCH_UP) {
 					_anim.SetBool ("isRun", false);
+					Debug.Log("TOUCH UP");
 					if( isMoveTouch( i ) == false ) {
 						if(_inputs[i].move_delta < 10.0f) {
 							if(_target) {
+								Debug.Log("Action");
 								Action();
 							}
 						} else {
@@ -389,6 +392,9 @@ public class LNPlayerCtrl : LNPawn {
 								}
 							}
 						}
+					}
+					else {
+						Debug.Log("Move");
 					}
 				}
 			}

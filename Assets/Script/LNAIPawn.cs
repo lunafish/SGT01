@@ -26,8 +26,6 @@ public class LNAIPawn : LNPawn {
 	public eNPC _npc = eNPC.INFO;
 	public string _npc_target = "Dungeon";
 
-	public GameObject _regen = null; // regen point (for triger)
-
 	private LNRule _rule; // rule ctrl;
 
 	// Use this for initialization
@@ -43,7 +41,7 @@ public class LNAIPawn : LNPawn {
 	void Update () {
 		Update_state ();
 		update_emotion ();
-
+		updateShadow ();
 	}
 
 	void update_emotion () {
@@ -154,8 +152,10 @@ public class LNAIPawn : LNPawn {
 			return;
 
 		// triger call back
-		if(_regen) {
-			_regen.GetComponent<LNDungeonCtrl>().Triger( transform.gameObject, LNDungeonCtrl.TRIGER.DAMAGE );
+		if(_corridor) {
+			LNDungeonCtrl ctrl = _corridor.GetComponent<LNDungeonCtrl>();
+			if(ctrl)
+				ctrl.Triger( transform.gameObject, LNDungeonCtrl.TRIGER.DAMAGE );
 		}
 
 		// knock back

@@ -142,11 +142,23 @@ public class LNDungeonCtrl : MonoBehaviour {
 
 		switch (_regen) {
 		case REGEN.OneByOne : 
+			// gen summoner
+			GameObject summ = Instantiate(Resources.Load("prefabs/summoner")) as GameObject; // regen
+			// set transform
+			summ.transform.position = transform.position + new Vector3(0.0f, 2.5f, 0.0f);
+			summ.transform.Rotate(0.0f, 90.0f * get_door_dir(), 0.0f);
+			summ.GetComponent<LNSummoner>()._corridor = transform.gameObject;
+			//
+			//summ.GetComponent<LNSummoner>().Regen("pawn_00"); // regen
+
+			_is_regen = false; // set regen flag
+			/*
 			GameObject mon = Instantiate(Resources.Load("prefabs/pawn_00")) as GameObject;	
 			mon.transform.position = transform.position;
 			mon.transform.Rotate(0.0f, 90.0f * get_door_dir(), 0.0f);
 			mon.GetComponent<LNAIPawn>()._regen = transform.gameObject; // set regen point
 			_is_regen = false;
+			*/
 			break;
 		case REGEN.ItemLast : 
 			break;
@@ -159,7 +171,7 @@ public class LNDungeonCtrl : MonoBehaviour {
 			gate.GetComponent<LNAIPawn> ()._npc_target = "testStage";
 			gate.transform.position = transform.position;
 			gate.transform.Rotate(0.0f, 90.0f * get_door_dir(), 0.0f);
-			gate.GetComponent<LNAIPawn>()._regen = transform.gameObject; // set regen point
+			gate.GetComponent<LNAIPawn>()._corridor = transform.gameObject; // set regen point
 			_is_regen = false;
 			break;
 		case REGEN.All : 

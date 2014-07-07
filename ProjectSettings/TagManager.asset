@@ -8,6 +8,7 @@ TagManager:
   - Dungeon
   - Map
   - 3DCamera
+  - Shadow
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

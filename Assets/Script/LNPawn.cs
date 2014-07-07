@@ -35,6 +35,9 @@ public class LNPawn : MonoBehaviour {
 	// for dungeon
 	public GameObject _corridor = null; // _corridor tile
 
+	// shadow
+	protected GameObject _shadow = null;
+
 	// pawn
 	public enum ePawn {
 		PLAYER = 0,
@@ -113,6 +116,20 @@ public class LNPawn : MonoBehaviour {
 		//
 	}
 
+	protected void updateShadow( ) {
+		if(_shadow == null) {
+			_shadow = transform.FindChild ("Shadow").gameObject; // get shadow object
+		}
+
+		if(_corridor && _shadow) {
+			// only dungeon
+			if(_corridor.GetComponent<LNDungeonCtrl>()) {
+				// set shadow postion on corridor
+				_shadow.transform.position = _corridor.transform.position;
+			}
+		}
+	}
+
 	// Use this for initialization
 	void Start () {
 	
@@ -120,7 +137,7 @@ public class LNPawn : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+
 	}
 	
 }
