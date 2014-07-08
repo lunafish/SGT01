@@ -83,6 +83,9 @@ public class LNPlayerCtrl : LNPawn {
 
 		_camera.transform.position = transform.position;
 		_camera.transform.rotation = transform.rotation;
+
+		// default state
+		ChangeState (eSTATE.STAY);
 	}
 	
 	// Update is called once per frame
@@ -169,7 +172,7 @@ public class LNPlayerCtrl : LNPawn {
 			rule.GetComponent<LNRule> ().Action( transform.gameObject, _target );
 			//
 		} else if(_target.GetComponent<LNPawn>()._type == ePawn.ENEMY) {
-			change_state( eSTATE.ATTACK );
+			ChangeState( eSTATE.ATTACK );
 			Attack();
 		}
 	}
@@ -219,7 +222,7 @@ public class LNPlayerCtrl : LNPawn {
 		_dash_dir.Normalize ();
 
 		ChangeAni (eANI.ATTACK_DASH); // dash ani
-		change_state(eSTATE.DASH); // change state
+		ChangeState(eSTATE.DASH); // change state
 	}
 
 	// change player animation
@@ -417,7 +420,7 @@ public class LNPlayerCtrl : LNPawn {
 		if ( (_state_delta > _dash_delay) || (state == false)) {
 			_speed /= _dash_speed;
 			ChangeAni (eANI.ATTACK_STAY);
-			change_state( eSTATE.STAY );
+			ChangeState( eSTATE.STAY );
 		}
 	}
 
@@ -427,7 +430,7 @@ public class LNPlayerCtrl : LNPawn {
 
 		if (_state_delta > _attack_delay) {
 			ChangeAni (eANI.ATTACK_STAY);
-			change_state( eSTATE.STAY );
+			ChangeState( eSTATE.STAY );
 		}
 	}
 

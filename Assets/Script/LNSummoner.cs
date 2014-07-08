@@ -67,6 +67,7 @@ public class LNSummoner : MonoBehaviour {
 		_regen.transform.position = _ancker.bounds.center + new Vector3(0.0f, _anckerMargin, 0.0f);
 		_regen.transform.eulerAngles = transform.eulerAngles;
 		_regen.GetComponent<LNAIPawn> ()._corridor = _corridor;
+		_regen.GetComponent<LNAIPawn> ().ChangeState (LNAIPawn.eSTATE.READY);
 		//
 		GetComponentInChildren<Animator> ().SetBool ("isMove", true);
 		_isRegen = true; // set regen state
@@ -86,6 +87,7 @@ public class LNSummoner : MonoBehaviour {
 				_isRegen = false;
 				// regen end
 				_regen.transform.position = _corridor.transform.position;
+				_regen.GetComponent<LNAIPawn> ().ChangeState (LNAIPawn.eSTATE.STAY); // state change
 				_regen = null;
 				_anim.SetBool ("isMove", false);
 				//
@@ -102,6 +104,13 @@ public class LNSummoner : MonoBehaviour {
 			// set shadow postion on corridor
 			_shadow.transform.position = _corridor.transform.position;
 		}
+	}
+
+	float snap( float fin, float fsnap ) {
+		int n = (int)(fin / fsnap);
+		float fout = fsnap * (float)n;
+
+		return fout;
 	}
 
 	bool triggerPlayer( ) {
@@ -121,6 +130,9 @@ public class LNSummoner : MonoBehaviour {
 		Quaternion rot = Quaternion.LookRotation( dir );
 
 		// snap rotation
+		rot.y = snap (rot.y, 0.5f);
+		rot.w = snap (rot.w, 0.5f);
+		/*
 		if(rot.y >= 0.0f && rot.y < 0.5f)
 			rot.y = 0.0f;
 		else if(rot.y >= 0.5 && rot.y < 1.0f)
@@ -138,6 +150,7 @@ public class LNSummoner : MonoBehaviour {
 			rot.w = 0.0f;
 		else if(rot.w > -1.0f && rot.w < -0.5f)
 			rot.w = -0.5f;
+		*/	
 		//
 
 		Debug.Log (rot);

@@ -47,7 +47,8 @@ public class LNPawn : MonoBehaviour {
 
 	// state machine
 	public enum eSTATE {
-		STAY = 0,
+		READY = 0,
+		STAY,
 		DASH,
 		ATTACK,
 		DAMAGE,
@@ -90,7 +91,7 @@ public class LNPawn : MonoBehaviour {
 	}
 
 	// change pawn state
-	protected void change_state( eSTATE state ) {
+	public void ChangeState( eSTATE state ) {
 		_backup_state = _current_state; // state backup
 		_current_state = state; // change state
 		_state_delta = 0.0f; // init state delta;

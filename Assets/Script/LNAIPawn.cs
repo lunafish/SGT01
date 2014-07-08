@@ -74,7 +74,7 @@ public class LNAIPawn : LNPawn {
 				Vector3 v = _target.transform.position - transform.position;
 				if(v.magnitude < _short_attack_range) {
 					Emotion(eEMOTION.TALK);
-					change_state(eSTATE.TALK);
+					ChangeState(eSTATE.TALK);
 				}
 			}
 		}
@@ -86,7 +86,7 @@ public class LNAIPawn : LNPawn {
 		// check exit
 		if(_state_delta > _stun_delta) {
 			Emotion (eEMOTION.NONE);
-			change_state( eSTATE.STAY );
+			ChangeState( eSTATE.STAY );
 
 			// disable hit effect
 			// active hit effect
@@ -104,12 +104,12 @@ public class LNAIPawn : LNPawn {
 			Vector3 v = _target.transform.position - transform.position;
 			if(v.magnitude > _short_attack_range) {
 				//Emotion(eEMOTION.NONE);
-				change_state(eSTATE.STAY);
+				ChangeState(eSTATE.STAY);
 			}
 		}
 		else {
 			//Emotion(eEMOTION.NONE);
-			change_state(eSTATE.STAY);
+			ChangeState(eSTATE.STAY);
 		}
 	}
 	//
@@ -156,7 +156,7 @@ public class LNAIPawn : LNPawn {
 
 	// damage call back
 	public override void Damage(GameObject source) {
-		if(_current_state == eSTATE.DAMAGE)
+		if(_current_state == eSTATE.DAMAGE || _current_state == eSTATE.READY)
 			return;
 
 		// triger call back
@@ -182,7 +182,7 @@ public class LNAIPawn : LNPawn {
 		//
 
 		Emotion (eEMOTION.SMASH);
-		change_state (eSTATE.DAMAGE);
+		ChangeState (eSTATE.DAMAGE);
 	}
 
 	// get Talk from source
