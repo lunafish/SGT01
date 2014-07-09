@@ -184,7 +184,15 @@ public class LNPlayerCtrl : LNPawn {
 		// process attack
 		// get attack type
 		Vector3 v = _target.transform.position - transform.position;
-		if(v.magnitude < _range_attack) {
+		float len = v.magnitude;
+
+		// rotate player
+		v.Normalize ();
+		_avatar_lookat = transform.position + v;
+		_avatar_lookat.y = transform.position.y; // lock y axis
+		_avatar.transform.LookAt (_avatar_lookat);
+
+		if(len < _range_attack) {
 			// range attack
 			_attackType = eAttack.SMASH;
 			ChangeAni (eANI.ATTACK_BLADE); // change attack ani
@@ -192,13 +200,16 @@ public class LNPlayerCtrl : LNPawn {
 			// long range attack
 			_attackType = eAttack.RANGE;
 			ChangeAni (eANI.ATTACK_GUN); // change attack ani
-		}
 
-		// rotate player
-		v.Normalize ();
-		_avatar_lookat = transform.position + v;
-		_avatar_lookat.y = transform.position.y; // lock y axis
-		_avatar.transform.LookAt (_avatar_lookat);
+			// bullet attack effect
+			// active hit effect
+			Transform hit = transform.FindChild ("EffectBullet");
+			if(hit) {
+				hit.gameObject.SetActive(true);
+				hit.gameObject.transform.rotation = _avatar.transform.rotation;
+				hit.gameObject.GetComponent<LNEffectCtrl>().Play();
+			}
+		}
 
 		// get rule book and attack target
 		GameObject rule = GameObject.FindGameObjectWithTag ("Rule");
@@ -431,6 +442,13 @@ public class LNPlayerCtrl : LNPawn {
 		if (_state_delta > _attack_delay) {
 			ChangeAni (eANI.ATTACK_STAY);
 			ChangeState( eSTATE.STAY );
+
+			// Effect off
+			// active hit effect
+			Transform hit = transform.FindChild ("EffectBullet");
+			if(hit) {
+				hit.gameObject.SetActive(false);
+			}
 		}
 	}
 

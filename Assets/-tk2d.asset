@@ -64,14 +64,20 @@ MonoBehaviour:
     - hit_01
     - hit_00
     - hit_02
+    - bullet_01
+    - bullet_00
     spriteTextureGUIDs:
     - 4cbad87c39b86492dbcc32e7131b7191
     - 8750b5c1ba9f9474fa0b0dff14dcde20
     - b8a68f5deb5ca4e2590f96efe477471a
+    - 1c31c013ed3ea49359686d94c3035979
+    - 7ce976bf1ff8748b3b448016aece838e
     spriteTextureTimeStamps:
     - 1404786112
     - 1404838861
     - 1404838893
+    - 1404906082
+    - 1404906590
     managedSpriteCollection: 0
     loadable: 0
     assetName: 

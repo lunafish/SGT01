@@ -169,6 +169,13 @@ public class LNAIPawn : LNPawn {
 		// active hit effect
 		Transform hit = transform.FindChild ("EffectHit");
 		if(hit) {
+
+			// effect direction
+			Vector3 dir = source.transform.position;
+			dir.y = hit.gameObject.transform.position.y;
+			hit.gameObject.transform.LookAt(dir);
+			//
+
 			hit.gameObject.SetActive(true);
 			hit.gameObject.GetComponent<tk2dSpriteAnimator>().Play();
 		}
