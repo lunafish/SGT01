@@ -909,8 +909,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100026}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: -.707106829, z: 0, w: .707106709}
+  m_LocalPosition: {x: 16, y: 0, z: 8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400082}
@@ -1497,8 +1497,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5e54113e5604435b8ae87c7754f2725, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  library: {fileID: 11400000, guid: 27b92d8a012514b16b72f8e12680b49d, type: 2}
-  defaultClipId: 1
+  library: {fileID: 11400000, guid: b0d744386e7934a9790fc7c01b22c360, type: 2}
+  defaultClipId: 0
   playAutomatically: 0
 --- !u!114 &11400004
 MonoBehaviour:
@@ -1511,10 +1511,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fac570381f34f647b768dc5a5aa1364, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collection: {fileID: 11400000, guid: 525a01b41dea24790baffd06a3dc2706, type: 2}
+  collection: {fileID: 11400000, guid: f880c7f7ebce24306bf4e075e422044b, type: 2}
   _color: {r: 1, g: 1, b: 1, a: 1}
   _scale: {x: 1, y: 1, z: 1}
-  _spriteId: 3
+  _spriteId: 1
   boxCollider2D: {fileID: 0}
   polygonCollider2D: []
   edgeCollider2D: []
@@ -1534,10 +1534,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fac570381f34f647b768dc5a5aa1364, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collection: {fileID: 11400000, guid: 525a01b41dea24790baffd06a3dc2706, type: 2}
+  collection: {fileID: 11400000, guid: f880c7f7ebce24306bf4e075e422044b, type: 2}
   _color: {r: 1, g: 1, b: 1, a: 1}
   _scale: {x: 1, y: 1, z: 1}
-  _spriteId: 3
+  _spriteId: 1
   boxCollider2D: {fileID: 0}
   polygonCollider2D: []
   edgeCollider2D: []
@@ -1557,8 +1557,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5e54113e5604435b8ae87c7754f2725, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  library: {fileID: 11400000, guid: 27b92d8a012514b16b72f8e12680b49d, type: 2}
-  defaultClipId: 1
+  library: {fileID: 11400000, guid: b0d744386e7934a9790fc7c01b22c360, type: 2}
+  defaultClipId: 0
   playAutomatically: 0
 --- !u!114 &11400010
 MonoBehaviour:
@@ -1587,8 +1587,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5e54113e5604435b8ae87c7754f2725, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  library: {fileID: 11400000, guid: 27b92d8a012514b16b72f8e12680b49d, type: 2}
-  defaultClipId: 1
+  library: {fileID: 11400000, guid: b0d744386e7934a9790fc7c01b22c360, type: 2}
+  defaultClipId: 0
   playAutomatically: 0
 --- !u!114 &11400014
 MonoBehaviour:
@@ -1601,10 +1601,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fac570381f34f647b768dc5a5aa1364, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collection: {fileID: 11400000, guid: 525a01b41dea24790baffd06a3dc2706, type: 2}
+  collection: {fileID: 11400000, guid: f880c7f7ebce24306bf4e075e422044b, type: 2}
   _color: {r: 1, g: 1, b: 1, a: 1}
   _scale: {x: 1, y: 1, z: 1}
-  _spriteId: 3
+  _spriteId: 1
   boxCollider2D: {fileID: 0}
   polygonCollider2D: []
   edgeCollider2D: []

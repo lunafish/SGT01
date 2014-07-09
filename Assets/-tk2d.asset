@@ -17,6 +17,10 @@ MonoBehaviour:
     dataGUID: 
     managed: 0
     loadable: 0
+  - assetGUID: b0d744386e7934a9790fc7c01b22c360
+    dataGUID: 
+    managed: 0
+    loadable: 0
   fontIndex: []
   spriteCollectionIndex:
   - name: DugeonSpriteCollection
@@ -58,26 +62,20 @@ MonoBehaviour:
     assetName: 
     version: 3
   - name: EffectSpriteCollection
-    spriteCollectionGUID: 115a0b95a55c545f9b2bd76ef650c456
-    spriteCollectionDataGUID: 525a01b41dea24790baffd06a3dc2706
+    spriteCollectionGUID: d90fee28473b6497d93c93ae0a15099a
+    spriteCollectionDataGUID: f880c7f7ebce24306bf4e075e422044b
     spriteNames:
     - hit_01
     - hit_00
     - hit_02
-    - bullet_01
-    - bullet_00
     spriteTextureGUIDs:
     - 4cbad87c39b86492dbcc32e7131b7191
     - 8750b5c1ba9f9474fa0b0dff14dcde20
     - b8a68f5deb5ca4e2590f96efe477471a
-    - 1c31c013ed3ea49359686d94c3035979
-    - 7ce976bf1ff8748b3b448016aece838e
     spriteTextureTimeStamps:
-    - 1404786112
-    - 1404838861
-    - 1404838893
-    - 1404906082
-    - 1404906590
+    - 1404941503
+    - 1404941503
+    - 1404941503
     managedSpriteCollection: 0
     loadable: 0
     assetName: 
