@@ -59,14 +59,98 @@ MonoBehaviour:
     normals: []
     tangents: []
     uvs:
-    - {x: .0312656239, y: .0312656239}
-    - {x: .531234384, y: .0312656239}
-    - {x: .0312656239, y: .531234384}
-    - {x: .531234384, y: .531234384}
+    - {x: .531253934, y: .148441404}
+    - {x: .656246066, y: .148441404}
+    - {x: .531253934, y: .273433596}
+    - {x: .656246066, y: .273433596}
     indices: 000000000300000001000000020000000300000000000000
     material: {fileID: 2100000, guid: 1a3da2eaf8cf346b5a2e23b187080fe4, type: 2}
     materialId: 0
     sourceTextureGUID: 6c0b85784ec074840bc325441054db7d
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd: 
+    colliderIndicesBack: 
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: UIButton_96
+    boundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: .959999979, y: .319999993, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: .959999979, y: .319999993, z: 0}
+    texelSize: {x: .00999999978, y: .00999999978}
+    positions:
+    - {x: -.479999989, y: -.159999996, z: 0}
+    - {x: .479999989, y: -.159999996, z: 0}
+    - {x: -.479999989, y: .159999996, z: 0}
+    - {x: .479999989, y: .159999996, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: .531253934, y: .00781640597}
+    - {x: .906246066, y: .00781640597}
+    - {x: .531253934, y: .132808596}
+    - {x: .906246066, y: .132808596}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 1a3da2eaf8cf346b5a2e23b187080fe4, type: 2}
+    materialId: 0
+    sourceTextureGUID: 6054e80d7a3fb4510a3ee7a90b4e3bb2
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd: 
+    colliderIndicesBack: 
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: NPC_JK_256
+    boundsData:
+    - {x: .00999999046, y: .00499999523, z: 0}
+    - {x: 1.29999995, y: 2.47000003, z: 0}
+    untrimmedBoundsData:
+    - {x: .00499999523, y: 0, z: 0}
+    - {x: 1.38999999, y: 2.55999994, z: 0}
+    texelSize: {x: .00999999978, y: .00999999978}
+    positions:
+    - {x: -.639999986, y: -1.23000002, z: 0}
+    - {x: .659999967, y: -1.23000002, z: 0}
+    - {x: -.639999986, y: 1.24000001, z: 0}
+    - {x: .659999967, y: 1.24000001, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: .00781640597, y: .00781640597}
+    - {x: .515621066, y: .00781640597}
+    - {x: .00781640597, y: .972652316}
+    - {x: .515621066, y: .972652316}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 1a3da2eaf8cf346b5a2e23b187080fe4, type: 2}
+    materialId: 0
+    sourceTextureGUID: 5ffc09ca436a04da3a5457dcf169d9a4
     extractRegion: 0
     regionX: 0
     regionY: 0
@@ -102,7 +186,7 @@ MonoBehaviour:
   loadable: 0
   invOrthoSize: 2
   halfTargetHeight: 50
-  buildKey: 1045505828
+  buildKey: 1891596922
   dataGuid: ed65e81a2018648fc887a6297c92674a
   managedSpriteCollection: 0
   hasPlatformData: 0

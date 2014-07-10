@@ -28,6 +28,8 @@ public class LNAIPawn : LNPawn {
 
 	private LNRule _rule; // rule ctrl;
 
+	private GameObject _talk = null; // hud
+
 	// Use this for initialization
 	void Start () {
 		Emotion (eEMOTION.NONE);
@@ -35,6 +37,10 @@ public class LNAIPawn : LNPawn {
 		_rule = GameObject.FindGameObjectWithTag ("Rule").GetComponent<LNRule>();
 		_rule.UpdatePawnList ();
 		move_dungeon (); // update postion
+
+		// find talk object
+		_talk = GameObject.FindGameObjectWithTag ("Talk");
+		//
 	}
 	
 	// Update is called once per frame
@@ -74,6 +80,11 @@ public class LNAIPawn : LNPawn {
 				Vector3 v = _target.transform.position - transform.position;
 				if(v.magnitude < _short_attack_range) {
 					Emotion(eEMOTION.TALK);
+					// enable talk scene
+					if(_talk) {
+						_talk.GetComponent<LNTalk>().Active( true );
+					}
+
 					ChangeState(eSTATE.TALK);
 				}
 			}
@@ -100,14 +111,22 @@ public class LNAIPawn : LNPawn {
 
 	// talk state(NPC)
 	void state_talk( ) {
+		bool bExit = false;
+
 		if(_target) {
 			Vector3 v = _target.transform.position - transform.position;
 			if(v.magnitude > _short_attack_range) {
-				//Emotion(eEMOTION.NONE);
-				ChangeState(eSTATE.STAY);
+				bExit = true;
 			}
 		}
 		else {
+			bExit = true;
+		}
+
+		if(bExit) {
+			if(_talk) {
+				_talk.GetComponent<LNTalk>().Active( false ); // disable talk scene
+			}
 			//Emotion(eEMOTION.NONE);
 			ChangeState(eSTATE.STAY);
 		}
@@ -172,12 +191,15 @@ public class LNAIPawn : LNPawn {
 
 			// effect direction
 			Vector3 dir = source.transform.position;
-			dir.y = hit.gameObject.transform.position.y;
-			hit.gameObject.transform.LookAt(dir);
+			dir.y = hit.position.y;
+
+			Debug.Log("SOURCE : " + dir);
+
+			hit.LookAt(dir);
 			//
 
 			hit.gameObject.SetActive(true);
-			hit.gameObject.GetComponent<tk2dSpriteAnimator>().Play();
+			hit.gameObject.GetComponent<LNEffectCtrl>().Play();
 		}
 
 		// knock back

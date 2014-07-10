@@ -9,6 +9,7 @@ TagManager:
   - Map
   - 3DCamera
   - Shadow
+  - Talk
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

@@ -13,10 +13,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 4
   spriteAnimationIndex:
-  - assetGUID: 27b92d8a012514b16b72f8e12680b49d
-    dataGUID: 
-    managed: 0
-    loadable: 0
   - assetGUID: b0d744386e7934a9790fc7c01b22c360
     dataGUID: 
     managed: 0
@@ -39,11 +35,11 @@ MonoBehaviour:
     - eae9bf5422dfb4cdba8154a5ac4c50ac
     - 0d1f5f69c74ef4cef95714dfc0ee6b6d
     spriteTextureTimeStamps:
-    - 1404596055
-    - 1404596055
-    - 1404596055
-    - 1404596055
-    - 1404596055
+    - 1404940564
+    - 1404940564
+    - 1404940564
+    - 1404940564
+    - 1404940564
     managedSpriteCollection: 0
     loadable: 0
     assetName: 
@@ -53,10 +49,16 @@ MonoBehaviour:
     spriteCollectionDataGUID: ed65e81a2018648fc887a6297c92674a
     spriteNames:
     - UIButton
+    - UIButton_96
+    - NPC_JK_256
     spriteTextureGUIDs:
     - 6c0b85784ec074840bc325441054db7d
+    - 6054e80d7a3fb4510a3ee7a90b4e3bb2
+    - 5ffc09ca436a04da3a5457dcf169d9a4
     spriteTextureTimeStamps:
-    - 1404597065
+    - 1404940564
+    - 1405010200
+    - 1405010027
     managedSpriteCollection: 0
     loadable: 0
     assetName: 
@@ -68,14 +70,23 @@ MonoBehaviour:
     - hit_01
     - hit_00
     - hit_02
+    - bullet_00
+    - bullet_01
+    - bullet_02
     spriteTextureGUIDs:
     - 4cbad87c39b86492dbcc32e7131b7191
     - 8750b5c1ba9f9474fa0b0dff14dcde20
     - b8a68f5deb5ca4e2590f96efe477471a
+    - 44121e9607842443e80eb81f2d3eb94b
+    - bdd631fc8ab9f4470915ca04c4b8bb76
+    - 50538ed3122e34de8b0c8ba707f3fca5
     spriteTextureTimeStamps:
     - 1404941503
     - 1404941503
     - 1404941503
+    - 1404959022
+    - 1404959023
+    - 1404958871
     managedSpriteCollection: 0
     loadable: 0
     assetName: 
