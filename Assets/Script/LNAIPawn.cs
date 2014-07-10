@@ -28,7 +28,7 @@ public class LNAIPawn : LNPawn {
 
 	private LNRule _rule; // rule ctrl;
 
-	private GameObject _talk = null; // hud
+	private GameObject _cutscene = null; // hud
 
 	// Use this for initialization
 	void Start () {
@@ -39,7 +39,7 @@ public class LNAIPawn : LNPawn {
 		move_dungeon (); // update postion
 
 		// find talk object
-		_talk = GameObject.FindGameObjectWithTag ("Talk");
+		_cutscene = GameObject.FindGameObjectWithTag ("Cutscene");
 		//
 	}
 	
@@ -81,8 +81,8 @@ public class LNAIPawn : LNPawn {
 				if(v.magnitude < _short_attack_range) {
 					Emotion(eEMOTION.TALK);
 					// enable talk scene
-					if(_talk) {
-						_talk.GetComponent<LNTalk>().Active( true );
+					if(_cutscene) {
+						_cutscene.GetComponent<LNCutsceneCtrl>().Active( true );
 					}
 
 					ChangeState(eSTATE.TALK);
@@ -124,8 +124,8 @@ public class LNAIPawn : LNPawn {
 		}
 
 		if(bExit) {
-			if(_talk) {
-				_talk.GetComponent<LNTalk>().Active( false ); // disable talk scene
+			if(_cutscene) {
+				_cutscene.GetComponent<LNCutsceneCtrl>().Active( false ); // disable talk scene
 			}
 			//Emotion(eEMOTION.NONE);
 			ChangeState(eSTATE.STAY);

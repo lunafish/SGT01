@@ -163,7 +163,7 @@ public class LNPlayerCtrl : LNPawn {
 	}
 
 	// Action
-	void Action( ) {
+	public void Action() {
 		if(_target.GetComponent<LNPawn>()._type == ePawn.NPC) {
 			// npc action
 			// get rule book and action target
@@ -367,6 +367,24 @@ public class LNPlayerCtrl : LNPawn {
 		#endif
 	}
 
+	// UI Check
+	bool checkUI( int touchIndex ) {
+		// check ui
+		Ray ray = Camera.main.ScreenPointToRay(_inputs[touchIndex].pos); // get mouse ray
+		RaycastHit hit; // hit object
+		if(Physics.Raycast (ray, out hit, Mathf.Infinity))
+		{
+			GameObject obj = hit.transform.gameObject;
+			if(obj.GetComponent<tk2dSprite>()) {
+				Debug.Log("hit : " + obj.name);
+				return true; // ui
+			}
+		}
+		//
+
+		return false;
+	}
+
 	// state machine
 	void state_move( ) {
 		for(int i = 0; i < MAX_INPUT; i++) {
@@ -392,9 +410,12 @@ public class LNPlayerCtrl : LNPawn {
 					Debug.Log("TOUCH UP");
 					if( isMoveTouch( i ) == false ) {
 						if(_inputs[i].move_delta < 10.0f) {
+
+
 							if(_target) {
-								Debug.Log("Action");
-								Action();
+								if(!checkUI(i)) {
+									Action();
+								}
 							}
 						} else {
 							if(_inputs[i].rotate == false) {
