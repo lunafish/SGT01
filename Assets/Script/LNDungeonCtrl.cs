@@ -168,7 +168,7 @@ public class LNDungeonCtrl : MonoBehaviour {
 			break;
 		case REGEN.Gate : 
 			GameObject gate = Instantiate(Resources.Load("prefabs/npc_gate")) as GameObject;	
-			gate.GetComponent<LNAIPawn> ()._npc_target = "testStage";
+			gate.GetComponent<LNAIPawn> ()._npc_target = "TownStage";
 			gate.transform.position = transform.position;
 			gate.transform.Rotate(0.0f, 90.0f * get_door_dir(), 0.0f);
 			gate.GetComponent<LNAIPawn>()._corridor = transform.gameObject; // set regen point

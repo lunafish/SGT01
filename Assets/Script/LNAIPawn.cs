@@ -90,9 +90,9 @@ public class LNAIPawn : LNPawn {
 					if(_cutscene) {
 						// check kiosk
 						if(_npc == eNPC.GATE ) {
-							_cutscene.GetComponent<LNCutsceneCtrl>().Enable( true );
+							_cutscene.GetComponent<LNCutsceneCtrl>().Enable( "gateway" );
 						} else {
-							_cutscene.GetComponent<LNCutsceneCtrl>().Enable( false );
+							_cutscene.GetComponent<LNCutsceneCtrl>().Enable( "gameshop" );
 						}
 					}
 
