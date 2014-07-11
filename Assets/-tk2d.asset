@@ -52,16 +52,19 @@ MonoBehaviour:
     - UIButton_96
     - NPC_JK_256
     - UITalk
+    - UIKiosk
     spriteTextureGUIDs:
     - 6c0b85784ec074840bc325441054db7d
     - 6054e80d7a3fb4510a3ee7a90b4e3bb2
     - 5ffc09ca436a04da3a5457dcf169d9a4
     - f1a36a7f39d9b4f4286369c5a26842ea
+    - 38974fd4d0a73455fb7f365ce70841d0
     spriteTextureTimeStamps:
     - 1404940564
     - 1405010200
     - 1405010027
     - 1405027250
+    - 1405086298
     managedSpriteCollection: 0
     loadable: 0
     assetName: 

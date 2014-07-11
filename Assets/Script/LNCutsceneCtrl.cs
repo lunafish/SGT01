@@ -6,8 +6,9 @@ public class LNCutsceneCtrl : MonoBehaviour {
 	public GameObject _npc; // NPC Sprite
 	public GameObject _button; // Button Sprite
 	public GameObject _buttonExit; // Button Sprite
-	public GameObject _Talk; // Talk Sprite
-	public GameObject _Next; // Next Button Sprite
+	public GameObject _talk; // Talk Sprite
+	public GameObject _next; // Next Button Sprite
+	public GameObject _kiosk; // kiosk sprite
 
 	// Use this for initialization
 	void Start () {
@@ -19,18 +20,35 @@ public class LNCutsceneCtrl : MonoBehaviour {
 	
 	}
 
-	// active or deactive
-	public void Active( bool flag ) {
-		_npc.SetActive (flag);
-		_button.SetActive (flag);
-		_Talk.SetActive (flag);
-		_Next.SetActive (flag);
-		_buttonExit.SetActive (flag);
+	// Enable
+	public void Enable( bool isKiosk ) {
+		// kiosk mode?
+		if(isKiosk) {
+			_npc.SetActive (false);
+			_kiosk.SetActive (true);
+		} else {
+			_npc.SetActive (true);
+			_kiosk.SetActive (false);
+		}
+		_button.SetActive (true);
+		_talk.SetActive (true);
+		_next.SetActive (true);
+		_buttonExit.SetActive (true);
+	}
+
+	// Disable
+	public void Disable( ) {
+		_npc.SetActive (false);
+		_kiosk.SetActive (false);
+		_button.SetActive (false);
+		_talk.SetActive (false);
+		_next.SetActive (false);
+		_buttonExit.SetActive (false);
 	}
 
 	// Exit button callback
 	public void OnExit( ) {
-		Active (false);
+		Disable();
 	}
 
 	// Action button callback

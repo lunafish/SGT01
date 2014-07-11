@@ -42,6 +42,12 @@ public class LNAIPawn : LNPawn {
 		_cutscene = GameObject.FindGameObjectWithTag ("Cutscene");
 		//
 	}
+
+	void Awake () 
+	{
+		// fixed frame rate
+		Application.targetFrameRate = 30;
+	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -82,7 +88,12 @@ public class LNAIPawn : LNPawn {
 					Emotion(eEMOTION.TALK);
 					// enable talk scene
 					if(_cutscene) {
-						_cutscene.GetComponent<LNCutsceneCtrl>().Active( true );
+						// check kiosk
+						if(_npc == eNPC.GATE ) {
+							_cutscene.GetComponent<LNCutsceneCtrl>().Enable( true );
+						} else {
+							_cutscene.GetComponent<LNCutsceneCtrl>().Enable( false );
+						}
 					}
 
 					ChangeState(eSTATE.TALK);
@@ -125,7 +136,7 @@ public class LNAIPawn : LNPawn {
 
 		if(bExit) {
 			if(_cutscene) {
-				_cutscene.GetComponent<LNCutsceneCtrl>().Active( false ); // disable talk scene
+				_cutscene.GetComponent<LNCutsceneCtrl>().Disable(); // disable talk scene
 			}
 			//Emotion(eEMOTION.NONE);
 			ChangeState(eSTATE.STAY);
