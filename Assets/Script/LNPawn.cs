@@ -13,13 +13,21 @@ public class LNPawn : MonoBehaviour {
 	public float _sight_length = 10.0f; // sight length
 
 	// pawn default state
-	public int _hp = 100;
-	public int _mp = 100;
-	public int _attack = 100;
-	public int _defence = 0;
+	public int _hp = 100; // hp
+	public int _mp = 100; // mp
+	public int _sp = 0; // sp
+	public int _crt = 0; // critical
+
+	// pawn gene
+	public int _str = 0; // strength
+	public int _int = 0; // intelligence
+	public int _wis = 0; // wisdom
+	public int _dex = 0; // dexterity
+	public int _con = 0; // constitution
+
 	public eAttack _attackType = eAttack.SMASH;
-	public float _short_attack_range = 2.0f;
-	public float _long_attack_range = 10.0f;
+	public float _sak = 2.0f; // short range attack
+	public float _lak = 10.0f; // long ragen attack
 
 	// for pawn grid
 	public int _x = -1, _y = -1;

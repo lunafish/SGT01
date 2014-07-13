@@ -35,6 +35,10 @@ public class LNRule : MonoBehaviour {
 		GameObject target = null;
 		for(int i = 0; i < _pawns.Length; i++) {
 			if(source != _pawns[i]) {
+				if(_pawns[i].GetComponent<LNPawn>() == null) {
+					Debug.Log("ERROR : " + _pawns[i].name + " " + _pawns[i].GetComponent<LNAIPawn>());
+				}
+
 				_pawns[i].GetComponent<LNPawn>().Target( null ); // clear target
 				v = _pawns[i].transform.position - source.transform.position;
 				float t = v.magnitude;

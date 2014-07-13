@@ -29,6 +29,8 @@ public class LNAIPawn : LNPawn {
 	private LNRule _rule; // rule ctrl;
 
 	private GameObject _cutscene = null; // hud
+	private LNUIBarCtrl _battery = null; // status bar
+	private GameObject _empty = null; // HP 0
 
 	// Use this for initialization
 	void Start () {
@@ -41,6 +43,19 @@ public class LNAIPawn : LNPawn {
 		// find talk object
 		_cutscene = GameObject.FindGameObjectWithTag ("Cutscene");
 		//
+
+		// set hp bar
+		_battery = GetComponentInChildren<LNUIBarCtrl>();
+		if(_battery != null) {
+			_battery._range = _hp;
+			_battery.SetValue( _hp );
+		}
+		//
+
+		if(transform.FindChild ("Empty") != null) {
+			_empty = transform.FindChild ("Empty").gameObject;
+			_empty.SetActive(false);
+		}
 	}
 
 	void Awake () 
@@ -58,13 +73,25 @@ public class LNAIPawn : LNPawn {
 
 	void update_emotion () {
 		// look at main camera
+		Vector3 v = GameObject.FindGameObjectWithTag("3DCamera").transform.position;
 		for(int i = 0; i < _emotions.Length; i++) {
 			if(_emotions[i] != null) {
-				Vector3 v = GameObject.FindGameObjectWithTag("3DCamera").transform.position;
 				v.y = _emotions[i].transform.position.y;
 				_emotions[i].transform.LookAt( v );
 			}
 		}
+
+		// battery
+		if(_battery != null) {
+			v.y = _battery.transform.position.y;
+			_battery.transform.LookAt( v );
+		}
+		if(_empty != null) 
+		{
+			v.y = _empty.transform.position.y;
+			_empty.transform.LookAt( v );
+		}
+		//
 	}
 
 	// update state machine
@@ -84,7 +111,7 @@ public class LNAIPawn : LNPawn {
 		if(_type == ePawn.NPC) {
 			if(_target) {
 				Vector3 v = _target.transform.position - transform.position;
-				if(v.magnitude < _short_attack_range) {
+				if(v.magnitude < _sak) {
 					Emotion(eEMOTION.TALK);
 					// enable talk scene
 					if(_cutscene) {
@@ -126,7 +153,7 @@ public class LNAIPawn : LNPawn {
 
 		if(_target) {
 			Vector3 v = _target.transform.position - transform.position;
-			if(v.magnitude > _short_attack_range) {
+			if(v.magnitude > _sak) {
 				bExit = true;
 			}
 		}
@@ -219,6 +246,30 @@ public class LNAIPawn : LNPawn {
 		v.y = 0.0f;
 		v *= 0.25f;
 		move (v);
+		//
+
+		// Damage process
+
+		// test
+		_hp -= 10;
+		if(_hp < 0) {
+			_hp = 0;
+		}
+		//
+
+		// Delete action
+		if(_hp == 0 && _empty != null) {
+			_empty.SetActive(true);
+			_battery.transform.gameObject.SetActive(false);
+			_avatar.SetActive(false);
+		}
+
+		// set hp bar
+		if(_battery != null) {
+			_battery.SetValue( _hp );
+		}
+		//
+
 		//
 
 		Emotion (eEMOTION.SMASH);
