@@ -28,18 +28,21 @@ MonoBehaviour:
     - icon_terminal
     - icon_mon
     - icon_none
+    - icon_disk
     spriteTextureGUIDs:
     - 92f1ad18a7ecb43ca83e0b7e9b921693
     - cac5b47ac9dc743a082cf7db6f7d9e5b
     - eacbbb62d029845e093c1d0d3ecafa4c
     - eae9bf5422dfb4cdba8154a5ac4c50ac
     - 0d1f5f69c74ef4cef95714dfc0ee6b6d
+    - 2ba37f607801744668ba3f2180588274
     spriteTextureTimeStamps:
     - 1404940564
     - 1404940564
     - 1404940564
     - 1404940564
     - 1404940564
+    - 1405356749
     managedSpriteCollection: 0
     loadable: 0
     assetName: 

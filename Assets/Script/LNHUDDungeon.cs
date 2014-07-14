@@ -102,6 +102,8 @@ public class LNHUDDungeon : MonoBehaviour {
 				int pos = pawn._x + (pawn._y * _dungeonmng._max_x);
 				if(pawn._npc == LNAIPawn.eNPC.GATE) {
 					UpdateIcon(pos, 0, "icon_terminal");
+				} else if(pawn._npc == LNAIPawn.eNPC.EVENT) {
+					UpdateIcon(pos, 0, "icon_disk");
 				}
 			}
 		}

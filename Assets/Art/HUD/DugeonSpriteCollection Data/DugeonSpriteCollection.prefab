@@ -143,10 +143,10 @@ MonoBehaviour:
     normals: []
     tangents: []
     uvs:
-    - {x: .0625312477, y: .406265616}
-    - {x: .0625312477, y: .499984384}
-    - {x: .312468737, y: .406265616}
-    - {x: .312468737, y: .499984384}
+    - {x: .437531263, y: .406265616}
+    - {x: .437531263, y: .499984384}
+    - {x: .687468767, y: .406265616}
+    - {x: .687468767, y: .499984384}
     indices: 000000000300000001000000020000000300000000000000
     material: {fileID: 2100000, guid: cb894d791f62d422ab142797710e2421, type: 2}
     materialId: 0
@@ -253,6 +253,48 @@ MonoBehaviour:
     polygonCollider2D: []
     edgeCollider2D: []
     attachPoints: []
+  - name: icon_disk
+    boundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: .0799999982, y: .0799999982, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: .0799999982, y: .0799999982, z: 0}
+    texelSize: {x: .00999999978, y: .00999999978}
+    positions:
+    - {x: -.0399999991, y: -.0399999991, z: 0}
+    - {x: .0399999991, y: -.0399999991, z: 0}
+    - {x: -.0399999991, y: .0399999991, z: 0}
+    - {x: .0399999991, y: .0399999991, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: .0625312477, y: .406265616}
+    - {x: .312468737, y: .406265616}
+    - {x: .0625312477, y: .531234384}
+    - {x: .312468737, y: .531234384}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: cb894d791f62d422ab142797710e2421, type: 2}
+    materialId: 0
+    sourceTextureGUID: 2ba37f607801744668ba3f2180588274
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd: 
+    colliderIndicesBack: 
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
   premultipliedAlpha: 0
   material: {fileID: 0}
   materials:
@@ -270,7 +312,7 @@ MonoBehaviour:
   loadable: 0
   invOrthoSize: 2
   halfTargetHeight: 50
-  buildKey: 2016644158
+  buildKey: 751345298
   dataGuid: 086afaefef2524916972ab428d3b2270
   managedSpriteCollection: 0
   hasPlatformData: 0

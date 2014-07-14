@@ -141,7 +141,7 @@ public class LNDungeonCtrl : MonoBehaviour {
 		}
 
 		switch (_regen) {
-		case REGEN.OneByOne : 
+		case REGEN.OneByOne : {
 			// gen summoner
 			GameObject summ = Instantiate(Resources.Load("prefabs/summoner")) as GameObject; // regen
 			// set transform
@@ -159,20 +159,28 @@ public class LNDungeonCtrl : MonoBehaviour {
 			mon.GetComponent<LNAIPawn>()._regen = transform.gameObject; // set regen point
 			_is_regen = false;
 			*/
+			}
 			break;
 		case REGEN.ItemLast : 
 			break;
-		case REGEN.Item : 
+		case REGEN.Item : {
+			GameObject disk = Instantiate(Resources.Load("prefabs/npc_disk")) as GameObject;	
+			disk.transform.position = transform.position;
+			disk.transform.Rotate(0.0f, 90.0f * get_door_dir(), 0.0f);
+			disk.GetComponent<LNAIPawn>()._corridor = transform.gameObject; // set regen point
+			_is_regen = false;
+			}
 			break;
 		case REGEN.Boss : 
 			break;
-		case REGEN.Gate : 
+		case REGEN.Gate : {
 			GameObject gate = Instantiate(Resources.Load("prefabs/npc_gate")) as GameObject;	
 			gate.GetComponent<LNAIPawn> ()._npc_target = "TownStage";
 			gate.transform.position = transform.position;
 			gate.transform.Rotate(0.0f, 90.0f * get_door_dir(), 0.0f);
 			gate.GetComponent<LNAIPawn>()._corridor = transform.gameObject; // set regen point
 			_is_regen = false;
+			}
 			break;
 		case REGEN.All : 
 			break;
@@ -191,6 +199,13 @@ public class LNDungeonCtrl : MonoBehaviour {
 	void updatePawn() {
 		for(int i = 0; i < _lstPawn.Count; i++) {
 			GameObject obj = (GameObject)_lstPawn[i];
+
+			// delete object check
+			if(obj == null) {
+				_lstPawn.RemoveAt( i  ); // one by one
+				return;
+			}
+
 			if(obj.GetComponent<LNPawn>()._x != _x || obj.GetComponent<LNPawn>()._y != _y) {
 				_lstPawn.RemoveAt( i  ); // one by one
 				Debug.Log("Remove Pawn : " + obj + " " + _x + " : " + _y );
@@ -212,5 +227,17 @@ public class LNDungeonCtrl : MonoBehaviour {
 		Debug.Log("Add Pawn : " + pawn + " "+ _x + " : " + _y );
 
 		_lstPawn.Add (pawn);
+	}
+
+	// delete this pawn
+	public void DelPawn( GameObject pawn ) {
+		for(int i = 0; i < _lstPawn.Count; i++) {
+			GameObject obj = (GameObject)_lstPawn[i];
+			if(obj == pawn) {
+				_lstPawn.RemoveAt( i  ); // one by one
+				Debug.Log("Del Pawn : " + obj );
+				return;
+			}
+		}
 	}
 }

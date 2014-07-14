@@ -134,6 +134,16 @@ public class LNAIPawn : LNPawn {
 
 		// check exit
 		if(_state_delta > _stun_delta) {
+
+			// hp == 0
+			if(_hp <= 0) {
+				// destory self
+				Destroy( transform.gameObject );
+
+				return;
+			}
+			//
+
 			Emotion (eEMOTION.NONE);
 			ChangeState( eSTATE.STAY );
 
@@ -231,7 +241,7 @@ public class LNAIPawn : LNPawn {
 			Vector3 dir = source.transform.position;
 			dir.y = hit.position.y;
 
-			Debug.Log("SOURCE : " + dir);
+			//Debug.Log("SOURCE : " + dir);
 
 			hit.LookAt(dir);
 			//
@@ -251,7 +261,7 @@ public class LNAIPawn : LNPawn {
 		// Damage process
 
 		// test
-		_hp -= 10;
+		_hp -= 20;
 		if(_hp < 0) {
 			_hp = 0;
 		}

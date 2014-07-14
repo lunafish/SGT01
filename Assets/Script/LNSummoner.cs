@@ -82,7 +82,7 @@ public class LNSummoner : MonoBehaviour {
 		AnimationInfo[] state = _anim.GetCurrentAnimationClipState (0);
 		if(state[0].clip.name == "crane_move") {
 			AnimatorStateInfo info =  _anim.GetCurrentAnimatorStateInfo (0);
-			Debug.Log(info.normalizedTime);
+			//Debug.Log(info.normalizedTime);
 			if(info.normalizedTime >= 1.0f) {
 				_isRegen = false;
 				// regen end

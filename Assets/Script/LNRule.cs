@@ -33,7 +33,14 @@ public class LNRule : MonoBehaviour {
 		float len = source.GetComponent<LNPawn> ()._sight_length;
 		Vector3 v;
 		GameObject target = null;
+		bool update = false;
 		for(int i = 0; i < _pawns.Length; i++) {
+			// check null pawns (for update)
+			if(_pawns[i] == null) {
+				update = true;
+				continue;
+			}
+
 			if(source != _pawns[i]) {
 				if(_pawns[i].GetComponent<LNPawn>() == null) {
 					Debug.Log("ERROR : " + _pawns[i].name + " " + _pawns[i].GetComponent<LNAIPawn>());
@@ -53,9 +60,13 @@ public class LNRule : MonoBehaviour {
 			}
 		}
 
-		if(target)
-		{
+		if(target) {
 			target.GetComponent<LNPawn>().Target( source ); // set source target
+		}
+
+		// update pawn list
+		if(update) {
+			UpdatePawnList();
 		}
 
 		return target;

@@ -15,6 +15,9 @@ public class LNDungeonMng : MonoBehaviour {
 //	private ArrayList _corridor = new ArrayList(); // dungeon corridor
 	private Dictionary<int, GameObject> _corridor = new Dictionary<int, GameObject>();
 
+	// gate test
+	private bool _isGate = false;
+
 	struct MASK {
 		public bool[] _flag;
 
@@ -248,7 +251,12 @@ public class LNDungeonMng : MonoBehaviour {
 				ctrl.Room ( true );
 
 				// test code
-				ctrl.Regen( LNDungeonCtrl.REGEN.Gate );
+				if(_isGate == false ) {
+					ctrl.Regen( LNDungeonCtrl.REGEN.Gate );
+					_isGate = true;
+				} else {
+					ctrl.Regen( LNDungeonCtrl.REGEN.Item );
+				}
 			}
 		} else {
 			// test code
