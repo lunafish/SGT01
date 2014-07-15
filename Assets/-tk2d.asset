@@ -17,6 +17,10 @@ MonoBehaviour:
     dataGUID: 
     managed: 0
     loadable: 0
+  - assetGUID: 99739025b220d43f78b7946c92ff6040
+    dataGUID: 
+    managed: 0
+    loadable: 0
   fontIndex: []
   spriteCollectionIndex:
   - name: DugeonSpriteCollection
@@ -105,6 +109,43 @@ MonoBehaviour:
     - 1404959022
     - 1404959023
     - 1404958871
+    managedSpriteCollection: 0
+    loadable: 0
+    assetName: 
+    version: 3
+  - name: NPCJKSpriteCollection
+    spriteCollectionGUID: 2ece0576ca8f0454b834196145bf5400
+    spriteCollectionDataGUID: a3f789dc5c5824d7f976f4a8f270e496
+    spriteNames:
+    - NPC_anim_JK_hairbg
+    - NPC_anim_JK_face_2
+    - NPC_anim_JK_leg
+    - NPC_anim_JK_head
+    - NPC_anim_JK_HMD
+    - NPC_anim_JK_body
+    - NPC_anim_JK_hair
+    - NPC_anim_JK_face_1
+    - NPC_anim_JK_face_3
+    spriteTextureGUIDs:
+    - 12748e88335b4416e82d1fac550912c6
+    - 305a3cbfe0d8b413abd2e12e00b4eb59
+    - 4674e697c47ee40489a781a06ed7526f
+    - 4c296dd361d9849d2945114365c469a8
+    - 76af4a92f506c4974ad13278ed01187d
+    - 881cc63d45bb2453e80678957fd4f14a
+    - aa23761d9eef741d8885c39298f2d7a6
+    - b764c24ec47504a7e83d429750a05175
+    - ba7741d25806a438aafa4078df517b75
+    spriteTextureTimeStamps:
+    - 1405475516
+    - 1405473453
+    - 1405473607
+    - 1405475487
+    - 1405473409
+    - 1405473578
+    - 1405473490
+    - 1405473469
+    - 1405473435
     managedSpriteCollection: 0
     loadable: 0
     assetName: 

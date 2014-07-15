@@ -1,0 +1,458 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &100000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400000}
+  - 114: {fileID: 11400000}
+  m_Layer: 0
+  m_Name: NPCJKSpriteCollection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &400000
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d546f34a90531a14eaba82a43b05b86b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 3
+  materialIdsValid: 1
+  needMaterialInstance: 0
+  spriteDefinitions:
+  - name: NPC_anim_JK_hairbg
+    boundsData:
+    - {x: .0600000024, y: 1.32000005, z: 0}
+    - {x: 1.75999999, y: 1.72000003, z: 0}
+    untrimmedBoundsData:
+    - {x: .00499999523, y: 0, z: 0}
+    - {x: 2.1099999, y: 5.11999989, z: 0}
+    texelSize: {x: .00999999978, y: .00999999978}
+    positions:
+    - {x: -.819999993, y: .459999979, z: 0}
+    - {x: .939999998, y: .459999979, z: 0}
+    - {x: -.819999993, y: 2.18000007, z: 0}
+    - {x: .939999998, y: 2.18000007, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: .00390820298, y: .539064467}
+    - {x: .00390820298, y: .882810533}
+    - {x: .339841783, y: .539064467}
+    - {x: .339841783, y: .882810533}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 1d5864dc5f49e487cb412a8c18f8ac7c, type: 2}
+    materialId: 0
+    sourceTextureGUID: 12748e88335b4416e82d1fac550912c6
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 1
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd: 
+    colliderIndicesBack: 
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: NPC_anim_JK_face_2
+    boundsData:
+    - {x: -.159999967, y: 1.53999996, z: 0}
+    - {x: .75999999, y: .440000057, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 2.13999987, y: 5.11999989, z: 0}
+    texelSize: {x: .00999999978, y: .00999999978}
+    positions:
+    - {x: -.539999962, y: 1.31999993, z: 0}
+    - {x: .220000044, y: 1.31999993, z: 0}
+    - {x: -.539999962, y: 1.75999999, z: 0}
+    - {x: .220000044, y: 1.75999999, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: .164064452, y: .890626967}
+    - {x: .312498033, y: .890626967}
+    - {x: .164064452, y: .976560533}
+    - {x: .312498033, y: .976560533}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 1d5864dc5f49e487cb412a8c18f8ac7c, type: 2}
+    materialId: 0
+    sourceTextureGUID: 305a3cbfe0d8b413abd2e12e00b4eb59
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd: 
+    colliderIndicesBack: 
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: NPC_anim_JK_leg
+    boundsData:
+    - {x: .105000034, y: -1.32500005, z: 0}
+    - {x: 1.00999999, y: 2.32999992, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 2.13999987, y: 5.11999989, z: 0}
+    texelSize: {x: .00999999978, y: .00999999978}
+    positions:
+    - {x: -.399999946, y: -2.49000001, z: 0}
+    - {x: .610000014, y: -2.49000001, z: 0}
+    - {x: -.399999946, y: -.159999996, z: 0}
+    - {x: .610000014, y: -.159999996, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: .707033217, y: .00390820298}
+    - {x: .904294908, y: .00390820298}
+    - {x: .707033217, y: .458982408}
+    - {x: .904294908, y: .458982408}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 1d5864dc5f49e487cb412a8c18f8ac7c, type: 2}
+    materialId: 0
+    sourceTextureGUID: 4674e697c47ee40489a781a06ed7526f
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd: 
+    colliderIndicesBack: 
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: NPC_anim_JK_head
+    boundsData:
+    - {x: .0499999523, y: 1.625, z: 0}
+    - {x: 1.31999993, y: 1.28999996, z: 0}
+    untrimmedBoundsData:
+    - {x: .00499999523, y: 0, z: 0}
+    - {x: 2.1099999, y: 5.11999989, z: 0}
+    texelSize: {x: .00999999978, y: .00999999978}
+    positions:
+    - {x: -.610000014, y: .979999959, z: 0}
+    - {x: .709999919, y: .979999959, z: 0}
+    - {x: -.610000014, y: 2.26999998, z: 0}
+    - {x: .709999919, y: 2.26999998, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: .390626967, y: .00390820298}
+    - {x: .648435533, y: .00390820298}
+    - {x: .390626967, y: .255857408}
+    - {x: .648435533, y: .255857408}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 1d5864dc5f49e487cb412a8c18f8ac7c, type: 2}
+    materialId: 0
+    sourceTextureGUID: 4c296dd361d9849d2945114365c469a8
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd: 
+    colliderIndicesBack: 
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: NPC_anim_JK_HMD
+    boundsData:
+    - {x: .0199999809, y: 1.04999995, z: 0}
+    - {x: 1.93999982, y: 2.69999981, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 2.13999987, y: 5.11999989, z: 0}
+    texelSize: {x: .00999999978, y: .00999999978}
+    positions:
+    - {x: -.949999928, y: -.299999982, z: 0}
+    - {x: .98999989, y: -.299999982, z: 0}
+    - {x: -.949999928, y: 2.39999986, z: 0}
+    - {x: .98999989, y: 2.39999986, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: .00390820298, y: .00390820298}
+    - {x: .382810533, y: .00390820298}
+    - {x: .00390820298, y: .531248033}
+    - {x: .382810533, y: .531248033}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 1d5864dc5f49e487cb412a8c18f8ac7c, type: 2}
+    materialId: 0
+    sourceTextureGUID: 76af4a92f506c4974ad13278ed01187d
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd: 
+    colliderIndicesBack: 
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: NPC_anim_JK_body
+    boundsData:
+    - {x: .124999955, y: .169999987, z: 0}
+    - {x: 1.14999998, y: 2, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 2.13999987, y: 5.11999989, z: 0}
+    texelSize: {x: .00999999978, y: .00999999978}
+    positions:
+    - {x: -.450000018, y: -.829999983, z: 0}
+    - {x: .699999928, y: -.829999983, z: 0}
+    - {x: -.450000018, y: 1.16999996, z: 0}
+    - {x: .699999928, y: 1.16999996, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: .707033217, y: .466798842}
+    - {x: .931638658, y: .466798842}
+    - {x: .707033217, y: .857419908}
+    - {x: .931638658, y: .857419908}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 1d5864dc5f49e487cb412a8c18f8ac7c, type: 2}
+    materialId: 0
+    sourceTextureGUID: 881cc63d45bb2453e80678957fd4f14a
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd: 
+    colliderIndicesBack: 
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: NPC_anim_JK_hair
+    boundsData:
+    - {x: .0399999619, y: 1.69000006, z: 0}
+    - {x: 1.79999983, y: 1.56000006, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 2.13999987, y: 5.11999989, z: 0}
+    texelSize: {x: .00999999978, y: .00999999978}
+    positions:
+    - {x: -.859999955, y: .909999967, z: 0}
+    - {x: .939999878, y: .909999967, z: 0}
+    - {x: -.859999955, y: 2.47000003, z: 0}
+    - {x: .939999878, y: 2.47000003, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: .347658217, y: .539064467}
+    - {x: .699216783, y: .539064467}
+    - {x: .347658217, y: .843748033}
+    - {x: .699216783, y: .843748033}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 1d5864dc5f49e487cb412a8c18f8ac7c, type: 2}
+    materialId: 0
+    sourceTextureGUID: aa23761d9eef741d8885c39298f2d7a6
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd: 
+    colliderIndicesBack: 
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: NPC_anim_JK_face_1
+    boundsData:
+    - {x: -.159999967, y: 1.53999996, z: 0}
+    - {x: .75999999, y: .440000057, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 2.13999987, y: 5.11999989, z: 0}
+    texelSize: {x: .00999999978, y: .00999999978}
+    positions:
+    - {x: -.539999962, y: 1.31999993, z: 0}
+    - {x: .220000044, y: 1.31999993, z: 0}
+    - {x: -.539999962, y: 1.75999999, z: 0}
+    - {x: .220000044, y: 1.75999999, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: .320314467, y: .890626967}
+    - {x: .468748033, y: .890626967}
+    - {x: .320314467, y: .976560533}
+    - {x: .468748033, y: .976560533}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 1d5864dc5f49e487cb412a8c18f8ac7c, type: 2}
+    materialId: 0
+    sourceTextureGUID: b764c24ec47504a7e83d429750a05175
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd: 
+    colliderIndicesBack: 
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: NPC_anim_JK_face_3
+    boundsData:
+    - {x: -.169999957, y: 1.54499996, z: 0}
+    - {x: .779999971, y: .430000067, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 2.13999987, y: 5.11999989, z: 0}
+    texelSize: {x: .00999999978, y: .00999999978}
+    positions:
+    - {x: -.559999943, y: 1.32999992, z: 0}
+    - {x: .220000044, y: 1.32999992, z: 0}
+    - {x: -.559999943, y: 1.75999999, z: 0}
+    - {x: .220000044, y: 1.75999999, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: .00390820298, y: .890626967}
+    - {x: .156248048, y: .890626967}
+    - {x: .00390820298, y: .974607408}
+    - {x: .156248048, y: .974607408}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 1d5864dc5f49e487cb412a8c18f8ac7c, type: 2}
+    materialId: 0
+    sourceTextureGUID: ba7741d25806a438aafa4078df517b75
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd: 
+    colliderIndicesBack: 
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  premultipliedAlpha: 0
+  material: {fileID: 0}
+  materials:
+  - {fileID: 2100000, guid: 1d5864dc5f49e487cb412a8c18f8ac7c, type: 2}
+  textures:
+  - {fileID: 2800000, guid: 26621f28a4d8a402c8fa4ed13c2b1e23, type: 3}
+  pngTextures: []
+  materialPngTextureId: 00000000
+  textureFilterMode: 1
+  textureMipMaps: 0
+  allowMultipleAtlases: 0
+  spriteCollectionGUID: 2ece0576ca8f0454b834196145bf5400
+  spriteCollectionName: NPCJKSpriteCollection
+  assetName: 
+  loadable: 0
+  invOrthoSize: 2
+  halfTargetHeight: 50
+  buildKey: 1413663178
+  dataGuid: a3f789dc5c5824d7f976f4a8f270e496
+  managedSpriteCollection: 0
+  hasPlatformData: 0
+  spriteCollectionPlatforms: []
+  spriteCollectionPlatformGUIDs: []
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 100000}
+  m_IsPrefabParent: 1
+  m_IsExploded: 1
