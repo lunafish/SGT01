@@ -25,6 +25,7 @@ public class LNAIPawn : LNPawn {
 	};
 	public eNPC _npc = eNPC.INFO;
 	public string _npc_target = "Dungeon";
+	public string _npc_cutscene = "gameshop"; 
 
 	private LNRule _rule; // rule ctrl;
 
@@ -117,9 +118,9 @@ public class LNAIPawn : LNPawn {
 					if(_cutscene) {
 						// check kiosk
 						if(_npc == eNPC.GATE ) {
-							_cutscene.GetComponent<LNCutsceneCtrl>().Enable( "gateway" );
+							_cutscene.GetComponent<LNCutsceneCtrl>().Enable( _npc_cutscene );
 						} else {
-							_cutscene.GetComponent<LNCutsceneCtrl>().Enable( "gameshop" );
+							_cutscene.GetComponent<LNCutsceneCtrl>().Enable( _npc_cutscene );
 						}
 					}
 

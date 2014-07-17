@@ -149,16 +149,7 @@ public class LNDungeonCtrl : MonoBehaviour {
 			summ.transform.Rotate(0.0f, 90.0f * get_door_dir(), 0.0f);
 			summ.GetComponent<LNSummoner>()._corridor = transform.gameObject;
 			//
-			//summ.GetComponent<LNSummoner>().Regen("pawn_00"); // regen
-
 			_is_regen = false; // set regen flag
-			/*
-			GameObject mon = Instantiate(Resources.Load("prefabs/pawn_00")) as GameObject;	
-			mon.transform.position = transform.position;
-			mon.transform.Rotate(0.0f, 90.0f * get_door_dir(), 0.0f);
-			mon.GetComponent<LNAIPawn>()._regen = transform.gameObject; // set regen point
-			_is_regen = false;
-			*/
 			}
 			break;
 		case REGEN.ItemLast : 
@@ -176,6 +167,7 @@ public class LNDungeonCtrl : MonoBehaviour {
 		case REGEN.Gate : {
 			GameObject gate = Instantiate(Resources.Load("prefabs/npc_gate")) as GameObject;	
 			gate.GetComponent<LNAIPawn> ()._npc_target = "TownStage";
+			gate.GetComponent<LNAIPawn> ()._npc_cutscene = "gatewaydungeon";
 			gate.transform.position = transform.position;
 			gate.transform.Rotate(0.0f, 90.0f * get_door_dir(), 0.0f);
 			gate.GetComponent<LNAIPawn>()._corridor = transform.gameObject; // set regen point

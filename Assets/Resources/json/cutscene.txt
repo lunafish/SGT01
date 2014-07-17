@@ -1,4 +1,5 @@
 {
 	"gameshop" : { "action" : "買い物", "cancel" : "出る", "talk" : "ゲームショップへようこそ。" },
 	"gateway" : { "action" : "入る", "cancel" : "出る", "talk" : "何がいるかな。。", "kiosk" : "LV1ロード中\n...\nkernel panic\nkernel panic\nkernel panic\n...\nロードコンプリート" },
+	"gatewaydungeon" : { "action" : "入る", "cancel" : "出る", "talk" : "戻るかな。。", "kiosk" : "町のデータをロード中\n...\n探す\n探す\n探す\n...\nロードコンプリート" },
 }

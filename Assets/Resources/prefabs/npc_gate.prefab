@@ -269,7 +269,8 @@ MonoBehaviour:
   - {fileID: 100006}
   - {fileID: 100006}
   _npc: 2
-  _npc_target: Dungeon
+  _npc_target: DungeonStage
+  _npc_cutscene: gateway
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

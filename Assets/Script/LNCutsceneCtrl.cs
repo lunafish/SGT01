@@ -44,7 +44,7 @@ public class LNCutsceneCtrl : MonoBehaviour {
 
 		// check kiosk
 		bool isKiosk = false;
-		if(string.Compare(tag, "gateway") == 0) {
+		if(_node["kiosk"] != null) {
 			isKiosk = true;
 		}
 
