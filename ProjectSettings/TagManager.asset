@@ -10,6 +10,9 @@ TagManager:
   - 3DCamera
   - Shadow
   - Cutscene
+  - PartsLArm
+  - PartsLHand
+  - PartsRWP
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

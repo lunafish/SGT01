@@ -1103,12 +1103,12 @@ TextMesh:
   m_GameObject: {fileID: 100000}
   m_Text: "LV1\u30C0\u30F3\u30B8\u30E7\u30F3"
   m_OffsetZ: 0
-  m_CharacterSize: .061999999
+  m_CharacterSize: .0309999995
   m_LineSpacing: 1
   m_Anchor: 0
   m_Alignment: 0
   m_TabSize: 4
-  m_FontSize: 0
+  m_FontSize: 32
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
@@ -1124,12 +1124,12 @@ TextMesh:
   m_GameObject: {fileID: 100002}
   m_Text: "\u6B21"
   m_OffsetZ: 0
-  m_CharacterSize: .0799999982
+  m_CharacterSize: .0399999991
   m_LineSpacing: 1
   m_Anchor: 4
   m_Alignment: 0
   m_TabSize: 4
-  m_FontSize: 0
+  m_FontSize: 32
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
@@ -1145,12 +1145,12 @@ TextMesh:
   m_GameObject: {fileID: 100012}
   m_Text: "\u5165\u308B"
   m_OffsetZ: 0
-  m_CharacterSize: .0799999982
+  m_CharacterSize: .0399999991
   m_LineSpacing: 1
   m_Anchor: 4
   m_Alignment: 0
   m_TabSize: 4
-  m_FontSize: 0
+  m_FontSize: 32
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
@@ -1166,12 +1166,12 @@ TextMesh:
   m_GameObject: {fileID: 100018}
   m_Text: "\u51FA\u308B"
   m_OffsetZ: 0
-  m_CharacterSize: .0799999982
+  m_CharacterSize: .0399999991
   m_LineSpacing: 1
   m_Anchor: 4
   m_Alignment: 0
   m_TabSize: 4
-  m_FontSize: 0
+  m_FontSize: 32
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
@@ -1187,12 +1187,12 @@ TextMesh:
   m_GameObject: {fileID: 100022}
   m_Text: "\u30B2\u30FC\u30E0\u30B7\u30E7\u30C3\u30D7\u3060\u3088\u3002"
   m_OffsetZ: 0
-  m_CharacterSize: .061999999
+  m_CharacterSize: .0309999995
   m_LineSpacing: 1
   m_Anchor: 3
   m_Alignment: 0
   m_TabSize: 4
-  m_FontSize: 0
+  m_FontSize: 32
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}

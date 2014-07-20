@@ -1811,7 +1811,7 @@ SkinnedMeshRenderer:
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
-  m_Mesh: {fileID: 4300006, guid: 578d5c7bac0064f7cb8ac0c39a4512e8, type: 3}
+  m_Mesh: {fileID: 4300022, guid: 578d5c7bac0064f7cb8ac0c39a4512e8, type: 3}
   m_Bones:
   - {fileID: 400042}
   - {fileID: 400040}
