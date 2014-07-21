@@ -19,8 +19,11 @@ public class LNPartsCtrl : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		init ();
+		/*
 		Change (ePART.LARM);
 		Change (ePART.LHAND);
+		Destroy (_target); // destory target parts
+		*/
 	}
 	
 	// Update is called once per frame

@@ -71,10 +71,28 @@ public class LNShopMng : MonoBehaviour {
 							selectTab(obj.name);
 						} else if(obj.tag.Equals("UIListItem")) {
 							Debug.Log(obj.tag);
-						} 
+						} else {
+							_inputs[i].rotate = true; // rotate avatar
+						}
+					} else {
+						_inputs[i].rotate = true; // rotate avatar
+					}
+				} else if(_inputs[i].state == TOUCH_HOLD) {
+					if(_inputs[i].rotate) {
+						Vector3 v = _inputs[i].pos - _inputs[i].org_pos;
+						rotate(v);
 					}
 				}
 			}
+		}
+	}
+
+	// rotate
+	void rotate(Vector3 v) {
+		// check rotate bound
+		if( Mathf.Abs( v.x ) > 16.0f && Mathf.Abs (v.y) < 64.0f) {
+			float f = -1.0f * (v.x * 0.05f);
+			_avatar.transform.Rotate(0.0f, f, 0.0f);
 		}
 	}
 
