@@ -13,6 +13,9 @@ TagManager:
   - PartsLArm
   - PartsLHand
   - PartsRWP
+  - UITab
+  - UIList
+  - UIListItem
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

@@ -150,3 +150,40 @@ MonoBehaviour:
     loadable: 0
     assetName: 
     version: 3
+  - name: ShopSpriteCollection
+    spriteCollectionGUID: 2d669c3aa2fa24c99924099c3cd463bd
+    spriteCollectionDataGUID: ffb650cdf808c4d34b3eb2d741145dee
+    spriteNames:
+    - list_back
+    - icon_red_wp
+    - tab_deselect
+    - icon_red_arm
+    - icon_gray_wp
+    - tab_select
+    - list_item
+    - icon_gray_arm
+    - list_border
+    spriteTextureGUIDs:
+    - 1ec9b787805af4b9e87d0928417feda0
+    - 25760249db2e24c04aea018606daf020
+    - 77a1cf87c601c483aa2a54bde9b872a7
+    - 7830d0223db1a4974aa9b862d35b9428
+    - 89d9e2b77e4ae4efb9d2c6860e271d8f
+    - a38353829963549b7b3fdbb79ddc78b2
+    - ca26eef1dcf184a4d8e555e29b2c2bdc
+    - eb5721da4ec2b4bf69d6f5a40a8e1b1c
+    - f872bbe2ea34340ac9e37a1a82b9a523
+    spriteTextureTimeStamps:
+    - 1405987339
+    - 1405987643
+    - 1405987251
+    - 1405987613
+    - 1405987663
+    - 1405987274
+    - 1405989174
+    - 1405987439
+    - 1405987304
+    managedSpriteCollection: 0
+    loadable: 0
+    assetName: 
+    version: 3
