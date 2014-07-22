@@ -163,6 +163,7 @@ MonoBehaviour:
     - list_item
     - icon_gray_arm
     - list_border
+    - icon_none
     spriteTextureGUIDs:
     - 1ec9b787805af4b9e87d0928417feda0
     - 25760249db2e24c04aea018606daf020
@@ -173,6 +174,7 @@ MonoBehaviour:
     - ca26eef1dcf184a4d8e555e29b2c2bdc
     - eb5721da4ec2b4bf69d6f5a40a8e1b1c
     - f872bbe2ea34340ac9e37a1a82b9a523
+    - c15124cf46c2c48399cb804572aa722b
     spriteTextureTimeStamps:
     - 1405987339
     - 1405987643
@@ -183,6 +185,7 @@ MonoBehaviour:
     - 1405989174
     - 1405987439
     - 1405987304
+    - 1406067638
     managedSpriteCollection: 0
     loadable: 0
     assetName: 

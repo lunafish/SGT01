@@ -1,0 +1,11 @@
+{
+	"tab_arm" : [
+			{ "prefabs" : "parts_arm_sera", "icon" : "icon_none", "name" : "セーラー服", "info" : "ただの制服。" },
+			{ "prefabs" : "parts_arm_gray", "icon" : "icon_gray_arm", "name" : "ロケットパンチ黒", "info" : "基本的な装備。" },
+			{ "prefabs" : "parts_arm_red", "icon" : "icon_red_arm", "name" : "ロケットパンチ赤", "info" : "敵をもえる。" }
+		],
+	"tab_wp" : [
+		{ "prefabs" : "parts_arm_sera", "icon" : "icon_gray_wp", "name" : "カタナ黒", "info" : "カタナ。" },
+		{ "prefabs" : "parts_arm_gray", "icon" : "icon_red_wp", "name" : "カタナ赤", "info" : "カタナ。" }
+	]
+}

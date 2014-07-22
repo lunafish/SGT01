@@ -49,6 +49,12 @@ public class LNPartsCtrl : MonoBehaviour {
 		src.GetComponent<SkinnedMeshRenderer> ().material = tar.GetComponent<SkinnedMeshRenderer> ().material; // change material
 	}
 
+	public void ChangeArm( GameObject parts ) {
+		_target = parts;
+		Change (ePART.LARM);
+		Change (ePART.LHAND);
+	}
+
 	// Change Parts
 	void Change( ePART tag ) {
 		GameObject part = null;

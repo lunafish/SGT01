@@ -1,5 +1,6 @@
 ﻿/** SHOP Managemant lunafish 2014-07-22 **/
 using UnityEngine;
+using SimpleJSON;
 using System.Collections;
 
 public class LNShopMng : MonoBehaviour {
@@ -37,10 +38,14 @@ public class LNShopMng : MonoBehaviour {
 	//
 
 	// for tab
-	private GameObject[] _tabs = null;
+	private GameObject[] _tabs = null; // tab object
+	private string[] _tab_name = {"tab_arm", "tab_wp"}; // tab object name
 
 	// for avatar
 	public GameObject _avatar = null;
+
+	// for json
+	private JSONNode _json = null;
 
 	// Use this for initialization
 	void Start () {
@@ -56,7 +61,46 @@ public class LNShopMng : MonoBehaviour {
 	// init ui data
 	void init() {
 		_tabs = GameObject.FindGameObjectsWithTag ("UITab");
-		selectTab ("tab_arm");
+		selectTab (_tab_name[0]);
+
+		// read json data
+		string txt;
+		if( LNUtil.ReadText ("json/shopdata", out txt)) {
+			_json = JSONNode.Parse( txt );
+
+			loadList(_tab_name[0]);
+		}
+	}
+
+	void clearListItem( ) {
+		GameObject[] items = GameObject.FindGameObjectsWithTag("UIListItem"); // get list
+
+		foreach( GameObject obj in items ) {
+			Destroy( obj.GetComponent<LNPartsData>()._parts ); // destory parts
+			Destroy (obj );
+		}
+
+	}
+
+	// load tab list
+	void loadList( string tab ) {
+		GameObject list = GameObject.FindGameObjectWithTag("UIList"); // find list object
+
+		clearListItem(); // clear item
+
+//		Debug.Log(tab);
+
+		for(int i = 0; i < _json[tab].Count; i++ ) {
+			GameObject item = Instantiate(Resources.Load("prefabs/list_item")) as GameObject; // list item
+			
+			// set transform
+			item.transform.position = list.transform.position;
+			item.transform.parent = list.transform;
+			item.transform.localPosition = new Vector3(0.0f, 0.8f - (i * 0.32f), 1.0f);
+			//
+			
+			item.GetComponent<LNPartsData>().Load( _json[tab][i] );
+		}
 	}
 
 	// process ui
@@ -71,6 +115,8 @@ public class LNShopMng : MonoBehaviour {
 							selectTab(obj.name);
 						} else if(obj.tag.Equals("UIListItem")) {
 							Debug.Log(obj.tag);
+							_avatar.GetComponent<LNPartsCtrl>().ChangeArm( obj.GetComponent<LNPartsData>()._parts ); // change parts
+
 						} else {
 							_inputs[i].rotate = true; // rotate avatar
 						}
@@ -104,6 +150,10 @@ public class LNShopMng : MonoBehaviour {
 			} else {
 				o.GetComponent<tk2dSprite>().SetSprite("tab_deselect");
 			}
+		}
+
+		if(_json != null) {
+			loadList(tab); // load list
 		}
 	}
 

@@ -18,7 +18,7 @@ public class LNCutsceneCtrl : MonoBehaviour {
 	void Start () {
 		// read json
 		string txt;
-		if(ReadText ("json/cutscene", out txt)) {
+		if( LNUtil.ReadText ("json/cutscene", out txt)) {
 			_json = JSONNode.Parse( txt );
 		}
 		//
@@ -88,16 +88,5 @@ public class LNCutsceneCtrl : MonoBehaviour {
 	public void OnAction( ) {
 		GameObject player = GameObject.FindGameObjectWithTag ("Player");
 		player.GetComponent<LNPlayerCtrl> ().Action ();
-	}
-
-	// for json
-	static public bool ReadText( string path, out string txt ) {
-		TextAsset ta = (TextAsset)Resources.Load (path) as TextAsset;
-		if (ta == null) {
-			txt = "";
-			return false;
-		}
-		txt = ta.text;
-		return true;
 	}
 }
