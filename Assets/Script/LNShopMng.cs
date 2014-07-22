@@ -40,6 +40,7 @@ public class LNShopMng : MonoBehaviour {
 	// for tab
 	private GameObject[] _tabs = null; // tab object
 	private string[] _tab_name = {"tab_arm", "tab_wp"}; // tab object name
+	private string _current_tab;
 
 	// for avatar
 	public GameObject _avatar = null;
@@ -84,6 +85,8 @@ public class LNShopMng : MonoBehaviour {
 
 	// load tab list
 	void loadList( string tab ) {
+		_current_tab = tab;
+
 		GameObject list = GameObject.FindGameObjectWithTag("UIList"); // find list object
 
 		clearListItem(); // clear item
@@ -115,7 +118,13 @@ public class LNShopMng : MonoBehaviour {
 							selectTab(obj.name);
 						} else if(obj.tag.Equals("UIListItem")) {
 							Debug.Log(obj.tag);
-							_avatar.GetComponent<LNPartsCtrl>().ChangeArm( obj.GetComponent<LNPartsData>()._parts ); // change parts
+							if(_current_tab.Equals(_tab_name[0])) {
+								// change arm
+								_avatar.GetComponent<LNPartsCtrl>().ChangeArm( obj.GetComponent<LNPartsData>()._parts ); // change parts
+							} else {
+								// change katana
+								_avatar.GetComponent<LNPartsCtrl>().ChangeKatana( obj.GetComponent<LNPartsData>()._parts ); // change parts
+							}
 
 						} else {
 							_inputs[i].rotate = true; // rotate avatar
