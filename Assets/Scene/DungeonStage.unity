@@ -570,6 +570,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 237147223}
   - 114: {fileID: 237147224}
+  - 82: {fileID: 237147225}
   m_Layer: 8
   m_Name: EffectBullet
   m_TagString: Untagged
@@ -607,6 +608,65 @@ MonoBehaviour:
   - {fileID: 88549259}
   - {fileID: 669583723}
   _delay: .0500000007
+--- !u!82 &237147225
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 8200000, guid: f3fdec938f1d24329b67b98593ef3abc,
+    type: 2}
+  m_PrefabInternal: {fileID: 1033517158}
+  m_GameObject: {fileID: 237147222}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 8300000, guid: 20099e72269844e0abc31398fad31d8b, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &336491941
 GameObject:
   m_ObjectHideFlags: 0
@@ -979,12 +1039,12 @@ TextMesh:
   m_GameObject: {fileID: 506869563}
   m_Text: "\u5165\u308B"
   m_OffsetZ: 0
-  m_CharacterSize: .0799999982
+  m_CharacterSize: .0399999991
   m_LineSpacing: 1
   m_Anchor: 4
   m_Alignment: 0
   m_TabSize: 4
-  m_FontSize: 0
+  m_FontSize: 32
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
@@ -1054,6 +1114,26 @@ Prefab:
     - target: {fileID: 400000, guid: f74bdd37d23b446469f6d10565f8d6a4, type: 2}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8200000, guid: f74bdd37d23b446469f6d10565f8d6a4, type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5ac9a3c6b124048a898f38a69e850be1, type: 3}
+    - target: {fileID: 8200000, guid: f74bdd37d23b446469f6d10565f8d6a4, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000000, guid: f74bdd37d23b446469f6d10565f8d6a4, type: 2}
+      propertyPath: m_BackGroundColor.r
+      value: .529411793
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000000, guid: f74bdd37d23b446469f6d10565f8d6a4, type: 2}
+      propertyPath: m_BackGroundColor.g
+      value: .329411775
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000000, guid: f74bdd37d23b446469f6d10565f8d6a4, type: 2}
+      propertyPath: m_BackGroundColor.b
+      value: .635294139
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f74bdd37d23b446469f6d10565f8d6a4, type: 2}
@@ -1290,12 +1370,12 @@ TextMesh:
   m_GameObject: {fileID: 587521183}
   m_Text: "\u51FA\u308B"
   m_OffsetZ: 0
-  m_CharacterSize: .0799999982
+  m_CharacterSize: .0399999991
   m_LineSpacing: 1
   m_Anchor: 4
   m_Alignment: 0
   m_TabSize: 4
-  m_FontSize: 0
+  m_FontSize: 32
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
@@ -1694,6 +1774,7 @@ GameObject:
   - 124: {fileID: 775023786}
   - 81: {fileID: 775023785}
   - 65: {fileID: 775023790}
+  - 82: {fileID: 775023791}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: 3DCamera
@@ -1735,7 +1816,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: .529411793, g: .329411775, b: .635294139, a: .0196078438}
+  m_BackGroundColor: {r: .529411793, g: .329411775, b: .635294139, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -1783,6 +1864,65 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: .25, y: .25, z: .25}
   m_Center: {x: 0, y: 0, z: .25}
+--- !u!82 &775023791
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 8200000, guid: f74bdd37d23b446469f6d10565f8d6a4,
+    type: 2}
+  m_PrefabInternal: {fileID: 520068047}
+  m_GameObject: {fileID: 775023784}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 8300000, guid: 5ac9a3c6b124048a898f38a69e850be1, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &782450231
 GameObject:
   m_ObjectHideFlags: 0
@@ -1911,12 +2051,12 @@ TextMesh:
   m_GameObject: {fileID: 864208768}
   m_Text: "\u30B2\u30FC\u30E0\u30B7\u30E7\u30C3\u30D7\u3060\u3088\u3002"
   m_OffsetZ: 0
-  m_CharacterSize: .061999999
+  m_CharacterSize: .0309999995
   m_LineSpacing: 1
   m_Anchor: 3
   m_Alignment: 0
   m_TabSize: 4
-  m_FontSize: 0
+  m_FontSize: 32
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
@@ -2151,7 +2291,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1046048253
 Transform:
   m_ObjectHideFlags: 0
@@ -2824,12 +2964,12 @@ TextMesh:
   m_GameObject: {fileID: 1325626453}
   m_Text: "LV1\u30C0\u30F3\u30B8\u30E7\u30F3"
   m_OffsetZ: 0
-  m_CharacterSize: .061999999
+  m_CharacterSize: .0309999995
   m_LineSpacing: 1
   m_Anchor: 0
   m_Alignment: 0
   m_TabSize: 4
-  m_FontSize: 0
+  m_FontSize: 32
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
@@ -2925,12 +3065,12 @@ TextMesh:
   m_GameObject: {fileID: 1349432942}
   m_Text: "\u6B21"
   m_OffsetZ: 0
-  m_CharacterSize: .0799999982
+  m_CharacterSize: .0399999991
   m_LineSpacing: 1
   m_Anchor: 4
   m_Alignment: 0
   m_TabSize: 4
-  m_FontSize: 0
+  m_FontSize: 32
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
@@ -4340,7 +4480,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2045626554
 Transform:
   m_ObjectHideFlags: 0
@@ -4377,7 +4517,7 @@ SkinnedMeshRenderer:
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
-  m_Mesh: {fileID: 4300006, guid: 578d5c7bac0064f7cb8ac0c39a4512e8, type: 3}
+  m_Mesh: {fileID: 4300022, guid: 578d5c7bac0064f7cb8ac0c39a4512e8, type: 3}
   m_Bones:
   - {fileID: 427336172}
   - {fileID: 1249093519}
@@ -4428,8 +4568,8 @@ Transform:
   m_PrefabInternal: {fileID: 886169414}
   m_GameObject: {fileID: 2077839067}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.720000029, y: -.5, z: 0}
-  m_LocalScale: {x: -.5, y: .5, z: .5}
+  m_LocalPosition: {x: -.620000005, y: -.5, z: 0}
+  m_LocalScale: {x: -.330000013, y: .330000013, z: .330000013}
   m_Children:
   - {fileID: 336491942}
   - {fileID: 122766034}

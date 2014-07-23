@@ -293,9 +293,13 @@ public class LNAIPawn : LNPawn {
 		if(_current_state != eSTATE.TALK)
 			return;
 
-		// testcode
+		// talk event
 		if(_npc == eNPC.GATE) {
+			// gate
 			Debug.Log("GATE");
+			Application.LoadLevel(_npc_target);
+		} else if(_npc == eNPC.STORE) {
+			Debug.Log("store");
 			Application.LoadLevel(_npc_target);
 		}
 	}

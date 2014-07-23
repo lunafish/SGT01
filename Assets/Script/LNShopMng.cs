@@ -48,6 +48,9 @@ public class LNShopMng : MonoBehaviour {
 	// for json
 	private JSONNode _json = null;
 
+	// for layout
+	public GameObject _btnBack = null;
+
 	// Use this for initialization
 	void Start () {
 		init ();
@@ -71,6 +74,12 @@ public class LNShopMng : MonoBehaviour {
 
 			loadList(_tab_name[0]);
 		}
+
+		// init layout
+		float ratio = (float)Screen.width / (float)Screen.height;
+		Vector3 pos = _btnBack.transform.position;
+		pos.x = ratio - 0.16f;
+		_btnBack.transform.position = pos;
 	}
 
 	void clearListItem( ) {
@@ -257,5 +266,10 @@ public class LNShopMng : MonoBehaviour {
 		//
 
 		return null;
+	}
+
+	// back button event
+	void OnBackButton( ) {
+		Application.LoadLevel("TownStage");
 	}
 }

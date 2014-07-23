@@ -33,7 +33,7 @@ public class LNHUDDungeon : MonoBehaviour {
 		UpdatePlayer ();
 		UpdateNPC ();
 
-		// test
+		// init button postion
 		float ratio = (float)Screen.width / (float)Screen.height;
 		Vector3 pos = _mapButton.transform.position;
 		pos.x = ratio - 0.16f;
