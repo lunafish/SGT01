@@ -66,6 +66,16 @@ public class LNPlayerCtrl : LNPawn {
 
 	// Use this for initialization
 	void Start () {
+		// return point
+		Vector3 pos;
+		Quaternion rot;
+		if(LNUtil.Instance().GetReturnPoint( out pos, out rot ) ) {
+			Debug.Log("Return Point!");
+			transform.position = pos;
+			transform.rotation = rot;
+		}
+		//
+
 		// set avatar look
 		_avatar_lookat = transform.position + transform.forward;
 		_anim = _avatar.GetComponent<Animator>(); // get avatar animation controler

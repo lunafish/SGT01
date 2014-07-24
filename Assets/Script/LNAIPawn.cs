@@ -300,6 +300,7 @@ public class LNAIPawn : LNPawn {
 			Application.LoadLevel(_npc_target);
 		} else if(_npc == eNPC.STORE) {
 			Debug.Log("store");
+			LNUtil.Instance().SetReturnPoint( source.transform.position, source.transform.rotation ); // save return postion
 			Application.LoadLevel(_npc_target);
 		}
 	}
