@@ -5,7 +5,8 @@ using System.Collections;
 
 public class LNPartsData : MonoBehaviour {
 	public GameObject _parts = null; // parts data object
-	public tk2dSprite _icon = null;
+	public TextMesh _label = null;
+	public string _info = "";
 
 	// Use this for initialization
 	void Start () {
@@ -20,11 +21,10 @@ public class LNPartsData : MonoBehaviour {
 	// load data from json node
 	public void Load( JSONNode json ) { 
 		string sPrefabs = json["prefabs"];
-		string sIcon = json["icon"];
-		Debug.Log(sPrefabs);
-		Debug.Log(sIcon);
-		
-		_icon.SetSprite(sIcon); // set icon
+		string sName = json["name"];
+		_info = json["info"];
+
+		_label.text = sName;
 		_parts = Instantiate(Resources.Load("prefabs/"+sPrefabs)) as GameObject; // load parts
 	}
 }

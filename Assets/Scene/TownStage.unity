@@ -690,12 +690,12 @@ TextMesh:
   m_GameObject: {fileID: 182855674}
   m_Text: "LV1\u30C0\u30F3\u30B8\u30E7\u30F3"
   m_OffsetZ: 0
-  m_CharacterSize: .0309999995
+  m_CharacterSize: .0359999985
   m_LineSpacing: 1
   m_Anchor: 0
   m_Alignment: 0
   m_TabSize: 4
-  m_FontSize: 32
+  m_FontSize: 24
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
@@ -984,12 +984,12 @@ TextMesh:
   m_GameObject: {fileID: 255626324}
   m_Text: "\u6B21"
   m_OffsetZ: 0
-  m_CharacterSize: .0399999991
+  m_CharacterSize: .0419999994
   m_LineSpacing: 1
   m_Anchor: 4
   m_Alignment: 0
   m_TabSize: 4
-  m_FontSize: 32
+  m_FontSize: 24
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
@@ -4145,12 +4145,12 @@ TextMesh:
   m_GameObject: {fileID: 865342556}
   m_Text: "\u51FA\u308B"
   m_OffsetZ: 0
-  m_CharacterSize: .0399999991
+  m_CharacterSize: .0419999994
   m_LineSpacing: 1
   m_Anchor: 4
   m_Alignment: 0
   m_TabSize: 4
-  m_FontSize: 32
+  m_FontSize: 24
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
@@ -4551,6 +4551,62 @@ Prefab:
     - target: {fileID: 3300000, guid: 85c7c6a626c3144cea3913c5ccdefdf5, type: 2}
       propertyPath: m_Mesh
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 100016, guid: 85c7c6a626c3144cea3913c5ccdefdf5, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3300024, guid: 85c7c6a626c3144cea3913c5ccdefdf5, type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 85c7c6a626c3144cea3913c5ccdefdf5, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3300022, guid: 85c7c6a626c3144cea3913c5ccdefdf5, type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3300012, guid: 85c7c6a626c3144cea3913c5ccdefdf5, type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: 85c7c6a626c3144cea3913c5ccdefdf5, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3300018, guid: 85c7c6a626c3144cea3913c5ccdefdf5, type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 100038, guid: 85c7c6a626c3144cea3913c5ccdefdf5, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3300014, guid: 85c7c6a626c3144cea3913c5ccdefdf5, type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3300020, guid: 85c7c6a626c3144cea3913c5ccdefdf5, type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3300016, guid: 85c7c6a626c3144cea3913c5ccdefdf5, type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 100014, guid: 85c7c6a626c3144cea3913c5ccdefdf5, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: 85c7c6a626c3144cea3913c5ccdefdf5, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 85c7c6a626c3144cea3913c5ccdefdf5, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 85c7c6a626c3144cea3913c5ccdefdf5, type: 2}
@@ -5654,7 +5710,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 8200000, guid: f74bdd37d23b446469f6d10565f8d6a4, type: 2}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f74bdd37d23b446469f6d10565f8d6a4, type: 2}
@@ -6196,7 +6252,7 @@ AudioSource:
     type: 2}
   m_PrefabInternal: {fileID: 1330311685}
   m_GameObject: {fileID: 1530228648}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_audioClip: {fileID: 8300000, guid: 2b87228f22c0c45998c1c8490a193bac, type: 3}
   m_PlayOnAwake: 1
@@ -6964,12 +7020,12 @@ TextMesh:
   m_GameObject: {fileID: 1796706518}
   m_Text: "\u30B2\u30FC\u30E0\u30B7\u30E7\u30C3\u30D7\u3060\u3088\u3002"
   m_OffsetZ: 0
-  m_CharacterSize: .0309999995
+  m_CharacterSize: .0320000015
   m_LineSpacing: 1
   m_Anchor: 3
   m_Alignment: 0
   m_TabSize: 4
-  m_FontSize: 32
+  m_FontSize: 24
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
@@ -7698,12 +7754,12 @@ TextMesh:
   m_GameObject: {fileID: 2057439136}
   m_Text: "\u5165\u308B"
   m_OffsetZ: 0
-  m_CharacterSize: .0399999991
+  m_CharacterSize: .0419999994
   m_LineSpacing: 1
   m_Anchor: 4
   m_Alignment: 0
   m_TabSize: 4
-  m_FontSize: 32
+  m_FontSize: 24
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}

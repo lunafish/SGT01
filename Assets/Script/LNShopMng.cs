@@ -50,6 +50,7 @@ public class LNShopMng : MonoBehaviour {
 
 	// for layout
 	public GameObject _btnBack = null;
+	public TextMesh _info = null; // info
 
 	// Use this for initialization
 	void Start () {
@@ -90,6 +91,9 @@ public class LNShopMng : MonoBehaviour {
 			Destroy (obj );
 		}
 
+		// clear info
+		_info.text = "";
+
 	}
 
 	// load tab list
@@ -110,7 +114,7 @@ public class LNShopMng : MonoBehaviour {
 			item.transform.parent = list.transform;
 			item.transform.localPosition = new Vector3(0.0f, 0.8f - (i * 0.32f), 1.0f);
 			//
-			
+
 			item.GetComponent<LNPartsData>().Load( _json[tab][i] );
 		}
 	}
@@ -127,6 +131,11 @@ public class LNShopMng : MonoBehaviour {
 							selectTab(obj.name);
 						} else if(obj.tag.Equals("UIListItem")) {
 							Debug.Log(obj.tag);
+
+							// set infomation
+							_info.text = obj.GetComponent<LNPartsData>()._info;
+							//
+
 							if(_current_tab.Equals(_tab_name[0])) {
 								// change arm
 								_avatar.GetComponent<LNPartsCtrl>().ChangeArm( obj.GetComponent<LNPartsData>()._parts ); // change parts

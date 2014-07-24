@@ -5,7 +5,7 @@
 			{ "prefabs" : "parts_arm_red", "icon" : "icon_red_arm", "name" : "ロケットパンチ赤", "info" : "敵をもえる。" }
 		],
 	"tab_wp" : [
-		{ "prefabs" : "parts_wp_gray", "icon" : "icon_gray_wp", "name" : "カタナ黒", "info" : "カタナ。" },
-		{ "prefabs" : "parts_wp_red", "icon" : "icon_red_wp", "name" : "カタナ赤", "info" : "カタナ。" }
+		{ "prefabs" : "parts_wp_gray", "icon" : "icon_gray_wp", "name" : "カタナ黒", "info" : "基本的なカタナ。" },
+		{ "prefabs" : "parts_wp_red", "icon" : "icon_red_wp", "name" : "カタナ赤", "info" : "火属性のカタナ。" }
 	]
 }

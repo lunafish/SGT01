@@ -28,11 +28,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400002}
-  - 33: {fileID: 3300002}
   - 23: {fileID: 2300002}
-  - 114: {fileID: 11400004}
+  - 102: {fileID: 10200000}
   m_Layer: 0
-  m_Name: icon
+  m_Name: label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,7 +44,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: .75999999, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400002}
@@ -59,7 +58,7 @@ Transform:
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -1}
-  m_LocalScale: {x: .5, y: .5, z: .5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400000}
   m_RootOrder: 0
@@ -95,7 +94,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 40b2c06551de947ce954adfdfe8d6721, type: 2}
+  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -110,13 +109,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Mesh: {fileID: 0}
---- !u!33 &3300002
-MeshFilter:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100002}
-  m_Mesh: {fileID: 0}
 --- !u!65 &6500000
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -127,8 +119,29 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: .319999993, y: .319999993, z: 0}
+  m_Size: {x: .360000014, y: .319999993, z: 0}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!102 &10200000
+TextMesh:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100002}
+  m_Text: "\u9244\u7832"
+  m_OffsetZ: 0
+  m_CharacterSize: .0240000002
+  m_LineSpacing: 1
+  m_Anchor: 4
+  m_Alignment: 0
+  m_TabSize: 4
+  m_FontSize: 24
+  m_FontStyle: 0
+  m_RichText: 1
+  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Color:
+    serializedVersion: 2
+    rgba: 4278190080
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -164,30 +177,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parts: {fileID: 0}
-  _icon: {fileID: 11400004}
---- !u!114 &11400004
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fac570381f34f647b768dc5a5aa1364, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  collection: {fileID: 11400000, guid: ffb650cdf808c4d34b3eb2d741145dee, type: 2}
-  _color: {r: 1, g: 1, b: 1, a: 1}
-  _scale: {x: 1, y: 1, z: 1}
-  _spriteId: 3
-  boxCollider2D: {fileID: 0}
-  polygonCollider2D: []
-  edgeCollider2D: []
-  boxCollider: {fileID: 0}
-  meshCollider: {fileID: 0}
-  meshColliderPositions: []
-  meshColliderMesh: {fileID: 0}
-  renderLayer: 0
+  _label: {fileID: 10200000}
+  _info: ','
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

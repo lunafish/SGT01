@@ -60,17 +60,17 @@ MonoBehaviour:
   forcedTextureWidth: 2048
   forcedTextureHeight: 2048
   textureCompression: 0
-  atlasWidth: 128
-  atlasHeight: 256
+  atlasWidth: 512
+  atlasHeight: 512
   forceSquareAtlas: 0
-  atlasWastage: 26.5014648
+  atlasWastage: 53.4591675
   allowMultipleAtlases: 0
   removeDuplicates: 1
   textureParams:
   - name: list_back
     disableTrimming: 0
     additive: 0
-    scale: {x: 1, y: 1, z: 1}
+    scale: {x: .5, y: .5, z: .5}
     texture: {fileID: 2800000, guid: 1ec9b787805af4b9e87d0928417feda0, type: 3}
     materialId: 0
     anchor: 4
@@ -152,7 +152,7 @@ MonoBehaviour:
   - name: tab_deselect
     disableTrimming: 0
     additive: 0
-    scale: {x: 1, y: 1, z: 1}
+    scale: {x: .5, y: .5, z: .5}
     texture: {fileID: 2800000, guid: 77a1cf87c601c483aa2a54bde9b872a7, type: 3}
     materialId: 0
     anchor: 4
@@ -275,7 +275,7 @@ MonoBehaviour:
   - name: tab_select
     disableTrimming: 0
     additive: 0
-    scale: {x: 1, y: 1, z: 1}
+    scale: {x: .5, y: .5, z: .5}
     texture: {fileID: 2800000, guid: a38353829963549b7b3fdbb79ddc78b2, type: 3}
     materialId: 0
     anchor: 4
@@ -316,7 +316,7 @@ MonoBehaviour:
   - name: list_item
     disableTrimming: 0
     additive: 0
-    scale: {x: 1, y: 1, z: 1}
+    scale: {x: .5, y: .5, z: .5}
     texture: {fileID: 2800000, guid: ca26eef1dcf184a4d8e555e29b2c2bdc, type: 3}
     materialId: 0
     anchor: 4
@@ -398,7 +398,7 @@ MonoBehaviour:
   - name: list_border
     disableTrimming: 0
     additive: 0
-    scale: {x: 1, y: 1, z: 1}
+    scale: {x: .5, y: .5, z: .5}
     texture: {fileID: 2800000, guid: f872bbe2ea34340ac9e37a1a82b9a523, type: 3}
     materialId: 0
     anchor: 4
