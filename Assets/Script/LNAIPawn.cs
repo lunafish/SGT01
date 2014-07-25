@@ -33,6 +33,8 @@ public class LNAIPawn : LNPawn {
 	private LNUIBarCtrl _battery = null; // status bar
 	private GameObject _empty = null; // HP 0
 
+	private AudioSource _approachSound = null; // npc approach sound
+
 	// Use this for initialization
 	void Start () {
 		Emotion (eEMOTION.NONE);
@@ -57,6 +59,9 @@ public class LNAIPawn : LNPawn {
 			_empty = transform.FindChild ("Empty").gameObject;
 			_empty.SetActive(false);
 		}
+
+		// find sound
+		_approachSound = GetComponent<AudioSource>();
 	}
 
 	void Awake () 
@@ -111,17 +116,23 @@ public class LNAIPawn : LNPawn {
 		// npc talk check
 		if(_type == ePawn.NPC) {
 			if(_target) {
+				// target state check
+				if(_target.GetComponent<LNPawn>().GetTarget() == null) {
+					Debug.LogError("Wrong Target state");
+					return;
+				}
+
 				Vector3 v = _target.transform.position - transform.position;
 				if(v.magnitude < _sak) {
 					Emotion(eEMOTION.TALK);
 					// enable talk scene
 					if(_cutscene) {
-						// check kiosk
-						if(_npc == eNPC.GATE ) {
-							_cutscene.GetComponent<LNCutsceneCtrl>().Enable( _npc_cutscene );
-						} else {
-							_cutscene.GetComponent<LNCutsceneCtrl>().Enable( _npc_cutscene );
+						// play approach sound
+						if(_approachSound != null) {
+							_approachSound.Play();
 						}
+						Debug.Log("Check state : " + _target.GetComponent<LNPawn>().GetTarget());
+						_cutscene.GetComponent<LNCutsceneCtrl>().Enable( _npc_cutscene );
 					}
 
 					ChangeState(eSTATE.TALK);
@@ -163,9 +174,13 @@ public class LNAIPawn : LNPawn {
 		bool bExit = false;
 
 		if(_target) {
-			Vector3 v = _target.transform.position - transform.position;
-			if(v.magnitude > _sak) {
-				bExit = true;
+			if(_target.GetComponent<LNPawn>().GetTarget() == null) {
+				bExit = true; // target don't want talk
+			} else {
+				Vector3 v = _target.transform.position - transform.position;
+				if(v.magnitude > _sak) {
+					bExit = true;
+				}
 			}
 		}
 		else {
@@ -323,5 +338,4 @@ public class LNAIPawn : LNPawn {
 
 		return true;
 	}
-
 }

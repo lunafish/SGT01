@@ -89,6 +89,6 @@ public class LNCutsceneCtrl : MonoBehaviour {
 		LNUtil util = LNUtil.Instance();
 
 		GameObject player = GameObject.FindGameObjectWithTag ("Player");
-		player.GetComponent<LNPlayerCtrl> ().Action ();
+		player.GetComponent<LNPlayerCtrl> ().Action();
 	}
 }

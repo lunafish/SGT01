@@ -3166,7 +3166,7 @@ MonoBehaviour:
   buttonDownSprite: 
   buttonUpSprite: 
   buttonPressedSprite: 
-  buttonDownSound: {fileID: 0}
+  buttonDownSound: {fileID: 8300000, guid: 45b1d5db9b7a741868c2a4e7906fa400, type: 3}
   buttonUpSound: {fileID: 0}
   buttonPressedSound: {fileID: 0}
   targetObject: {fileID: 693936988}
@@ -3386,7 +3386,7 @@ MonoBehaviour:
   buttonDownSprite: 
   buttonUpSprite: 
   buttonPressedSprite: 
-  buttonDownSound: {fileID: 0}
+  buttonDownSound: {fileID: 8300000, guid: 45b1d5db9b7a741868c2a4e7906fa400, type: 3}
   buttonUpSound: {fileID: 0}
   buttonPressedSound: {fileID: 0}
   targetObject: {fileID: 0}
@@ -3604,7 +3604,7 @@ MonoBehaviour:
   buttonDownSprite: button_down
   buttonUpSprite: button_up
   buttonPressedSprite: button_up
-  buttonDownSound: {fileID: 0}
+  buttonDownSound: {fileID: 8300000, guid: 45b1d5db9b7a741868c2a4e7906fa400, type: 3}
   buttonUpSound: {fileID: 0}
   buttonPressedSound: {fileID: 0}
   targetObject: {fileID: 801336783}
@@ -4757,7 +4757,7 @@ MonoBehaviour:
   buttonDownSprite: 
   buttonUpSprite: 
   buttonPressedSprite: 
-  buttonDownSound: {fileID: 0}
+  buttonDownSound: {fileID: 8300000, guid: 45b1d5db9b7a741868c2a4e7906fa400, type: 3}
   buttonUpSound: {fileID: 0}
   buttonPressedSound: {fileID: 0}
   targetObject: {fileID: 693936988}

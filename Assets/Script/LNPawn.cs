@@ -139,6 +139,11 @@ public class LNPawn : MonoBehaviour {
 		}
 	}
 
+	// get target
+	public GameObject GetTarget() { 
+		return _target;
+	}
+
 	// Use this for initialization
 	void Start () {
 	

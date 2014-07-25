@@ -52,6 +52,11 @@ public class LNShopMng : MonoBehaviour {
 	public GameObject _btnBack = null;
 	public TextMesh _info = null; // info
 
+	// for UI sound
+	private AudioSource _audio;
+	public AudioClip _tabsound;
+	public AudioClip _itemsound;
+
 	// Use this for initialization
 	void Start () {
 		init ();
@@ -81,6 +86,9 @@ public class LNShopMng : MonoBehaviour {
 		Vector3 pos = _btnBack.transform.position;
 		pos.x = ratio - 0.16f;
 		_btnBack.transform.position = pos;
+
+		// for audio
+		_audio = GetComponent<AudioSource>();
 	}
 
 	void clearListItem( ) {
@@ -128,9 +136,21 @@ public class LNShopMng : MonoBehaviour {
 					if(obj != null) {
 						// process tab
 						if(obj.tag.Equals("UITab")) {
+							// sound play
+							if(_tabsound != null) {
+								_audio.clip = _tabsound;
+								_audio.Play();
+							}
+
 							selectTab(obj.name);
 						} else if(obj.tag.Equals("UIListItem")) {
 							Debug.Log(obj.tag);
+
+							// sound play
+							if(_itemsound != null) {
+								_audio.clip = _itemsound;
+								_audio.Play();
+							}
 
 							// set infomation
 							_info.text = obj.GetComponent<LNPartsData>()._info;

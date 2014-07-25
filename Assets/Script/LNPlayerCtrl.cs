@@ -174,6 +174,8 @@ public class LNPlayerCtrl : LNPawn {
 
 	// Action
 	public void Action() {
+		Debug.Log(_target);
+
 		if(_target.GetComponent<LNPawn>()._type == ePawn.NPC) {
 			// npc action
 			// get rule book and action target
@@ -417,12 +419,13 @@ public class LNPlayerCtrl : LNPawn {
 				}
 				else if(_inputs[i].state == TOUCH_UP) {
 					_anim.SetBool ("isRun", false);
-					Debug.Log("TOUCH UP");
+					//Debug.Log("TOUCH UP");
 					if( isMoveTouch( i ) == false ) {
 						if(_inputs[i].move_delta < 10.0f) {
 
 
-							if(_target) {
+							if(_target != null) {
+								Debug.Log("Action : " + _target);
 								if(!checkUI(i)) {
 									Action();
 								}
@@ -439,7 +442,7 @@ public class LNPlayerCtrl : LNPawn {
 						}
 					}
 					else {
-						Debug.Log("Move");
+						//Debug.Log("Move");
 					}
 				}
 			}
@@ -531,6 +534,7 @@ public class LNPlayerCtrl : LNPawn {
 	// target update
 	void Update_target( ) {
 		GameObject rule = GameObject.FindGameObjectWithTag ("Rule");
+
 		_target = rule.GetComponent<LNRule> ().FindTarget ( transform.gameObject );
 	}
 
