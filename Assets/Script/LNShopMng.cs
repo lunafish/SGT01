@@ -158,9 +158,11 @@ public class LNShopMng : MonoBehaviour {
 
 							if(_current_tab.Equals(_tab_name[0])) {
 								// change arm
+								LNUtil.Instance()._armParts = obj.GetComponent<LNPartsData>()._prefabs;
 								_avatar.GetComponent<LNPartsCtrl>().ChangeArm( obj.GetComponent<LNPartsData>()._parts ); // change parts
 							} else {
 								// change katana
+								LNUtil.Instance()._wpParts = obj.GetComponent<LNPartsData>()._prefabs;
 								_avatar.GetComponent<LNPartsCtrl>().ChangeKatana( obj.GetComponent<LNPartsData>()._parts ); // change parts
 							}
 

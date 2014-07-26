@@ -20,11 +20,6 @@ public class LNPartsCtrl : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		init ();
-		/*
-		Change (ePART.LARM);
-		Change (ePART.LHAND);
-		Destroy (_target); // destory target parts
-		*/
 	}
 	
 	// Update is called once per frame
@@ -44,6 +39,27 @@ public class LNPartsCtrl : MonoBehaviour {
 				_parts_wp = t.gameObject;
 			}
 		}
+
+		// load default parts
+		// load arm
+		if(LNUtil.Instance()._armParts.Length > 0 ) {
+			Debug.Log("Arm : " + LNUtil.Instance()._armParts);
+			GameObject obj = Instantiate(Resources.Load("prefabs/"+LNUtil.Instance()._armParts)) as GameObject;
+			if(obj) {
+				ChangeArm( obj );
+				Destroy( obj );
+			}
+		}
+		// load weapon
+		if(LNUtil.Instance()._wpParts.Length > 0 ) {
+			Debug.Log("WP : " + LNUtil.Instance()._wpParts);
+			GameObject obj = Instantiate(Resources.Load("prefabs/"+LNUtil.Instance()._wpParts)) as GameObject;
+			if(obj) {
+				ChangeKatana( obj );
+				Destroy( obj );
+			}
+		}
+		//
 	}
 
 	// change skinned parts

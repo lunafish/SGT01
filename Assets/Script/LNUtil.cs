@@ -11,6 +11,10 @@ public class LNUtil {
 	private Vector3 _returnPos = new Vector3();
 	private Quaternion _returnRot = new Quaternion();
 
+	// for current parts
+	public string _armParts = ""; // arm parts
+	public string _wpParts = ""; // weapon parts
+
 	// text read from resource
 	static public bool ReadText( string path, out string txt ) {
 		TextAsset ta = (TextAsset)Resources.Load (path) as TextAsset;
