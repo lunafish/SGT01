@@ -185,6 +185,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400022}
   - 212: {fileID: 21200010}
+  - 95: {fileID: 9500004}
   m_Layer: 9
   m_Name: Alert
   m_TagString: Untagged
@@ -786,6 +787,20 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+--- !u!95 &9500004
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100022}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9689697c264e048a2a1421d86c7e00fb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_HasTransformHierarchy: 1
 --- !u!102 &10200000
 TextMesh:
   serializedVersion: 3
@@ -818,7 +833,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97004703a27114c21aac245fc435b4fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 1
+  _speed: 1.5
   _rotate_speed: 1
   _avatar: {fileID: 100010}
   _type: 2
@@ -833,8 +848,8 @@ MonoBehaviour:
   _dex: 0
   _con: 0
   _attackType: 0
-  _sak: 2
-  _lak: 10
+  _shortRangeAttack: 2
+  _longRangeAttack: 10
   _x: -1
   _y: -1
   _corridor: {fileID: 0}

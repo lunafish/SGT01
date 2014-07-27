@@ -75,6 +75,17 @@ public class LNAIPawn : LNPawn {
 		Update_state ();
 		update_emotion ();
 		updateShadow ();
+		updateTargetState( );
+	}
+
+	// update target
+	void updateTargetState( ) {
+		if(_target) {
+			Vector3 v = _target.transform.position - transform.position;
+			if(v.magnitude > _sight_length) {
+				_target = null;
+			}
+		}
 	}
 
 	void update_emotion () {
@@ -108,6 +119,8 @@ public class LNAIPawn : LNPawn {
 			state_damage( );
 		} else if(_current_state == eSTATE.TALK ) {
 			state_talk( );
+		} else if(_current_state == eSTATE.MOVE) {
+			state_move( );
 		}
 	}
 
@@ -123,7 +136,7 @@ public class LNAIPawn : LNPawn {
 				}
 
 				Vector3 v = _target.transform.position - transform.position;
-				if(v.magnitude < _sak) {
+				if(v.magnitude < _shortRangeAttack) {
 					Emotion(eEMOTION.TALK);
 					// enable talk scene
 					if(_cutscene) {
@@ -137,8 +150,52 @@ public class LNAIPawn : LNPawn {
 
 					ChangeState(eSTATE.TALK);
 				}
+			} else {
+				Emotion(eEMOTION.NONE);
+			}
+		} else {
+			// enemy
+			if(_target != null) {
+				Emotion(eEMOTION.ALERT);
+				Debug.Log("Move State Change");
+				ChangeState( eSTATE.MOVE );
+			} else {
+				Emotion(eEMOTION.NONE);
 			}
 		}
+	}
+
+	void state_move( ) {
+		_state_delta += Time.deltaTime;
+
+		if(_target == null) {
+			Debug.Log("Stay State Change");
+			ChangeState( eSTATE.STAY );
+			return;
+		}
+
+		// move
+
+		Vector3 dir = _target.transform.position - transform.position;
+		float len = dir.magnitude;
+		dir.Normalize();
+
+		// stop condision
+		if(len > _sight_length || len < 1.0f) {
+			Debug.Log("Stay State Change");
+			ChangeState( eSTATE.STAY );
+			return;
+		}
+
+		// look
+		Vector3 look = _target.transform.position;
+		look.y = transform.position.y;
+		transform.LookAt(look);
+		//
+
+		// move
+		move( dir * (_speed * Time.deltaTime) );
+
 	}
 
 	void state_damage( ) {
@@ -178,7 +235,7 @@ public class LNAIPawn : LNPawn {
 				bExit = true; // target don't want talk
 			} else {
 				Vector3 v = _target.transform.position - transform.position;
-				if(v.magnitude > _sak) {
+				if(v.magnitude > _shortRangeAttack) {
 					bExit = true;
 				}
 			}
@@ -240,7 +297,10 @@ public class LNAIPawn : LNPawn {
 	// damage call back
 	public override void Damage(GameObject source) {
 		if(_current_state == eSTATE.DAMAGE || _current_state == eSTATE.READY)
+		{
+			Emotion( eEMOTION.MISS );
 			return;
+		}
 
 		// triger call back
 		if(_corridor) {

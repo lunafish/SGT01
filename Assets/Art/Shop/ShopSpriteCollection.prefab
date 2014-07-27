@@ -63,7 +63,7 @@ MonoBehaviour:
   atlasWidth: 512
   atlasHeight: 512
   forceSquareAtlas: 0
-  atlasWastage: 53.4591675
+  atlasWastage: 53.7841797
   allowMultipleAtlases: 0
   removeDuplicates: 1
   textureParams:
@@ -108,11 +108,11 @@ MonoBehaviour:
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
     attachPoints: []
-  - name: icon_red_wp
+  - name: icon_arm
     disableTrimming: 0
     additive: 0
-    scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 2800000, guid: 25760249db2e24c04aea018606daf020, type: 3}
+    scale: {x: .5, y: .5, z: .5}
+    texture: {fileID: 2800000, guid: 829d1e24b2ba14357a46a13f5f87ab67, type: 3}
     materialId: 0
     anchor: 4
     anchorX: 0
@@ -190,11 +190,11 @@ MonoBehaviour:
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
     attachPoints: []
-  - name: icon_red_arm
+  - name: icon_wp
     disableTrimming: 0
     additive: 0
-    scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 2800000, guid: 7830d0223db1a4974aa9b862d35b9428, type: 3}
+    scale: {x: .5, y: .5, z: .5}
+    texture: {fileID: 2800000, guid: 693221034df434f46b4616446f7daa93, type: 3}
     materialId: 0
     anchor: 4
     anchorX: 0
@@ -231,11 +231,11 @@ MonoBehaviour:
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
     attachPoints: []
-  - name: icon_gray_wp
+  - name: icon_exit
     disableTrimming: 0
     additive: 0
-    scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 2800000, guid: 89d9e2b77e4ae4efb9d2c6860e271d8f, type: 3}
+    scale: {x: .5, y: .5, z: .5}
+    texture: {fileID: 2800000, guid: 75afc932bb78544acb60720ff1abff0b, type: 3}
     materialId: 0
     anchor: 4
     anchorX: 0
@@ -354,11 +354,11 @@ MonoBehaviour:
     colliderSmoothSphereCollisions: 0
     colliderColor: 0
     attachPoints: []
-  - name: icon_gray_arm
+  - name: 
     disableTrimming: 0
     additive: 0
     scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 2800000, guid: eb5721da4ec2b4bf69d6f5a40a8e1b1c, type: 3}
+    texture: {fileID: 0}
     materialId: 0
     anchor: 4
     anchorX: 0
@@ -400,47 +400,6 @@ MonoBehaviour:
     additive: 0
     scale: {x: .5, y: .5, z: .5}
     texture: {fileID: 2800000, guid: f872bbe2ea34340ac9e37a1a82b9a523, type: 3}
-    materialId: 0
-    anchor: 4
-    anchorX: 0
-    anchorY: 0
-    overrideMesh: {fileID: 0}
-    doubleSidedSprite: 0
-    customSpriteGeometry: 0
-    geometryIslands: []
-    dice: 0
-    diceUnitX: 64
-    diceUnitY: 64
-    diceFilter: 0
-    pad: 0
-    extraPadding: 0
-    source: 0
-    fromSpriteSheet: 0
-    hasSpriteSheetId: 0
-    spriteSheetId: 0
-    spriteSheetX: 0
-    spriteSheetY: 0
-    extractRegion: 0
-    regionX: 0
-    regionY: 0
-    regionW: 0
-    regionH: 0
-    regionId: 0
-    colliderType: 0
-    colliderData: []
-    boxColliderMin: {x: 0, y: 0}
-    boxColliderMax: {x: 0, y: 0}
-    polyColliderIslands: []
-    polyColliderCap: 1
-    colliderConvex: 0
-    colliderSmoothSphereCollisions: 0
-    colliderColor: 0
-    attachPoints: []
-  - name: icon_none
-    disableTrimming: 0
-    additive: 0
-    scale: {x: 1, y: 1, z: 1}
-    texture: {fileID: 2800000, guid: c15124cf46c2c48399cb804572aa722b, type: 3}
     materialId: 0
     anchor: 4
     anchorX: 0

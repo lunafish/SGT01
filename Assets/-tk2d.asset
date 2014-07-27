@@ -63,6 +63,7 @@ MonoBehaviour:
     - mini_stat
     - mini_stat_bar
     - empty
+    - icon_map
     spriteTextureGUIDs:
     - 6c0b85784ec074840bc325441054db7d
     - 6054e80d7a3fb4510a3ee7a90b4e3bb2
@@ -72,6 +73,7 @@ MonoBehaviour:
     - 8ae6bdf299496448a8ef77dae36a9841
     - d182d0460ae4c487998af4cfe4a88d58
     - 672a26ca8e49a411a8b8f9cce5cb8807
+    - 1e7e9402d5a434df1a7e3c9c21861943
     spriteTextureTimeStamps:
     - 1406228401
     - 1406228397
@@ -81,6 +83,7 @@ MonoBehaviour:
     - 1405504123
     - 1405504123
     - 1405504123
+    - 1406495223
     managedSpriteCollection: 0
     loadable: 0
     assetName: 
@@ -155,37 +158,34 @@ MonoBehaviour:
     spriteCollectionDataGUID: ffb650cdf808c4d34b3eb2d741145dee
     spriteNames:
     - list_back
-    - icon_red_wp
+    - icon_arm
     - tab_deselect
-    - icon_red_arm
-    - icon_gray_wp
+    - icon_wp
+    - icon_exit
     - tab_select
     - list_item
-    - icon_gray_arm
+    - 
     - list_border
-    - icon_none
     spriteTextureGUIDs:
     - 1ec9b787805af4b9e87d0928417feda0
-    - 25760249db2e24c04aea018606daf020
+    - 829d1e24b2ba14357a46a13f5f87ab67
     - 77a1cf87c601c483aa2a54bde9b872a7
-    - 7830d0223db1a4974aa9b862d35b9428
-    - 89d9e2b77e4ae4efb9d2c6860e271d8f
+    - 693221034df434f46b4616446f7daa93
+    - 75afc932bb78544acb60720ff1abff0b
     - a38353829963549b7b3fdbb79ddc78b2
     - ca26eef1dcf184a4d8e555e29b2c2bdc
-    - eb5721da4ec2b4bf69d6f5a40a8e1b1c
+    - 
     - f872bbe2ea34340ac9e37a1a82b9a523
-    - c15124cf46c2c48399cb804572aa722b
     spriteTextureTimeStamps:
     - 1406238593
-    - 1405987643
+    - 1406481854
     - 1406229151
-    - 1405987613
-    - 1405987663
+    - 1406482137
+    - 1406490740
     - 1406229133
     - 1406238703
-    - 1405987439
+    - 0
     - 1406238703
-    - 1406067638
     managedSpriteCollection: 0
     loadable: 0
     assetName: 

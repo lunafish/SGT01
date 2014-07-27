@@ -26,8 +26,8 @@ public class LNPawn : MonoBehaviour {
 	public int _con = 0; // constitution
 
 	public eAttack _attackType = eAttack.SMASH;
-	public float _sak = 2.0f; // short range attack
-	public float _lak = 10.0f; // long ragen attack
+	public float _shortRangeAttack = 2.0f; // short range attack
+	public float _longRangeAttack = 10.0f; // long ragen attack
 
 	// for pawn grid
 	public int _x = -1, _y = -1;
@@ -57,6 +57,7 @@ public class LNPawn : MonoBehaviour {
 	public enum eSTATE {
 		READY = 0,
 		STAY,
+		MOVE,
 		DASH,
 		ATTACK,
 		DAMAGE,

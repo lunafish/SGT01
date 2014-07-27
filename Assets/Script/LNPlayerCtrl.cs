@@ -110,7 +110,7 @@ public class LNPlayerCtrl : LNPawn {
 	void Move(Vector3 v) {
 		Vector3 mov = new Vector3 (v.x, 0.0f, v.y);
 		mov.Normalize ();
-		mov *= (_speed * 0.05f);
+		mov *= (_speed * Time.deltaTime);
 		Vector3 vec = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0) * mov;
 		RaycastHit hit;
 		Vector3 margin = new Vector3 (0.0f, 0.5f, 0.0f);
@@ -137,7 +137,7 @@ public class LNPlayerCtrl : LNPawn {
 	// dash
 	bool Move_dash(Vector3 v) {
 		Vector3 mov = new Vector3 (v.x, 0.0f, v.z);
-		mov *= (_speed * 0.05f);
+		mov *= (_speed * Time.deltaTime);
 		RaycastHit hit;
 		Vector3 margin = new Vector3 (0.0f, 0.5f, 0.0f);
 		
@@ -397,7 +397,7 @@ public class LNPlayerCtrl : LNPawn {
 		return false;
 	}
 
-	// state machine
+	// state macFhine
 	void state_move( ) {
 		for(int i = 0; i < MAX_INPUT; i++) {
 			if(_inputs[i].use == true) {

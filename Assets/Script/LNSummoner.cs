@@ -153,7 +153,7 @@ public class LNSummoner : MonoBehaviour {
 		*/	
 		//
 
-		Debug.Log (rot);
+		//Debug.Log (rot);
 
 		transform.rotation = rot;
 		//
