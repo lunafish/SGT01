@@ -108,6 +108,11 @@ public class LNPlayerCtrl : LNPawn {
 
 	// move
 	void Move(Vector3 v) {
+		// check cutscene
+		if(LNCutsceneCtrl._isEnable) {
+			return;
+		}
+
 		Vector3 mov = new Vector3 (v.x, 0.0f, v.y);
 		mov.Normalize ();
 		mov *= (_speed * Time.deltaTime);

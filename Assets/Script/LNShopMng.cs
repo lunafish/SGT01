@@ -7,7 +7,7 @@ public class LNShopMng : MonoBehaviour {
 	// for INPUT
 	// for mouse
 	private Vector3 _mouse_pos;
-	
+
 	// for touch
 	struct LNTouch {
 		public bool use;
@@ -39,6 +39,7 @@ public class LNShopMng : MonoBehaviour {
 
 	// for tab
 	private GameObject[] _tabs = null; // tab object
+	private GameObject _list = null; // item list object
 	private string[] _tab_name = {"tab_arm", "tab_wp"}; // tab object name
 	private string _current_tab;
 
@@ -71,6 +72,7 @@ public class LNShopMng : MonoBehaviour {
 	// init ui data
 	void init() {
 		_tabs = GameObject.FindGameObjectsWithTag ("UITab");
+		_list = GameObject.FindGameObjectWithTag("UIList"); // find list object
 		selectTab (_tab_name[0]);
 
 		// read json data
@@ -83,9 +85,25 @@ public class LNShopMng : MonoBehaviour {
 
 		// init layout
 		float ratio = (float)Screen.width / (float)Screen.height;
+
+		// back button
 		Vector3 pos = _btnBack.transform.position;
 		pos.x = ratio - 0.16f;
 		_btnBack.transform.position = pos;
+
+		// tab & list
+		// tab
+		foreach( GameObject o in _tabs ) {
+			pos = o.transform.position;
+			pos.x = -ratio + 0.16f;
+			o.transform.position = pos;
+		}
+		// list
+		pos = _list.transform.position;
+		pos.x = -ratio + 0.634f;
+		_list.transform.position = pos;
+		//
+
 
 		// for audio
 		_audio = GetComponent<AudioSource>();
@@ -108,7 +126,6 @@ public class LNShopMng : MonoBehaviour {
 	void loadList( string tab ) {
 		_current_tab = tab;
 
-		GameObject list = GameObject.FindGameObjectWithTag("UIList"); // find list object
 
 		clearListItem(); // clear item
 
@@ -118,8 +135,8 @@ public class LNShopMng : MonoBehaviour {
 			GameObject item = Instantiate(Resources.Load("prefabs/list_item")) as GameObject; // list item
 			
 			// set transform
-			item.transform.position = list.transform.position;
-			item.transform.parent = list.transform;
+			item.transform.position = _list.transform.position;
+			item.transform.parent = _list.transform;
 			item.transform.localPosition = new Vector3(0.0f, 0.8f - (i * 0.32f), 1.0f);
 			//
 

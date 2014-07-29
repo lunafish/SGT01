@@ -11,11 +11,16 @@ public class LNCutsceneCtrl : MonoBehaviour {
 	public GameObject _next; // Next Button Sprite
 	public GameObject _kiosk; // kiosk sprite
 
+	// for state check
+	static public bool _isEnable = false;
+
+
 	// for json script
 	private JSONNode _json = null;
 
 	// Use this for initialization
 	void Start () {
+		_isEnable = false;
 		// read json
 		string txt;
 		if( LNUtil.ReadText ("json/cutscene", out txt)) {
@@ -67,6 +72,8 @@ public class LNCutsceneCtrl : MonoBehaviour {
 		_buttonExit.GetComponentInChildren<TextMesh> ().text = _node ["cancel"];
 		if(_node["kiosk"] != null) _kiosk.GetComponentInChildren<TextMesh> ().text = _node["kiosk"];
 		//
+
+		_isEnable = true;
 	}
 
 	// Disable
@@ -77,6 +84,8 @@ public class LNCutsceneCtrl : MonoBehaviour {
 		_talk.SetActive (false);
 		_next.SetActive (false);
 		_buttonExit.SetActive (false);
+
+		_isEnable = false;
 	}
 
 	// Exit button callback
