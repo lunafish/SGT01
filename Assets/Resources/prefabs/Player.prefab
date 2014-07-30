@@ -204,7 +204,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 400026}
   - 114: {fileID: 11400000}
-  - 65: {fileID: 6500000}
   - 114: {fileID: 11400002}
   m_Layer: 8
   m_Name: Player
@@ -501,6 +500,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400014}
   - 95: {fileID: 9500000}
+  - 65: {fileID: 6500000}
   m_Layer: 0
   m_Name: girl_org
   m_TagString: Untagged
@@ -1118,7 +1118,7 @@ BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100026}
+  m_GameObject: {fileID: 100064}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1

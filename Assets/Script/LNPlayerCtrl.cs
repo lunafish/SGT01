@@ -64,6 +64,9 @@ public class LNPlayerCtrl : LNPawn {
 		ATTACK_DASH,
 	};
 
+	// for collidor
+	BoxCollider _box = null;
+
 	// Use this for initialization
 	void Start () {
 		// return point
@@ -96,6 +99,9 @@ public class LNPlayerCtrl : LNPawn {
 
 		// default state
 		ChangeState (eSTATE.STAY);
+
+		// for collidor
+		_box = GetComponentInChildren<BoxCollider>();
 	}
 	
 	// Update is called once per frame
@@ -107,7 +113,7 @@ public class LNPlayerCtrl : LNPawn {
 	// Action
 
 	// move
-	void Move(Vector3 v) {
+	void move(Vector3 v) {
 		// check cutscene
 		if(LNCutsceneCtrl._isEnable) {
 			return;
@@ -120,9 +126,8 @@ public class LNPlayerCtrl : LNPawn {
 		RaycastHit hit;
 		Vector3 margin = new Vector3 (0.0f, 0.5f, 0.0f);
 
-		BoxCollider box = GetComponent<BoxCollider> ();
-		bool bMax = Physics.Raycast (box.bounds.max + vec + margin, -Vector3.up, out hit);
-		bool bMin = Physics.Raycast (box.bounds.min + vec + margin, -Vector3.up, out hit);
+		bool bMax = Physics.Raycast (_box.bounds.max + vec + margin, -Vector3.up, out hit);
+		bool bMin = Physics.Raycast (_box.bounds.min + vec + margin, -Vector3.up, out hit);
 
 		if ((bMax == true) && (bMin == true)) {
 			transform.Translate(mov); // move
@@ -140,15 +145,14 @@ public class LNPlayerCtrl : LNPawn {
 	}
 
 	// dash
-	bool Move_dash(Vector3 v) {
+	bool move_dash(Vector3 v) {
 		Vector3 mov = new Vector3 (v.x, 0.0f, v.z);
 		mov *= (_speed * Time.deltaTime);
 		RaycastHit hit;
 		Vector3 margin = new Vector3 (0.0f, 0.5f, 0.0f);
 		
-		BoxCollider box = GetComponent<BoxCollider> ();
-		bool bMax = Physics.Raycast (box.bounds.max + mov + margin, -Vector3.up, out hit);
-		bool bMin = Physics.Raycast (box.bounds.min + mov + margin, -Vector3.up, out hit);
+		bool bMax = Physics.Raycast (_box.bounds.max + mov + margin, -Vector3.up, out hit);
+		bool bMin = Physics.Raycast (_box.bounds.min + mov + margin, -Vector3.up, out hit);
 		
 		if ((bMax == true) && (bMin == true)) {
 			//transform.Translate(mov); // move
@@ -417,7 +421,7 @@ public class LNPlayerCtrl : LNPawn {
 
 					if( isMoveTouch( i ) ) {
 						_anim.SetBool ("isRun", true);
-						Move ( v );
+						move ( v );
 					} else {
 						_inputs[i].rotate = Rotate ( v ); // rotate check
 					}					
@@ -459,7 +463,7 @@ public class LNPlayerCtrl : LNPawn {
 		_state_delta += Time.deltaTime;
 
 		// dash move
-		bool state = Move_dash (_dash_dir);
+		bool state = move_dash (_dash_dir);
 
 		// Approch check
 		Vector3 v = _target.transform.position - transform.position;
@@ -507,7 +511,6 @@ public class LNPlayerCtrl : LNPawn {
 	void Update_camera() {
 		_camera.transform.position = transform.position;
 		Camera cam = _camera.GetComponentInChildren<Camera> ();
-		BoxCollider box = cam.GetComponent<BoxCollider> (); // get box collider
 		Vector3 dir = -cam.transform.forward;
 
 		dir *= 0.5f;
@@ -515,8 +518,8 @@ public class LNPlayerCtrl : LNPawn {
 		pos.y = cam.transform.position.y;
 		RaycastHit hit;
 		for(int i = 0; i < 5; i++) {
-			bool bMax = Physics.Raycast (box.bounds.max, -Vector3.up, out hit);
-			bool bMin = Physics.Raycast (box.bounds.min, -Vector3.up, out hit);
+			bool bMax = Physics.Raycast (_box.bounds.max, -Vector3.up, out hit);
+			bool bMin = Physics.Raycast (_box.bounds.min, -Vector3.up, out hit);
 			if( (bMax == true) && (bMin == true)) {
 				Debug.DrawRay(pos, -Vector3.up, Color.green);
 			} else {

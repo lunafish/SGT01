@@ -24,9 +24,6 @@ public class LNSummoner : MonoBehaviour {
 	// player
 	private GameObject _player;
 
-	// test
-	private bool isTest = false;
-
 	// Use this for initialization
 	void Start () {
 		Init ();
@@ -37,18 +34,6 @@ public class LNSummoner : MonoBehaviour {
 		updateAncker (); // update Ancker
 		updateShadow (); // update shadow
 		updateTrigger (); // update trigger
-		/*
-		// test
-		GameObject player = GameObject.FindGameObjectWithTag ("Player");
-		if(player && !isTest) {
-			Vector3 v = player.transform.position - transform.position;
-			if(v.magnitude < 4.0f) {
-				isTest = true;
-				Regen("pawn_00");
-			}
-		}
-		//
-		*/
 	}
 
 	void Init( ) {
