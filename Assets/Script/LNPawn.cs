@@ -15,15 +15,16 @@ public class LNPawn : MonoBehaviour {
 	// pawn default state
 	public int _hp = 100; // hp
 	public int _mp = 100; // mp
-	public int _sp = 0; // sp
-	public int _crt = 0; // critical
 
-	// pawn gene
+	// pawn property
+	public int _lv = 1; // level
+	public int _atk = 10; // attack
+	public int _def = 0; // deffence
+	public int _luk = 0; // lucky
 	public int _str = 0; // strength
-	public int _int = 0; // intelligence
-	public int _wis = 0; // wisdom
 	public int _dex = 0; // dexterity
-	public int _con = 0; // constitution
+	public int _int = 0; // intelligency
+	//
 
 	public eAttack _attackType = eAttack.SMASH;
 	public float _shortRangeAttack = 2.0f; // short range attack
@@ -90,7 +91,7 @@ public class LNPawn : MonoBehaviour {
 	}
 
 	// get damage from enemy
-	public virtual void Damage(GameObject source) {
+	public virtual void Damage(GameObject source, int damage) {
 
 	}
 
@@ -154,5 +155,25 @@ public class LNPawn : MonoBehaviour {
 	void Update () {
 
 	}
-	
+
+	// property
+	void updateProperty( ) {
+		// HP = 100 + ((LV-1) * STR)
+		_hp = 100 + ((_lv - 1) * _str);
+
+		// MP = 100 + ((LV-1) * INT)
+		_mp = 100 + ((_lv - 1) * _int);
+	}
+
+	// get attack value
+	public int GetATK( ) {
+		// ATK = atk + ((lv - 1) * str)
+		return (_atk + ((_lv - 1 ) * _str));
+	}
+
+	// get deffence value
+	public int GetDEF() {
+		// DEF = def + ((lv-1) * def)
+		return (_def + ((_lv - 1 ) * _def));
+	}
 }

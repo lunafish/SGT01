@@ -840,13 +840,13 @@ MonoBehaviour:
   _sight_length: 10
   _hp: 100
   _mp: 100
-  _sp: 0
-  _crt: 0
+  _lv: 1
+  _atk: 10
+  _def: 0
+  _luk: 0
   _str: 0
-  _int: 0
-  _wis: 0
   _dex: 0
-  _con: 0
+  _int: 0
   _attackType: 0
   _shortRangeAttack: 2
   _longRangeAttack: 10

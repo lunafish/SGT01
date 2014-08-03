@@ -295,7 +295,7 @@ public class LNAIPawn : LNPawn {
 	}
 
 	// damage call back
-	public override void Damage(GameObject source) {
+	public override void Damage(GameObject source, int damage) {
 		if(_current_state == eSTATE.DAMAGE || _current_state == eSTATE.READY)
 		{
 			Emotion( eEMOTION.MISS );
@@ -337,7 +337,7 @@ public class LNAIPawn : LNPawn {
 		// Damage process
 
 		// test
-		_hp -= 20;
+		_hp -= damage;
 		if(_hp < 0) {
 			_hp = 0;
 		}
@@ -353,6 +353,10 @@ public class LNAIPawn : LNPawn {
 		// set hp bar
 		if(_battery != null) {
 			_battery.SetValue( _hp );
+		}
+		TextMesh txt = _emotions[(int)eEMOTION.SMASH].GetComponent<TextMesh>();
+		if(txt) {
+			txt.text = "-" + damage;
 		}
 		//
 

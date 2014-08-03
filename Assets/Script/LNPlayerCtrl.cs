@@ -547,7 +547,7 @@ public class LNPlayerCtrl : LNPawn {
 	}
 
 	// state function
-	public override void Damage(GameObject source) {
+	public override void Damage(GameObject source, int damage) {
 		
 	}
 }

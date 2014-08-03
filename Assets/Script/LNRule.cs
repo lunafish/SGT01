@@ -114,9 +114,9 @@ public class LNRule : MonoBehaviour {
 	// attack under control
 	public void Attack( GameObject source, GameObject target ) {
 		// attack process
-
+		int damage = source.GetComponent<LNPawn>().GetATK() - target.GetComponent<LNPawn>().GetDEF();
 		//
-		target.GetComponent<LNPawn> ().Damage (source);
+		target.GetComponent<LNPawn> ().Damage (source, damage);
 	}
 
 	// action (NPC)
