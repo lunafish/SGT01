@@ -62,6 +62,9 @@ public class LNAIPawn : LNPawn {
 
 		// find sound
 		_approachSound = GetComponent<AudioSource>();
+
+		// init preperty
+		updateProperty();
 	}
 
 	void Awake () 

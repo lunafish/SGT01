@@ -64,6 +64,9 @@ MonoBehaviour:
     - mini_stat_bar
     - empty
     - icon_map
+    - Gage_mp
+    - Gage_bar
+    - Gage_hp
     spriteTextureGUIDs:
     - 6c0b85784ec074840bc325441054db7d
     - 6054e80d7a3fb4510a3ee7a90b4e3bb2
@@ -74,6 +77,9 @@ MonoBehaviour:
     - d182d0460ae4c487998af4cfe4a88d58
     - 672a26ca8e49a411a8b8f9cce5cb8807
     - 1e7e9402d5a434df1a7e3c9c21861943
+    - 1b2e1cc7366f04a5382aa8b6dc3e09e2
+    - 3e1176c8bdf56450f99d65444c31f503
+    - ec091dfb08bcb46978867b1e98ac7401
     spriteTextureTimeStamps:
     - 1406228401
     - 1406228397
@@ -84,6 +90,9 @@ MonoBehaviour:
     - 1405504123
     - 1405504123
     - 1406495223
+    - 1407112488
+    - 1407112414
+    - 1407112468
     managedSpriteCollection: 0
     loadable: 0
     assetName: 

@@ -13,6 +13,8 @@ public class LNPawn : MonoBehaviour {
 	public float _sight_length = 10.0f; // sight length
 
 	// pawn default state
+	public int _base_hp = 100;
+	public int _base_mp = 25;
 	public int _hp = 100; // hp
 	public int _mp = 100; // mp
 
@@ -157,12 +159,24 @@ public class LNPawn : MonoBehaviour {
 	}
 
 	// property
-	void updateProperty( ) {
-		// HP = 100 + ((LV-1) * STR)
-		_hp = 100 + ((_lv - 1) * _str);
+	protected void updateProperty( ) {
+		// HP = Base HP + ((LV-1) * STR)
+		_hp = GetMaxHP();
 
-		// MP = 100 + ((LV-1) * INT)
-		_mp = 100 + ((_lv - 1) * _int);
+		// MP = Base MP + ((LV-1) * INT)
+		_mp = GetMaxMP();
+	}
+
+	// get MAX HP
+	public int GetMaxHP( ) {
+		// HP = Base HP + ((LV-1) * STR)
+		return (_base_hp + ((_lv - 1) * _str));
+	}
+
+	// get MAX MP
+	public int GetMaxMP( ) {
+		// MP = Base MP + ((LV-1) * INT)
+		return (_base_mp + ((_lv - 1) * _int));
 	}
 
 	// get attack value

@@ -102,6 +102,9 @@ public class LNPlayerCtrl : LNPawn {
 
 		// for collidor
 		_box = GetComponentInChildren<BoxCollider>();
+
+		// init preperty
+		updateProperty();
 	}
 	
 	// Update is called once per frame
@@ -230,6 +233,12 @@ public class LNPlayerCtrl : LNPawn {
 				hit.gameObject.transform.rotation = _avatar.transform.rotation;
 				hit.gameObject.GetComponent<LNEffectCtrl>().Play();
 			}
+
+			// test
+			if(_mp > 0) {
+				_mp -= 5;
+			}
+			//
 		}
 
 		// get rule book and attack target
