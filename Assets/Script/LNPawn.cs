@@ -49,6 +49,9 @@ public class LNPawn : MonoBehaviour {
 	// shadow
 	protected GameObject _shadow = null;
 
+	// tick
+	public float _tick = 0.3f; // 1 tick
+
 	// pawn
 	public enum ePawn {
 		PLAYER = 0,

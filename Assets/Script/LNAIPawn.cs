@@ -124,6 +124,8 @@ public class LNAIPawn : LNPawn {
 			state_talk( );
 		} else if(_current_state == eSTATE.MOVE) {
 			state_move( );
+		} else if(_current_state == eSTATE.ATTACK) {
+			state_attack( );
 		}
 	}
 
@@ -186,7 +188,7 @@ public class LNAIPawn : LNPawn {
 		// stop condision
 		if(len > _sight_length || len < 1.0f) {
 			Debug.Log("Stay State Change");
-			ChangeState( eSTATE.STAY );
+			ChangeState( eSTATE.ATTACK );
 			return;
 		}
 
@@ -256,6 +258,16 @@ public class LNAIPawn : LNPawn {
 		}
 	}
 	//
+
+	// attack state
+	void state_attack( ) {
+		_state_delta += Time.deltaTime;
+
+		if(_state_delta > (_tick * 4)) {
+			attack( ); // attack
+			ChangeState(eSTATE.STAY);
+		}
+	}
 
 	void Emotion( eEMOTION e ) {
 		if(_current_state == eSTATE.TALK)
@@ -385,6 +397,15 @@ public class LNAIPawn : LNPawn {
 			LNUtil.Instance().SetReturnPoint( source.transform.position, source.transform.rotation ); // save return postion
 			Application.LoadLevel(_npc_target);
 		}
+	}
+
+	void attack( ) {
+		// get rule book and attack target
+		Debug.Log("Enemy Attack!");
+		if(_target != null) {
+			_rule.GetComponent<LNRule> ().Attack( transform.gameObject, _target );
+		}
+		//
 	}
 
 

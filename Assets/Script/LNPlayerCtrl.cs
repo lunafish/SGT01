@@ -67,6 +67,9 @@ public class LNPlayerCtrl : LNPawn {
 	// for collidor
 	BoxCollider _box = null;
 
+	// for sound
+	public AudioSource _sndCrash = null;
+
 	// Use this for initialization
 	void Start () {
 		// return point
@@ -557,6 +560,12 @@ public class LNPlayerCtrl : LNPawn {
 
 	// state function
 	public override void Damage(GameObject source, int damage) {
-		
+		_sndCrash.Play();
+		_hp -= damage;
+	
+		// test
+		if(_hp < 0) {
+			_hp = GetMaxHP();
+		}
 	}
 }
