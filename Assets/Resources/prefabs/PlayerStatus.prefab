@@ -274,7 +274,7 @@ MonoBehaviour:
   collection: {fileID: 11400000, guid: ed65e81a2018648fc887a6297c92674a, type: 2}
   _color: {r: 1, g: 1, b: 1, a: 1}
   _scale: {x: 1, y: 1, z: 1}
-  _spriteId: 9
+  _spriteId: 11
   boxCollider2D: {fileID: 0}
   polygonCollider2D: []
   edgeCollider2D: []
@@ -297,7 +297,7 @@ MonoBehaviour:
   collection: {fileID: 11400000, guid: ed65e81a2018648fc887a6297c92674a, type: 2}
   _color: {r: 1, g: 1, b: 1, a: 1}
   _scale: {x: 1, y: 1, z: 1}
-  _spriteId: 11
+  _spriteId: 9
   boxCollider2D: {fileID: 0}
   polygonCollider2D: []
   edgeCollider2D: []
