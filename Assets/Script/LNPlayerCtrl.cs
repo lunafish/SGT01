@@ -201,7 +201,7 @@ public class LNPlayerCtrl : LNPawn {
 		} else if(_target.GetComponent<LNPawn>()._type == ePawn.ENEMY) {
 			ChangeState( eSTATE.ATTACK );
 			Attack();
-		}
+		} 
 	}
 	
 	// attack enemy
@@ -450,6 +450,11 @@ public class LNPlayerCtrl : LNPawn {
 								if(!checkUI(i)) {
 									Action();
 								}
+							} else {
+								// default attack motion
+								ChangeState( eSTATE.ATTACK );
+								_attack_delay = _tick * 2.0f; // set attack delay
+								ChangeAni (eANI.ATTACK_BLADE); // change attack ani
 							}
 						} else {
 							if(_inputs[i].rotate == false) {

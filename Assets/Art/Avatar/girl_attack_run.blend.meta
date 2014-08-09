@@ -44,6 +44,15 @@ ModelImporter:
     100076: sera_body
     100078: sera_scarf
     100080: sera_tie
+    100082: armor_arm_right
+    100084: armor_right
+    100086: hair_00
+    100088: hair_01
+    100090: hair_02
+    100092: hand_left
+    100094: hand_right
+    100096: sera_arm_left
+    100098: sera_arm_right
     400000: Armature
     400002: armor_00
     400004: armor_01
@@ -85,6 +94,15 @@ ModelImporter:
     400076: sera_body
     400078: sera_scarf
     400080: sera_tie
+    400082: armor_arm_right
+    400084: armor_right
+    400086: hair_00
+    400088: hair_01
+    400090: hair_02
+    400092: hand_left
+    400094: hand_right
+    400096: sera_arm_left
+    400098: sera_arm_right
     4300000: armor_04
     4300002: armor_03
     4300004: hand_arm
@@ -103,6 +121,15 @@ ModelImporter:
     4300030: hair_back_01
     4300032: hair_back_00
     4300034: head
+    4300036: sera_arm_left
+    4300038: armor_right
+    4300040: hand_left
+    4300042: armor_arm_right
+    4300044: sera_arm_right
+    4300046: hair_00
+    4300048: hand_right
+    4300050: hair_01
+    4300052: hair_02
     7400000: Default Take
     7400002: ArmatureAction
     9500000: //RootNode
@@ -124,6 +151,15 @@ ModelImporter:
     13700030: sera_body
     13700032: sera_scarf
     13700034: sera_tie
+    13700036: armor_arm_right
+    13700038: armor_right
+    13700040: hair_00
+    13700042: hair_01
+    13700044: hair_02
+    13700046: hand_left
+    13700048: hand_right
+    13700050: sera_arm_left
+    13700052: sera_arm_right
   materials:
     importMaterials: 1
     materialName: 0

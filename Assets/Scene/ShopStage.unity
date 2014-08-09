@@ -1469,7 +1469,7 @@ SkinnedMeshRenderer:
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
-  m_Mesh: {fileID: 4300004, guid: 578d5c7bac0064f7cb8ac0c39a4512e8, type: 3}
+  m_Mesh: {fileID: 4300006, guid: b9e1ec5ceb0904d18a4efbb1022d525a, type: 3}
   m_Bones:
   - {fileID: 0}
   - {fileID: 0}
@@ -3435,6 +3435,10 @@ Prefab:
       propertyPath: m_TagString
       value: PartsRWP
       objectReference: {fileID: 0}
+    - target: {fileID: 13700012, guid: 578d5c7bac0064f7cb8ac0c39a4512e8, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300006, guid: b9e1ec5ceb0904d18a4efbb1022d525a, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 578d5c7bac0064f7cb8ac0c39a4512e8, type: 3}
   m_RootGameObject: {fileID: 1798593698}
@@ -3792,7 +3796,7 @@ SkinnedMeshRenderer:
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
-  m_Mesh: {fileID: 4300004, guid: 578d5c7bac0064f7cb8ac0c39a4512e8, type: 3}
+  m_Mesh: {fileID: 4300006, guid: b9e1ec5ceb0904d18a4efbb1022d525a, type: 3}
   m_Bones:
   - {fileID: 696936328}
   - {fileID: 809011835}
