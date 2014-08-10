@@ -25,7 +25,7 @@ GameObject:
   - 4: {fileID: 400002}
   - 137: {fileID: 13700000}
   m_Layer: 0
-  m_Name: katana_red
+  m_Name: katana
   m_TagString: PartsRWP
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,7 +68,7 @@ SkinnedMeshRenderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 524db97e7ec0e4fccbf1b5506ff17aff, type: 2}
+  - {fileID: 2100000, guid: 5fe760d9e76c34650803576ae658b7fe, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -105,8 +105,8 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 0}
   m_AABB:
-    m_Center: {x: -.343321711, y: -1.37512147, z: -2.41398811e-06}
-    m_Extent: {x: .954850078, y: .0963357687, z: .262888521}
+    m_Center: {x: -.657394469, y: -1.3685298, z: -1.1920929e-06}
+    m_Extent: {x: .646047652, y: .0960102081, z: .262887299}
   m_DirtyAABB: 0
 --- !u!1001 &100100000
 Prefab:

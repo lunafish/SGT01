@@ -1359,6 +1359,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1099649455}
+  - 114: {fileID: 1099649456}
   m_Layer: 0
   m_Name: camera
   m_TagString: Untagged
@@ -1379,6 +1380,18 @@ Transform:
   - {fileID: 1506588817}
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!114 &1099649456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: f74bdd37d23b446469f6d10565f8d6a4,
+    type: 2}
+  m_PrefabInternal: {fileID: 336714275}
+  m_GameObject: {fileID: 1099649454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83498d51f3fad4c0f8d3a21087532d0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1165386552
 GameObject:
   m_ObjectHideFlags: 0
@@ -2684,7 +2697,7 @@ SkinnedMeshRenderer:
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
-  m_Mesh: {fileID: 4300006, guid: b9e1ec5ceb0904d18a4efbb1022d525a, type: 3}
+  m_Mesh: {fileID: 4300004, guid: 578d5c7bac0064f7cb8ac0c39a4512e8, type: 3}
   m_Bones:
   - {fileID: 593813452}
   - {fileID: 1288679979}

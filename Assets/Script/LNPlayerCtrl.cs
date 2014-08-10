@@ -97,8 +97,8 @@ public class LNPlayerCtrl : LNPawn {
 		_cam_length = v.magnitude;
 		_cam_target_pos = _camera.transform.position;
 
-		_camera.transform.position = transform.position;
-		_camera.transform.rotation = transform.rotation;
+		_camera.GetComponent<LNCameraCtrl>().SetPostion( transform.position );
+		_camera.GetComponent<LNCameraCtrl>().SetRotation( transform.rotation );
 
 		// default state
 		ChangeState (eSTATE.STAY);
@@ -179,7 +179,8 @@ public class LNPlayerCtrl : LNPawn {
 		// check rotate bound
 		if( Mathf.Abs( v.x ) > 16.0f && Mathf.Abs (v.y) < 64.0f) {
 			float f = _rotate_speed * (v.x * 0.1f);
-			_camera.transform.Rotate(0.0f, f, 0.0f);
+			_camera.GetComponent<LNCameraCtrl>().Rotate(0.0f, f, 0.0f);
+
 			if(!_viewer)
 				Update_camera ();
 			return true;
@@ -223,10 +224,12 @@ public class LNPlayerCtrl : LNPawn {
 			// range attack
 			_attackType = eAttack.SMASH;
 			ChangeAni (eANI.ATTACK_BLADE); // change attack ani
+			_camera.GetComponent<LNCameraCtrl>().Effect( LNCameraCtrl.EFFECT.PUSH, _avatar.transform.forward ); // push forawrd
 		} else {
 			// long range attack
 			_attackType = eAttack.RANGE;
 			ChangeAni (eANI.ATTACK_GUN); // change attack ani
+			_camera.GetComponent<LNCameraCtrl>().Effect( LNCameraCtrl.EFFECT.PUSH, _avatar.transform.forward * -1 ); // push backward
 
 			// bullet attack effect
 			// active hit effect
@@ -455,6 +458,7 @@ public class LNPlayerCtrl : LNPawn {
 								ChangeState( eSTATE.ATTACK );
 								_attack_delay = _tick * 2.0f; // set attack delay
 								ChangeAni (eANI.ATTACK_BLADE); // change attack ani
+								//
 							}
 						} else {
 							if(_inputs[i].rotate == false) {
@@ -526,7 +530,7 @@ public class LNPlayerCtrl : LNPawn {
 
 	// camera update
 	void Update_camera() {
-		_camera.transform.position = transform.position;
+		_camera.GetComponent<LNCameraCtrl>().SetPostion(transform.position);
 		Camera cam = _camera.GetComponentInChildren<Camera> ();
 		Vector3 dir = -cam.transform.forward;
 
@@ -568,6 +572,8 @@ public class LNPlayerCtrl : LNPawn {
 		_sndCrash.Play();
 		_hp -= damage;
 	
+		_camera.GetComponent<LNCameraCtrl>().Effect( LNCameraCtrl.EFFECT.SHAKE );
+
 		// test
 		if(_hp < 0) {
 			_hp = GetMaxHP();

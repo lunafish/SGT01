@@ -179,18 +179,10 @@ public class LNAIPawn : LNPawn {
 			return;
 		}
 
-		// move
-
+		// fine direction
 		Vector3 dir = _target.transform.position - transform.position;
 		float len = dir.magnitude;
 		dir.Normalize();
-
-		// stop condision
-		if(len > _sight_length || len < 1.0f) {
-			Debug.Log("Stay State Change");
-			ChangeState( eSTATE.ATTACK );
-			return;
-		}
 
 		// look
 		Vector3 look = _target.transform.position;
@@ -198,9 +190,15 @@ public class LNAIPawn : LNPawn {
 		transform.LookAt(look);
 		//
 
-		// move
-		move( dir * (_speed * Time.deltaTime) );
-
+		// stop condision
+		if(len > _sight_length) {
+			ChangeState( eSTATE.STAY );
+		} else if(len < _shortRangeAttack) {
+			ChangeState( eSTATE.ATTACK );
+		} else {
+			// move
+			move( dir * (_speed * Time.deltaTime) );
+		}
 	}
 
 	void state_damage( ) {

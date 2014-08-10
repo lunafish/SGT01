@@ -42,6 +42,28 @@ ModelImporter:
     100072: katana_001
     100074: armor_L_red
     100076: katana_red
+    100078: Armature_001
+    100080: Bone_0
+    100082: Bone_10
+    100084: Bone_11
+    100086: Bone_12
+    100088: Bone_13
+    100090: Bone_14
+    100092: Bone_15
+    100094: Bone_16
+    100096: Bone_17
+    100098: Bone_18
+    100100: Bone_19
+    100102: Bone_2
+    100104: Bone_20
+    100106: Bone_21
+    100108: Bone_3
+    100110: Bone_4
+    100112: Bone_5
+    100114: Bone_6
+    100116: Bone_7
+    100118: Bone_8
+    100120: Bone_9
     400000: Armature
     400002: armor_arm_L
     400004: armor_L
@@ -81,6 +103,28 @@ ModelImporter:
     400072: katana_001
     400074: armor_L_red
     400076: katana_red
+    400078: Armature_001
+    400080: Bone_0
+    400082: Bone_10
+    400084: Bone_11
+    400086: Bone_12
+    400088: Bone_13
+    400090: Bone_14
+    400092: Bone_15
+    400094: Bone_16
+    400096: Bone_17
+    400098: Bone_18
+    400100: Bone_19
+    400102: Bone_2
+    400104: Bone_20
+    400106: Bone_21
+    400108: Bone_3
+    400110: Bone_4
+    400112: Bone_5
+    400114: Bone_6
+    400116: Bone_7
+    400118: Bone_8
+    400120: Bone_9
     4300000: hend_L
     4300002: sera_arm_R
     4300004: katana

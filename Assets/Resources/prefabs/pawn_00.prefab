@@ -838,6 +838,8 @@ MonoBehaviour:
   _avatar: {fileID: 100010}
   _type: 2
   _sight_length: 10
+  _base_hp: 100
+  _base_mp: 25
   _hp: 100
   _mp: 100
   _lv: 1
@@ -848,11 +850,12 @@ MonoBehaviour:
   _dex: 0
   _int: 0
   _attackType: 0
-  _shortRangeAttack: 2
+  _shortRangeAttack: 1.5
   _longRangeAttack: 10
   _x: -1
   _y: -1
   _corridor: {fileID: 0}
+  _tick: .300000012
   _stun_delta: 1
   _emotions:
   - {fileID: 100022}
