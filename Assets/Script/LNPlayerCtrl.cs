@@ -64,9 +64,6 @@ public class LNPlayerCtrl : LNPawn {
 		ATTACK_DASH,
 	};
 
-	// for collidor
-	BoxCollider _box = null;
-
 	// for sound
 	public AudioSource _sndCrash = null;
 
@@ -103,9 +100,6 @@ public class LNPlayerCtrl : LNPawn {
 		// default state
 		ChangeState (eSTATE.STAY);
 
-		// for collidor
-		_box = GetComponentInChildren<BoxCollider>();
-
 		// init preperty
 		updateProperty();
 	}
@@ -117,31 +111,6 @@ public class LNPlayerCtrl : LNPawn {
 
 	}
 
-	// Action
-	bool checkBound( Vector3 vec ) {
-
-		// make 4 side
-		Vector3 v1 = _box.bounds.min;
-		Vector3 v2 = _box.bounds.max;
-		Vector3 v3 = _box.bounds.min;
-		Vector3 v4 = _box.bounds.max;
-		v3.z = v2.z;
-		v4.z = v1.z;
-
-		Vector3 margin = new Vector3 (0.0f, 1.0f, 0.0f);
-
-		RaycastHit hit;
-		bool side1 = Physics.Raycast (v1 + vec + margin, -Vector3.up, out hit);
-		bool side2 = Physics.Raycast (v2 + vec + margin, -Vector3.up, out hit);
-		bool side3 = Physics.Raycast (v3 + vec + margin, -Vector3.up, out hit);
-		bool side4 = Physics.Raycast (v4 + vec + margin, -Vector3.up, out hit);
-
-		if ((side1 == true) && (side2 == true) && (side3 == true) && (side4 == true)) {
-			return true;
-		}
-
-		return false;
-	}
 
 	// move
 	void move(Vector3 v) {
@@ -567,9 +536,7 @@ public class LNPlayerCtrl : LNPawn {
 		pos.y = cam.transform.position.y;
 		RaycastHit hit;
 		for(int i = 0; i < 5; i++) {
-			bool bMax = Physics.Raycast (_box.bounds.max, -Vector3.up, out hit);
-			bool bMin = Physics.Raycast (_box.bounds.min, -Vector3.up, out hit);
-			if( (bMax == true) && (bMin == true)) {
+			if(Physics.Raycast (pos, -Vector3.up, out hit)) {
 				Debug.DrawRay(pos, -Vector3.up, Color.green);
 			} else {
 				Debug.DrawRay(pos, -Vector3.up, Color.red);

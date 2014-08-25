@@ -136,7 +136,7 @@ public class LNAIPawn : LNPawn {
 			if(_target) {
 				// target state check
 				if(_target.GetComponent<LNPawn>().GetTarget() == null) {
-					Debug.LogError("Wrong Target state");
+					//Debug.LogError("Wrong Target state");
 					return;
 				}
 
@@ -209,6 +209,10 @@ public class LNAIPawn : LNPawn {
 
 			// hp == 0
 			if(_hp <= 0) {
+				if(_corridor) {
+					_corridor.GetComponent<LNDungeonCtrl>().DelPawn( gameObject );
+				}
+
 				// destory self
 				Destroy( transform.gameObject );
 
@@ -401,7 +405,10 @@ public class LNAIPawn : LNPawn {
 		// get rule book and attack target
 		Debug.Log("Enemy Attack!");
 		if(_target != null) {
-			_rule.GetComponent<LNRule> ().Attack( transform.gameObject, _target );
+			Vector3 v = _target.transform.position - transform.position;
+			if(v.magnitude < _shortRangeAttack) {
+				_rule.GetComponent<LNRule> ().Attack( transform.gameObject, _target );
+			}
 		}
 		//
 	}
@@ -409,15 +416,18 @@ public class LNAIPawn : LNPawn {
 
 	// move
 	bool move( Vector3 mov ) {
-		RaycastHit hit;
-		Vector3 margin = new Vector3 (0.0f, 0.5f, 0.0f);
+		// crash
+		bool bCrash = false;
+		if(_corridor != null) {
+			if(_corridor.GetComponent<LNDungeonCtrl>().Crash( gameObject, mov )) {
+				bCrash = true;
+			}
+		}
 
-		BoxCollider box = GetComponent<BoxCollider> ();
-		bool bMax = Physics.Raycast (box.bounds.max + mov + margin, -Vector3.up, out hit);
-		bool bMin = Physics.Raycast (box.bounds.min + mov + margin, -Vector3.up, out hit);
-		
-		if ((bMax == true) && (bMin == true)) {
+		if (checkBound(mov) && (bCrash == false)) {
 			transform.position += mov;
+			move_dungeon();
+
 		} else {
 			return false;
 		}

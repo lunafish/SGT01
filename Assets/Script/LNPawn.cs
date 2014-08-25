@@ -52,6 +52,9 @@ public class LNPawn : MonoBehaviour {
 	// tick
 	public float _tick = 0.3f; // 1 tick
 
+	// for collidor
+	protected BoxCollider _box = null;
+
 	// pawn
 	public enum ePawn {
 		PLAYER = 0,
@@ -126,6 +129,8 @@ public class LNPawn : MonoBehaviour {
 				LNDungeonCtrl ctrl = _corridor.GetComponent<LNDungeonCtrl>();
 				if(ctrl) {
 					ctrl.AddPawn( transform.gameObject );
+				} else {
+					_corridor = null;
 				}
 			}
 		}
@@ -145,6 +150,37 @@ public class LNPawn : MonoBehaviour {
 			}
 		}
 	}
+
+	// Action
+	protected bool checkBound( Vector3 vec ) {
+		if(_box == null) {
+			// for collidor
+			_box = GetComponentInChildren<BoxCollider>();
+		}
+		
+		// make 4 side
+		Vector3 v1 = _box.bounds.min;
+		Vector3 v2 = _box.bounds.max;
+		Vector3 v3 = _box.bounds.min;
+		Vector3 v4 = _box.bounds.max;
+		v3.z = v2.z;
+		v4.z = v1.z;
+		
+		Vector3 margin = new Vector3 (0.0f, 1.0f, 0.0f);
+		
+		RaycastHit hit;
+		bool side1 = Physics.Raycast (v1 + vec + margin, -Vector3.up, out hit);
+		bool side2 = Physics.Raycast (v2 + vec + margin, -Vector3.up, out hit);
+		bool side3 = Physics.Raycast (v3 + vec + margin, -Vector3.up, out hit);
+		bool side4 = Physics.Raycast (v4 + vec + margin, -Vector3.up, out hit);
+		
+		if ((side1 == true) && (side2 == true) && (side3 == true) && (side4 == true)) {
+			return true;
+		}
+		
+		return false;
+	}
+
 
 	// get target
 	public GameObject GetTarget() { 
