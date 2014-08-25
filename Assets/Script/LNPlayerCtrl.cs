@@ -114,9 +114,34 @@ public class LNPlayerCtrl : LNPawn {
 	void Update () {
 		UpdateInput();	
 		UpdatePlayer();
+
 	}
 
 	// Action
+	bool checkBound( Vector3 vec ) {
+
+		// make 4 side
+		Vector3 v1 = _box.bounds.min;
+		Vector3 v2 = _box.bounds.max;
+		Vector3 v3 = _box.bounds.min;
+		Vector3 v4 = _box.bounds.max;
+		v3.z = v2.z;
+		v4.z = v1.z;
+
+		Vector3 margin = new Vector3 (0.0f, 1.0f, 0.0f);
+
+		RaycastHit hit;
+		bool side1 = Physics.Raycast (v1 + vec + margin, -Vector3.up, out hit);
+		bool side2 = Physics.Raycast (v2 + vec + margin, -Vector3.up, out hit);
+		bool side3 = Physics.Raycast (v3 + vec + margin, -Vector3.up, out hit);
+		bool side4 = Physics.Raycast (v4 + vec + margin, -Vector3.up, out hit);
+
+		if ((side1 == true) && (side2 == true) && (side3 == true) && (side4 == true)) {
+			return true;
+		}
+
+		return false;
+	}
 
 	// move
 	void move(Vector3 v) {
@@ -129,14 +154,17 @@ public class LNPlayerCtrl : LNPawn {
 		mov.Normalize ();
 		mov *= (_speed * Time.deltaTime);
 		Vector3 vec = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0) * mov;
-		RaycastHit hit;
-		Vector3 margin = new Vector3 (0.0f, 0.5f, 0.0f);
 
-		bool bMax = Physics.Raycast (_box.bounds.max + vec + margin, -Vector3.up, out hit);
-		bool bMin = Physics.Raycast (_box.bounds.min + vec + margin, -Vector3.up, out hit);
+		// crash enemy
+		bool bCrash = false;
+		if(_corridor != null) {
+			if(_corridor.GetComponent<LNDungeonCtrl>().Crash( gameObject, vec )) {
+				bCrash = true;
+			}
+		}
 
-		if ((bMax == true) && (bMin == true)) {
-			transform.Translate(mov); // move
+		if(checkBound( vec ) && (bCrash == false)) {
+			transform.position += vec;
 			_avatar_lookat = transform.position + vec;
 			_avatar.transform.LookAt( _avatar_lookat );
 

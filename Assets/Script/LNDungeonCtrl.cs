@@ -232,4 +232,18 @@ public class LNDungeonCtrl : MonoBehaviour {
 			}
 		}
 	}
+
+	// check crash
+	public GameObject Crash( GameObject pawn, Vector3 vec = new Vector3() ) {
+		for(int i = 0; i < _lstPawn.Count; i++) {
+			GameObject obj = (GameObject)_lstPawn[i];
+			if(obj != pawn) {
+				Vector3 v = (pawn.transform.position + vec) - obj.transform.position;
+				if(v.magnitude < 1.0f) {
+					return obj;
+				}
+			}
+		}
+		return null;
+	}
 }
