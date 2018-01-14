@@ -10,7 +10,7 @@ public class LNDungeonMng : MonoBehaviour {
 	public int _max_x = 8;
 	public int _max_y = 8;
 
-	private float _tile_size = 12.0f; // tile size
+	private float _tile_size = 24.0f; // tile size
 
 //	private ArrayList _corridor = new ArrayList(); // dungeon corridor
 	private Dictionary<int, GameObject> _corridor = new Dictionary<int, GameObject>();
