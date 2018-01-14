@@ -38,7 +38,7 @@ public class LNSummoner : MonoBehaviour {
 
 	void Init( ) {
 		_anim = GetComponentInChildren<Animator> (); // get animator
-		_shadow = transform.FindChild ("Shadow").gameObject; // get shadow object
+		_shadow = transform.Find ("Shadow").gameObject; // get shadow object
 		_cargoCount = 0; // init cargocount
 		_delayDelta = _triggerDelay; // init delay delta
 		_player = GameObject.FindGameObjectWithTag ("Player"); // get player object
@@ -64,7 +64,7 @@ public class LNSummoner : MonoBehaviour {
 			return;
 		}
 
-		AnimationInfo[] state = _anim.GetCurrentAnimationClipState (0);
+		AnimatorClipInfo[] state = _anim.GetCurrentAnimatorClipInfo (0);
 		if(state[0].clip.name == "crane_move") {
 			AnimatorStateInfo info =  _anim.GetCurrentAnimatorStateInfo (0);
 			//Debug.Log(info.normalizedTime);

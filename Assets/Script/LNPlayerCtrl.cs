@@ -19,6 +19,10 @@ public class LNPlayerCtrl : LNPawn {
 		public Vector3 pos;
 	};
 
+	// for key
+	private bool _is_key = false;
+	private Vector3 _key_dir;
+
 	// const value
 	private const int MAX_INPUT = 5;
 	private const int TOUCH_DOWN = 0;
@@ -174,7 +178,7 @@ public class LNPlayerCtrl : LNPawn {
 	// rotate
 	bool Rotate(Vector3 v) {
 		// check rotate bound
-		if( Mathf.Abs( v.x ) > 16.0f && Mathf.Abs (v.y) < 64.0f) {
+		if( Mathf.Abs( v.x ) > 16.0f && Mathf.Abs (v.y) < 128.0f) {
 			float f = _rotate_speed * (v.x * 0.1f);
 			_camera.GetComponent<LNCameraCtrl>().Rotate(0.0f, f, 0.0f);
 
@@ -230,7 +234,7 @@ public class LNPlayerCtrl : LNPawn {
 
 			// bullet attack effect
 			// active hit effect
-			Transform hit = transform.FindChild ("EffectBullet");
+			Transform hit = transform.Find ("EffectBullet");
 			if(hit) {
 				hit.gameObject.SetActive(true);
 				hit.gameObject.transform.rotation = _avatar.transform.rotation;
@@ -376,8 +380,9 @@ public class LNPlayerCtrl : LNPawn {
 				}
 			}
 		}
+		#endif
 
-		#else
+		// keyboard and mouse
 		if(Input.GetMouseButtonDown(0) == true) {
 			_mouse_start_pos = Input.mousePosition;
 
@@ -397,7 +402,26 @@ public class LNPlayerCtrl : LNPawn {
 			_inputs[0].state = TOUCH_UP;
 			_inputs[0].pos = Input.mousePosition;
 		}
-		#endif
+
+		// keyboard
+		_is_key = false;
+		if(Input.GetKey(KeyCode.W)) {
+			_key_dir = Vector3.up;
+			_is_key = true;
+		}
+		else if(Input.GetKey(KeyCode.A)) {
+			_key_dir = Vector3.left;
+			_is_key = true;
+		}
+		else if(Input.GetKey(KeyCode.D)) {
+			_key_dir = Vector3.right;
+			_is_key = true;
+
+		}
+		else if(Input.GetKey(KeyCode.S)) {
+			_key_dir = Vector3.down;
+			_is_key = true;
+		}
 	}
 
 	// UI Check
@@ -420,6 +444,15 @@ public class LNPlayerCtrl : LNPawn {
 
 	// state macFhine
 	void state_move( ) {
+
+		// keyboard
+		if (_is_key) {
+			transform.rotation = _camera.transform.rotation;
+			_anim.SetBool ("isRun", true);
+			move ( _key_dir );
+		}
+		//
+
 		for(int i = 0; i < MAX_INPUT; i++) {
 			if(_inputs[i].use == true) {
 				if(_inputs[i].state == TOUCH_DOWN) {
@@ -506,7 +539,7 @@ public class LNPlayerCtrl : LNPawn {
 
 			// Effect off
 			// active hit effect
-			Transform hit = transform.FindChild ("EffectBullet");
+			Transform hit = transform.Find ("EffectBullet");
 			if(hit) {
 				hit.gameObject.SetActive(false);
 			}

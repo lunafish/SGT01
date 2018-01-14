@@ -139,7 +139,7 @@ public class LNPawn : MonoBehaviour {
 
 	protected void updateShadow( ) {
 		if(_shadow == null) {
-			_shadow = transform.FindChild ("Shadow").gameObject; // get shadow object
+			_shadow = transform.Find ("Shadow").gameObject; // get shadow object
 		}
 
 		if(_corridor && _shadow) {

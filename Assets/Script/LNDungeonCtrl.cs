@@ -52,29 +52,29 @@ public class LNDungeonCtrl : MonoBehaviour {
 	}
 
 	public void Init( ) {
-		_way [0] = transform.FindChild ("road_up").gameObject;
-		_way [1] = transform.FindChild ("road_down").gameObject;
-		_way [2] = transform.FindChild ("road_left").gameObject;
-		_way [3] = transform.FindChild ("road_right").gameObject;
+		_way [0] = transform.Find ("road_up").gameObject;
+		_way [1] = transform.Find ("road_down").gameObject;
+		_way [2] = transform.Find ("road_left").gameObject;
+		_way [3] = transform.Find ("road_right").gameObject;
 		
-		_object_in [0] = transform.FindChild ("obj_in_up").gameObject;
-		_object_in [1] = transform.FindChild ("obj_in_down").gameObject;
-		_object_in [2] = transform.FindChild ("obj_in_left").gameObject;
-		_object_in [3] = transform.FindChild ("obj_in_right").gameObject;
+		_object_in [0] = transform.Find ("obj_in_up").gameObject;
+		_object_in [1] = transform.Find ("obj_in_down").gameObject;
+		_object_in [2] = transform.Find ("obj_in_left").gameObject;
+		_object_in [3] = transform.Find ("obj_in_right").gameObject;
 		
-		_object_out [0] = transform.FindChild ("obj_out_up").gameObject;
-		_object_out [1] = transform.FindChild ("obj_out_down").gameObject;
-		_object_out [2] = transform.FindChild ("obj_out_left").gameObject;
-		_object_out [3] = transform.FindChild ("obj_out_right").gameObject;
+		_object_out [0] = transform.Find ("obj_out_up").gameObject;
+		_object_out [1] = transform.Find ("obj_out_down").gameObject;
+		_object_out [2] = transform.Find ("obj_out_left").gameObject;
+		_object_out [3] = transform.Find ("obj_out_right").gameObject;
 		
-		_object_side [0] = transform.FindChild ("obj_wall_up").gameObject;
-		_object_side [1] = transform.FindChild ("obj_wall_down").gameObject;
-		_object_side [2] = transform.FindChild ("obj_wall_left").gameObject;
-		_object_side [3] = transform.FindChild ("obj_wall_right").gameObject;
+		_object_side [0] = transform.Find ("obj_wall_up").gameObject;
+		_object_side [1] = transform.Find ("obj_wall_down").gameObject;
+		_object_side [2] = transform.Find ("obj_wall_left").gameObject;
+		_object_side [3] = transform.Find ("obj_wall_right").gameObject;
 
-		_object_wall = transform.FindChild ("obj_wall").gameObject;
+		_object_wall = transform.Find ("obj_wall").gameObject;
 
-		_room = transform.FindChild ("road_room").gameObject;
+		_room = transform.Find ("road_room").gameObject;
 	}
 
 	// set road

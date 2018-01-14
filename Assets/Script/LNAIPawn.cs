@@ -55,8 +55,8 @@ public class LNAIPawn : LNPawn {
 		}
 		//
 
-		if(transform.FindChild ("Empty") != null) {
-			_empty = transform.FindChild ("Empty").gameObject;
+		if(transform.Find ("Empty") != null) {
+			_empty = transform.Find ("Empty").gameObject;
 			_empty.SetActive(false);
 		}
 
@@ -225,7 +225,7 @@ public class LNAIPawn : LNPawn {
 
 			// disable hit effect
 			// active hit effect
-			Transform hit = transform.FindChild ("EffectHit");
+			Transform hit = transform.Find ("EffectHit");
 			if(hit) {
 				hit.gameObject.SetActive(false);
 			}
@@ -327,7 +327,7 @@ public class LNAIPawn : LNPawn {
 		}
 
 		// active hit effect
-		Transform hit = transform.FindChild ("EffectHit");
+		Transform hit = transform.Find ("EffectHit");
 		if(hit) {
 
 			// effect direction

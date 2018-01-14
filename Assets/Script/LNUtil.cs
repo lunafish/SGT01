@@ -15,6 +15,9 @@ public class LNUtil {
 	public string _armParts = ""; // arm parts
 	public string _wpParts = ""; // weapon parts
 
+	// for tutorial
+	public bool _isTutorial = true;
+
 	// text read from resource
 	static public bool ReadText( string path, out string txt ) {
 		TextAsset ta = (TextAsset)Resources.Load (path) as TextAsset;
