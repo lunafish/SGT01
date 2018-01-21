@@ -7,30 +7,6 @@ public class LNPlayerCtrl : LNPawn {
 	public bool _viewer = false;
 	public float _range_attack = 2.0f;
 
-	// for mouse
-	private Vector3 _mouse_start_pos;
-	private Vector3 _mouse_pos;
-
-	// for touch
-	struct LNTouch {
-		public bool use;
-		public int id;
-		public Vector3 org_pos;
-		public Vector3 pos;
-	};
-
-	// for key
-	private bool _is_key = false;
-	private Vector3 _key_dir;
-
-	// const value
-	private const int MAX_INPUT = 5;
-	private const int TOUCH_DOWN = 0;
-	private const int TOUCH_HOLD = 1;
-	private const int TOUCH_UP = 2;
-
-	private LNTouch[] _touches = new LNTouch[MAX_INPUT];
-
 	// for camera
 	private float _cam_length;
 	private Vector3 _cam_target_pos;
@@ -38,17 +14,6 @@ public class LNPlayerCtrl : LNPawn {
 
 	// playter animation
 	private Animator _anim;
-
-	// input
-	struct LNInput {
-		public bool use;
-		public bool rotate;
-		public int state;
-		public Vector3 org_pos;
-		public Vector3 pos;
-		public float move_delta;
-	};
-	private LNInput[] _inputs = new LNInput[MAX_INPUT];
 
 	// for attack
 	float _attack_delay = 1.0f;
@@ -71,6 +36,9 @@ public class LNPlayerCtrl : LNPawn {
 	// for sound
 	public AudioSource _sndCrash = null;
 
+	// for pad
+	private LNPad _pad = null;
+
 	// Use this for initialization
 	void Start () {
 		// return point
@@ -87,11 +55,8 @@ public class LNPlayerCtrl : LNPawn {
 		_avatar_lookat = transform.position + transform.forward;
 		_anim = _avatar.GetComponent<Animator>(); // get avatar animation controler
 
-		// init value
-		for(int i=0; i < MAX_INPUT; i++) {
-			_touches[i].use = false;
-			_inputs[i].use = false;
-		}
+		// find pad
+		_pad = GameObject.FindGameObjectWithTag("Input").GetComponent<LNPad>();
 
 		// set camera at avatar pos
 		Vector3 v = transform.position - _camera.transform.position;
@@ -110,7 +75,7 @@ public class LNPlayerCtrl : LNPawn {
 	
 	// Update is called once per frame
 	void Update () {
-		UpdateInput();	
+		//UpdateInput();	
 		UpdatePlayer();
 
 	}
@@ -314,120 +279,10 @@ public class LNPlayerCtrl : LNPawn {
 		}
 	}
 
-
-	bool isMoveTouch( int n ) {
-		float f = _inputs[n].org_pos.x / Screen.width;
-		if (f < 0.5f) {
-			return true;
-		}
-		return false;
-	}
-
-	// Player translate
-	void UpdateInput( ) {
-		// init input value
-		for(int i=0; i < MAX_INPUT; i++) {
-			_inputs[i].use = false;
-		}
-
-		#if UNITY_IPHONE
-		if (Input.touchCount > 0 ) {
-			for(int i = 0; i < Input.touchCount; i++) {
-				if(Input.GetTouch(i).phase == TouchPhase.Began) {
-					//_touch_start_pos[i] = Input.GetTouch(i).position;
-
-					for(int j = 0; j < 5; j++) {
-						if(_touches[j].use == false) {
-							_touches[j].use = true;
-							_touches[j].id = Input.GetTouch(i).fingerId;
-							_touches[j].org_pos = Input.GetTouch(i).position;
-
-							_inputs[j].use = true;
-							_inputs[j].rotate = false;
-							_inputs[j].state = TOUCH_DOWN;
-							_inputs[j].org_pos = Input.GetTouch(i).position;
-							_inputs[j].move_delta = 0.0f;
-							break;
-						}
-					}
-				}
-				else if(Input.GetTouch(i).phase == TouchPhase.Moved || Input.GetTouch(i).phase == TouchPhase.Stationary) {
-					//_touch_pos[i] = Input.GetTouch(i).position;
-					//Vector3 v = _touch_pos[i] - _touch_start_pos[i];
-					Vector3 v;
-					for(int j = 0; j < 5; j++) {
-						if(_touches[j].use == true && _touches[j].id == Input.GetTouch(i).fingerId ) {
-							_touches[j].pos = Input.GetTouch(i).position;
-
-							_inputs[j].use = true;
-							_inputs[j].state = TOUCH_HOLD;
-							_inputs[j].pos = Input.GetTouch(i).position;
-							break;
-						}
-					}
-
-				}
-				else if(Input.GetTouch(i).phase == TouchPhase.Ended) {
-					for(int j = 0; j < 5; j++) {
-						if(_touches[j].use == true && _touches[j].id == Input.GetTouch(i).fingerId ) {
-
-							_inputs[j].use = true;
-							_inputs[j].state = TOUCH_UP;
-							_inputs[j].pos = Input.GetTouch(i).position;
-							_touches[j].use = false;
-						}
-					}
-				}
-			}
-		}
-		#endif
-
-		// keyboard and mouse
-		if(Input.GetMouseButtonDown(0) == true) {
-			_mouse_start_pos = Input.mousePosition;
-
-			_inputs[0].use = true;
-			_inputs[0].rotate = false;
-			_inputs[0].state = TOUCH_DOWN;
-			_inputs[0].org_pos = Input.mousePosition;
-			_inputs[0].move_delta = 0.0f;
-		}
-		else if(Input.GetMouseButton(0) == true) {
-			_inputs[0].use = true;
-			_inputs[0].state = TOUCH_HOLD;
-			_inputs[0].pos = Input.mousePosition;
-		}
-		else if (Input.GetMouseButtonUp(0) == true) {
-			_inputs[0].use = true;
-			_inputs[0].state = TOUCH_UP;
-			_inputs[0].pos = Input.mousePosition;
-		}
-
-		// keyboard
-		_is_key = false;
-		if(Input.GetKey(KeyCode.W)) {
-			_key_dir = Vector3.up;
-			_is_key = true;
-		}
-		else if(Input.GetKey(KeyCode.A)) {
-			_key_dir = Vector3.left;
-			_is_key = true;
-		}
-		else if(Input.GetKey(KeyCode.D)) {
-			_key_dir = Vector3.right;
-			_is_key = true;
-
-		}
-		else if(Input.GetKey(KeyCode.S)) {
-			_key_dir = Vector3.down;
-			_is_key = true;
-		}
-	}
-
 	// UI Check
 	bool checkUI( int touchIndex ) {
 		// check ui
-		Ray ray = Camera.main.ScreenPointToRay(_inputs[touchIndex].pos); // get mouse ray
+		Ray ray = Camera.main.ScreenPointToRay( _pad.getInput(touchIndex).pos); // get mouse ray
 		RaycastHit hit; // hit object
 		if(Physics.Raycast (ray, out hit, Mathf.Infinity))
 		{
@@ -444,66 +299,55 @@ public class LNPlayerCtrl : LNPawn {
 
 	// state macFhine
 	void state_move( ) {
-
-		// keyboard
-		if (_is_key) {
-			transform.rotation = _camera.transform.rotation;
-			_anim.SetBool ("isRun", true);
-			move ( _key_dir );
-		}
-		//
-
-		for(int i = 0; i < MAX_INPUT; i++) {
-			if(_inputs[i].use == true) {
-				if(_inputs[i].state == TOUCH_DOWN) {
-					if(isMoveTouch(i)) {
-						transform.rotation = _camera.transform.rotation;
-					}
+		for(int i = 0; i < LNPad.MAX_INPUT; i++) {
+			if(_pad.getInput(i).state == LNPad.TOUCH_DOWN) {
+				if(_pad.isMoveTouch(i)) {
+					transform.rotation = _camera.transform.rotation;
 				}
-				else if(_inputs[i].state == TOUCH_HOLD) {
-					Vector3 v = _inputs[i].pos - _inputs[i].org_pos;
-					_inputs[i].move_delta += v.magnitude;
+			}
+			else if(_pad.getInput(i).state == LNPad.TOUCH_HOLD) {
+				Vector3 v = _pad.getInput(i).pos - _pad.getInput(i).org_pos;
 
-					if( isMoveTouch( i ) ) {
-						_anim.SetBool ("isRun", true);
-						move ( v );
-					} else {
-						_inputs[i].rotate = Rotate ( v ); // rotate check
-					}					
-				}
-				else if(_inputs[i].state == TOUCH_UP) {
-					_anim.SetBool ("isRun", false);
-					//Debug.Log("TOUCH UP");
-					if( isMoveTouch( i ) == false ) {
-						if(_inputs[i].move_delta < 10.0f) {
+				_pad.SetMoveDelta(i, _pad.getInput(i).move_delta + v.magnitude);
+				if( _pad.isMoveTouch( i ) ) {
+					_anim.SetBool ("isRun", true);
+					move ( v );
+				} else {
+					_pad.SetRotate (i, Rotate (v)); // rotate check
+				}					
+			}
+			else if(_pad.getInput(i).state == LNPad.TOUCH_UP) {
+				_anim.SetBool ("isRun", false);
+				//Debug.Log("TOUCH UP");
+				if( _pad.isMoveTouch( i ) == false ) {
+					if(_pad.getInput(i).move_delta < 10.0f) {
 
 
-							if(_target != null) {
-								Debug.Log("Action : " + _target);
-								if(!checkUI(i)) {
-									Action();
-								}
-							} else {
-								// default attack motion
-								ChangeState( eSTATE.ATTACK );
-								_attack_delay = _tick * 2.0f; // set attack delay
-								ChangeAni (eANI.ATTACK_BLADE); // change attack ani
-								//
+						if(_target != null) {
+							Debug.Log("Action : " + _target);
+							if(!checkUI(i)) {
+								Action();
 							}
 						} else {
-							if(_inputs[i].rotate == false) {
-								// process dash
-								Vector3 v = _inputs[i].pos - _inputs[i].org_pos;
-								if( (Mathf.Abs(v.x) < 40.0f) && v.y > 10.0f ) {
-									Debug.Log("Dash");
-									Dash();
-								}
+							// default attack motion
+							ChangeState( eSTATE.ATTACK );
+							_attack_delay = _tick * 2.0f; // set attack delay
+							ChangeAni (eANI.ATTACK_BLADE); // change attack ani
+							//
+						}
+					} else {
+						if(_pad.getInput(i).rotate == false) {
+							// process dash
+							Vector3 v = _pad.getInput(i).pos - _pad.getInput(i).org_pos;
+							if( (Mathf.Abs(v.x) < 40.0f) && v.y > 10.0f ) {
+								Debug.Log("Dash");
+								Dash();
 							}
 						}
 					}
-					else {
-						//Debug.Log("Move");
-					}
+				}
+				else {
+					//Debug.Log("Move");
 				}
 			}
 		}
