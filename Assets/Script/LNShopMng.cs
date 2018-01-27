@@ -4,39 +4,6 @@ using SimpleJSON;
 using System.Collections;
 
 public class LNShopMng : MonoBehaviour {
-	// for INPUT
-	// for mouse
-	private Vector3 _mouse_pos;
-
-	// for touch
-	struct LNTouch {
-		public bool use;
-		public int id;
-		public Vector3 org_pos;
-		public Vector3 pos;
-	};
-	
-	// const value
-	private const int MAX_INPUT = 5;
-	private const int TOUCH_DOWN = 0;
-	private const int TOUCH_HOLD = 1;
-	private const int TOUCH_UP = 2;
-#if UNITY_IPHONE
-	private LNTouch[] _touches = new LNTouch[MAX_INPUT];
-#endif
-
-	// input
-	struct LNInput {
-		public bool use;
-		public bool rotate;
-		public int state;
-		public Vector3 org_pos;
-		public Vector3 pos;
-		public float move_delta;
-	};
-	private LNInput[] _inputs = new LNInput[MAX_INPUT];
-	//
-
 	// for tab
 	private GameObject[] _tabs = null; // tab object
 	private GameObject _list = null; // item list object
@@ -58,6 +25,9 @@ public class LNShopMng : MonoBehaviour {
 	public AudioClip _tabsound;
 	public AudioClip _itemsound;
 
+	// for pad
+	private LNPad _pad = null;
+
 	// Use this for initialization
 	void Start () {
 		init ();
@@ -65,7 +35,7 @@ public class LNShopMng : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		updateInput (); // update input
+		//updateInput (); // update input
 		updateUI (); // process input
 	}
 
@@ -107,6 +77,10 @@ public class LNShopMng : MonoBehaviour {
 
 		// for audio
 		_audio = GetComponent<AudioSource>();
+
+		// find pad
+		_pad = GameObject.FindGameObjectWithTag("Input").GetComponent<LNPad>();
+
 	}
 
 	void clearListItem( ) {
@@ -146,54 +120,52 @@ public class LNShopMng : MonoBehaviour {
 
 	// process ui
 	void updateUI( ) {
-		for(int i = 0; i < MAX_INPUT; i++) {
-			if(_inputs[i].use == true) {
-				if(_inputs[i].state == TOUCH_DOWN) {
-					GameObject obj = getUI( i );
-					if(obj != null) {
-						// process tab
-						if(obj.tag.Equals("UITab")) {
-							// sound play
-							if(_tabsound != null) {
-								_audio.clip = _tabsound;
-								_audio.Play();
-							}
-
-							selectTab(obj.name);
-						} else if(obj.tag.Equals("UIListItem")) {
-							Debug.Log(obj.tag);
-
-							// sound play
-							if(_itemsound != null) {
-								_audio.clip = _itemsound;
-								_audio.Play();
-							}
-
-							// set infomation
-							_info.text = obj.GetComponent<LNPartsData>()._info;
-							//
-
-							if(_current_tab.Equals(_tab_name[0])) {
-								// change arm
-								LNUtil.Instance()._armParts = obj.GetComponent<LNPartsData>()._prefabs;
-								_avatar.GetComponent<LNPartsCtrl>().ChangeArm( obj.GetComponent<LNPartsData>()._parts ); // change parts
-							} else {
-								// change katana
-								LNUtil.Instance()._wpParts = obj.GetComponent<LNPartsData>()._prefabs;
-								_avatar.GetComponent<LNPartsCtrl>().ChangeKatana( obj.GetComponent<LNPartsData>()._parts ); // change parts
-							}
-
-						} else {
-							_inputs[i].rotate = true; // rotate avatar
+		for(int i = 0; i < LNPad.MAX_INPUT; i++) {
+			if(_pad.getInput(i).state == LNPad.TOUCH_DOWN) {
+				GameObject obj = getUI( i );
+				if(obj != null) {
+					// process tab
+					if(obj.tag.Equals("UITab")) {
+						// sound play
+						if(_tabsound != null) {
+							_audio.clip = _tabsound;
+							_audio.Play();
 						}
+
+						selectTab(obj.name);
+					} else if(obj.tag.Equals("UIListItem")) {
+						Debug.Log(obj.tag);
+
+						// sound play
+						if(_itemsound != null) {
+							_audio.clip = _itemsound;
+							_audio.Play();
+						}
+
+						// set infomation
+						_info.text = obj.GetComponent<LNPartsData>()._info;
+						//
+
+						if(_current_tab.Equals(_tab_name[0])) {
+							// change arm
+							LNUtil.Instance()._armParts = obj.GetComponent<LNPartsData>()._prefabs;
+							_avatar.GetComponent<LNPartsCtrl>().ChangeArm( obj.GetComponent<LNPartsData>()._parts ); // change parts
+						} else {
+							// change katana
+							LNUtil.Instance()._wpParts = obj.GetComponent<LNPartsData>()._prefabs;
+							_avatar.GetComponent<LNPartsCtrl>().ChangeKatana( obj.GetComponent<LNPartsData>()._parts ); // change parts
+						}
+
 					} else {
-						_inputs[i].rotate = true; // rotate avatar
+						_pad.SetRotate (i, true); // rotate avatar
 					}
-				} else if(_inputs[i].state == TOUCH_HOLD) {
-					if(_inputs[i].rotate) {
-						Vector3 v = _inputs[i].pos - _inputs[i].org_pos;
-						rotate(v);
-					}
+				} else {
+					_pad.SetRotate (i, true); // rotate avatar
+				}
+			} else if(_pad.getInput(i).state == LNPad.TOUCH_HOLD) {
+				if(_pad.getInput(i).rotate) {
+					Vector3 v = _pad.getInput(i).pos - _pad.getInput(i).org_pos;
+					rotate(v);
 				}
 			}
 		}
@@ -223,89 +195,10 @@ public class LNShopMng : MonoBehaviour {
 		}
 	}
 
-	// Player translate
-	void updateInput( ) {
-		// init input value
-		for(int i=0; i < MAX_INPUT; i++) {
-			_inputs[i].use = false;
-		}
-		
-		#if UNITY_IPHONE
-		if (Input.touchCount > 0 ) {
-			for(int i = 0; i < Input.touchCount; i++) {
-				if(Input.GetTouch(i).phase == TouchPhase.Began) {
-					//_touch_start_pos[i] = Input.GetTouch(i).position;
-					
-					for(int j = 0; j < 5; j++) {
-						if(_touches[j].use == false) {
-							_touches[j].use = true;
-							_touches[j].id = Input.GetTouch(i).fingerId;
-							_touches[j].org_pos = Input.GetTouch(i).position;
-							
-							_inputs[j].use = true;
-							_inputs[j].rotate = false;
-							_inputs[j].state = TOUCH_DOWN;
-							_inputs[j].org_pos = Input.GetTouch(i).position;
-							_inputs[j].move_delta = 0.0f;
-							break;
-						}
-					}
-				}
-				else if(Input.GetTouch(i).phase == TouchPhase.Moved || Input.GetTouch(i).phase == TouchPhase.Stationary) {
-					//_touch_pos[i] = Input.GetTouch(i).position;
-					//Vector3 v = _touch_pos[i] - _touch_start_pos[i];
-					Vector3 v;
-					for(int j = 0; j < 5; j++) {
-						if(_touches[j].use == true && _touches[j].id == Input.GetTouch(i).fingerId ) {
-							_touches[j].pos = Input.GetTouch(i).position;
-							
-							_inputs[j].use = true;
-							_inputs[j].state = TOUCH_HOLD;
-							_inputs[j].pos = Input.GetTouch(i).position;
-							break;
-						}
-					}
-					
-				}
-				else if(Input.GetTouch(i).phase == TouchPhase.Ended) {
-					for(int j = 0; j < 5; j++) {
-						if(_touches[j].use == true && _touches[j].id == Input.GetTouch(i).fingerId ) {
-							
-							_inputs[j].use = true;
-							_inputs[j].state = TOUCH_UP;
-							_inputs[j].pos = Input.GetTouch(i).position;
-							_touches[j].use = false;
-						}
-					}
-				}
-			}
-		}
-		
-		#else
-		if(Input.GetMouseButtonDown(0) == true) {
-			_inputs[0].use = true;
-			_inputs[0].rotate = false;
-			_inputs[0].state = TOUCH_DOWN;
-			_inputs[0].org_pos = Input.mousePosition;
-			_inputs[0].move_delta = 0.0f;
-		}
-		else if(Input.GetMouseButton(0) == true) {
-			_inputs[0].use = true;
-			_inputs[0].state = TOUCH_HOLD;
-			_inputs[0].pos = Input.mousePosition;
-		}
-		else if (Input.GetMouseButtonUp(0) == true) {
-			_inputs[0].use = true;
-			_inputs[0].state = TOUCH_UP;
-			_inputs[0].pos = Input.mousePosition;
-		}
-		#endif
-	}
-
 	// UI Check
 	GameObject getUI( int touchIndex ) {
 		// check ui
-		Ray ray = Camera.main.ScreenPointToRay(_inputs[touchIndex].org_pos); // get mouse ray
+		Ray ray = Camera.main.ScreenPointToRay(_pad.getInput(touchIndex).org_pos); // get mouse ray
 		//Debug.Log (ray);
 		RaycastHit hit; // hit object
 		if(Physics.Raycast (ray, out hit, Mathf.Infinity)) {

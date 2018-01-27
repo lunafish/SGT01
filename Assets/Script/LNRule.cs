@@ -4,6 +4,7 @@ using System.Collections;
 public class LNRule : MonoBehaviour {
 	private GameObject[] _pawns;
 	private GameObject[] _players;
+	private GameObject _camera;
 
 	// Find type
 	public enum TYPE {
@@ -32,6 +33,9 @@ public class LNRule : MonoBehaviour {
 
 		// make player list
 		_players = GameObject.FindGameObjectsWithTag ("Player");
+
+		// find camera
+		_camera = GameObject.FindGameObjectWithTag("MainCamera");
 	}
 
 	// reset
@@ -63,7 +67,8 @@ public class LNRule : MonoBehaviour {
 				float t = v.magnitude;
 				if( t < len ) {
 					v.Normalize();
-					float dot = Vector3.Dot( source.GetComponent<LNPawn>()._avatar.transform.forward, v); // dot product (is forward sight?)
+					//float dot = Vector3.Dot( source.GetComponent<LNPawn>()._avatar.transform.forward, v); // dot product (is forward sight?)
+					float dot = Vector3.Dot( _camera.transform.forward, v); // dot product (is forward sight?)
 					if(dot > 0.33f) {
 						target = _pawns[i];
 						len = t;

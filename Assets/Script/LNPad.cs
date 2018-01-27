@@ -73,6 +73,7 @@ public class LNPad : MonoBehaviour {
 		}
 
 		int n = Input.touchCount;
+
 		if (n == 0) {
 			// for mouse
 			n = 1;
@@ -93,7 +94,7 @@ public class LNPad : MonoBehaviour {
 				n++;
 		}
 
-		Debug.Log (n + " " + Input.touchCount);
+		//Debug.Log (n + " " + Input.touchCount);
 	}
 
 	public LNInput getInput(int idx = 0) {

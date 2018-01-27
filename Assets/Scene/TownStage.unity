@@ -1190,6 +1190,10 @@ Prefab:
       propertyPath: _shortRangeAttack
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: d5c0998525dff42b0a9a60cc78bf30bc, type: 2}
+      propertyPath: _sight_length
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d5c0998525dff42b0a9a60cc78bf30bc, type: 2}
   m_IsPrefabParent: 0
